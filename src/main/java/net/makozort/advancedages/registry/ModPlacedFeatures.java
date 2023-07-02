@@ -1,5 +1,6 @@
-package net.rae.bronze_age.registry;
+package net.makozort.advancedages.registry;
 
+import net.makozort.advancedages.Advancedages;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -7,13 +8,12 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraftforge.registries.RegistryObject;
-import net.rae.bronze_age.BronzeAge;
 
 import java.util.List;
 
 public class ModPlacedFeatures {
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES =
-            DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, BronzeAge.MOD_ID);
+            DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, Advancedages.MOD_ID);
 
     public static final RegistryObject<PlacedFeature> TIN_ORE_PLACED = PLACED_FEATURES.register("tin_ore_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.TIN_ORE.getHolder().get(),

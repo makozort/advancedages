@@ -1,4 +1,4 @@
-package net.rae.bronze_age.content.renderer;
+package net.makozort.advancedages.content.renderer;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ThrownTridentRenderer;

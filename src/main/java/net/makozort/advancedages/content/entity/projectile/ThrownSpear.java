@@ -1,4 +1,4 @@
-package net.rae.bronze_age.content.entity.projectile;
+package net.makozort.advancedages.content.entity.projectile;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;

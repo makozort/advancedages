@@ -1,6 +1,6 @@
-package net.rae.bronze_age.registry;
+package net.makozort.advancedages.registry;
 
-import static net.rae.bronze_age.BronzeAge.REGISTRATE;
+import net.makozort.advancedages.Advancedages;
 
 public class ModLang {
     static {
@@ -8,6 +8,6 @@ public class ModLang {
         customLang("itemGroup.cooltab","Create: Bronze Age");
     }
     public static void customLang(String key, String value) {
-        REGISTRATE.addRawLang(key,value);
+        Advancedages.REGISTRATE.addRawLang(key,value);
     }
 }

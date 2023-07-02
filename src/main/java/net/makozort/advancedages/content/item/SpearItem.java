@@ -1,4 +1,4 @@
-package net.rae.bronze_age.content.item;
+package net.makozort.advancedages.content.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;

@@ -1,4 +1,4 @@
-package net.rae.bronze_age.registry;
+package net.makozort.advancedages.registry;
 
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
@@ -10,6 +10,11 @@ import com.simibubi.create.foundation.data.BuilderTransformers;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import net.makozort.advancedages.Advancedages;
+import net.makozort.advancedages.ModCreativeModeTab;
+import net.makozort.advancedages.ModSpriteShifts;
+import net.makozort.advancedages.ModTags;
+import net.makozort.advancedages.content.block.BronzeCogwheelBlock;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -17,34 +22,28 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.LavaFluid;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import net.rae.bronze_age.ModCreativeModeTab;
-import net.rae.bronze_age.ModSpriteShifts;
-import net.rae.bronze_age.content.block.BronzeCogwheelBlock;
 
 import java.util.function.Supplier;
 
 import static com.simibubi.create.foundation.data.BlockStateGen.simpleCubeAll;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
-import static net.rae.bronze_age.BronzeAge.REGISTRATE;
-import static net.rae.bronze_age.ModTags.forgeBlockTag;
 
 public class ModBlocks {
     static {
-        REGISTRATE.creativeModeTab(() -> ModCreativeModeTab.COOL_TAB);
+        Advancedages.REGISTRATE.creativeModeTab(() -> ModCreativeModeTab.COOL_TAB);
     }
     public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, net.rae.bronze_age.BronzeAge.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.BLOCKS, Advancedages.MOD_ID);
 
     // FUNKY BLOCKS
     public static final BlockEntry<CogWheelBlock> BRONZE_COGWHEEL =
-            REGISTRATE.block("bronze_cogwheel", BronzeCogwheelBlock::small)
+            Advancedages.REGISTRATE.block("bronze_cogwheel", BronzeCogwheelBlock::small)
                     .initialProperties(SharedProperties::stone)
                     .properties(p -> p.sound(SoundType.METAL))
                     .properties(p -> p.color(MaterialColor.METAL))
@@ -56,7 +55,7 @@ public class ModBlocks {
                     .build()
                     .register();
     public static final BlockEntry<CogWheelBlock> LARGE_BRONZE_COGWHEEL =
-            REGISTRATE.block("large_bronze_cogwheel", BronzeCogwheelBlock::large)
+            Advancedages.REGISTRATE.block("large_bronze_cogwheel", BronzeCogwheelBlock::large)
                     .initialProperties(SharedProperties::stone)
                     .properties(p -> p.sound(SoundType.METAL))
                     .properties(p -> p.color(MaterialColor.METAL))
@@ -67,55 +66,55 @@ public class ModBlocks {
                     .item(CogwheelBlockItem::new)
                     .build()
                     .register();
-    public static final BlockEntry<GravelBlock> BASALT_PEBBLES = REGISTRATE.block("basalt_pebbles", GravelBlock::new)
+    public static final BlockEntry<GravelBlock> BASALT_PEBBLES = Advancedages.REGISTRATE.block("basalt_pebbles", GravelBlock::new)
             .initialProperties(() -> Blocks.GRAVEL)
             .properties(p -> p.color(MaterialColor.COLOR_BLACK))
             .blockstate(simpleCubeAll("basalt_pebbles"))
-            .tag(BlockTags.MINEABLE_WITH_SHOVEL, forgeBlockTag("gravel"))
+            .tag(BlockTags.MINEABLE_WITH_SHOVEL, ModTags.forgeBlockTag("gravel"))
             .lang("Basalt Pebbles")
             .item(BlockItem::new)
             .build()
             .register();
-    public static final BlockEntry<CasingBlock> BRONZE_CASING = REGISTRATE.block("bronze_casing", CasingBlock::new)
+    public static final BlockEntry<CasingBlock> BRONZE_CASING = Advancedages.REGISTRATE.block("bronze_casing", CasingBlock::new)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .transform(BuilderTransformers.casing(() -> ModSpriteShifts.BRONZE_CASING))
             .register();
-    public static final BlockEntry<Block> TIN_BLOCK = REGISTRATE.block("tin_block",Block::new)
+    public static final BlockEntry<Block> TIN_BLOCK = Advancedages.REGISTRATE.block("tin_block",Block::new)
             .properties(p -> p.requiresCorrectToolForDrops().explosionResistance(6).strength(3))
             .item(BlockItem::new)
             .build()
             .register();
-    public static final BlockEntry<Block> BRONZE_BLOCK = REGISTRATE.block("bronze_block",Block::new)
+    public static final BlockEntry<Block> BRONZE_BLOCK = Advancedages.REGISTRATE.block("bronze_block",Block::new)
             .properties(p -> p.requiresCorrectToolForDrops().explosionResistance(6).strength(3))
             .item(BlockItem::new)
             .build()
             .register();
-    public static final BlockEntry<DropExperienceBlock> TIN_ORE = REGISTRATE.block("tin_ore", p ->
+    public static final BlockEntry<DropExperienceBlock> TIN_ORE = Advancedages.REGISTRATE.block("tin_ore", p ->
                     new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
                             .requiresCorrectToolForDrops().explosionResistance(6).strength(3),
                             UniformInt.of(3,7)))
             .item(BlockItem::new)
             .build()
             .register();
-    public static final BlockEntry<DropExperienceBlock> DEEPSLATE_TIN_ORE = REGISTRATE.block("deepslate_tin_ore", p ->
+    public static final BlockEntry<DropExperienceBlock> DEEPSLATE_TIN_ORE = Advancedages.REGISTRATE.block("deepslate_tin_ore", p ->
             new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
                     .requiresCorrectToolForDrops().explosionResistance(6).strength(4),
                     UniformInt.of(3,7)))
             .item(BlockItem::new)
             .build()
             .register();
-    public static final BlockEntry<Block> RAW_TIN_BLOCK = REGISTRATE.block("raw_tin_block", Block::new)
+    public static final BlockEntry<Block> RAW_TIN_BLOCK = Advancedages.REGISTRATE.block("raw_tin_block", Block::new)
             .lang("Block of Raw Tin")
             .item(BlockItem::new)
             .build()
             .register();
-    public static final BlockEntry<Block> WET_SAND = REGISTRATE.block("wet_sand", p ->
+    public static final BlockEntry<Block> WET_SAND = Advancedages.REGISTRATE.block("wet_sand", p ->
             new Block(BlockBehaviour.Properties.copy(Blocks.SAND)))
             .tag(BlockTags.MINEABLE_WITH_SHOVEL)
             .item(BlockItem::new)
             .build()
             .register();
-    public static final BlockEntry<LiquidBlock> MOLTEN_BRONZE_BLOCK = REGISTRATE.block("molten_bronze_block",b ->
+    public static final BlockEntry<LiquidBlock> MOLTEN_BRONZE_BLOCK = Advancedages.REGISTRATE.block("molten_bronze_block", b ->
             new LiquidBlock(ModFluids.SOURCE_MOLTEN_BRONZE, BlockBehaviour.Properties.copy(Blocks.LAVA)))
             .lang("Molten Bronze")
             .register();

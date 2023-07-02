@@ -1,16 +1,15 @@
-package net.rae.bronze_age.registry;
+package net.makozort.advancedages.registry;
 
 
+import net.makozort.advancedages.Advancedages;
+import net.makozort.advancedages.ModCreativeModeTab;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-import net.rae.bronze_age.ModTiers;
-import net.rae.bronze_age.ModCreativeModeTab;
 
 public class ModItems {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, net.rae.bronze_age.BronzeAge.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Advancedages.MOD_ID);
     // bronze items here
     /*public static final RegistryObject<Item> BRONZE_PLATE = ITEMS.register("bronze_plate",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.COOL_TAB)));

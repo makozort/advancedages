@@ -1,7 +1,8 @@
-package net.rae.bronze_age.registry;
+package net.makozort.advancedages.registry;
 
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
+import net.makozort.advancedages.Advancedages;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -10,13 +11,12 @@ import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguratio
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import net.rae.bronze_age.BronzeAge;
-import net.rae.bronze_age.registry.ModBlocks;
+
 import java.util.List;
 
 public class ModConfiguredFeatures {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES =
-            DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, BronzeAge.MOD_ID);
+            DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, Advancedages.MOD_ID);
 
     public static final Supplier<List<OreConfiguration.TargetBlockState>> OVERWORLD_TIN_ORES = Suppliers.memoize(() -> List.of(
             OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.TIN_ORE.get().defaultBlockState()),
