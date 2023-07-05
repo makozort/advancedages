@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "cookingtime": 200,
-  "ingredient": {
-    "item": "bronze_age:wet_sand"
-  },
-  "result": "minecraft:sand"
-}
