@@ -28,7 +28,7 @@ public class Myblock extends DirectionalKineticBlock implements IBE<Myblocktile>
 
     @Override
     public Class<Myblocktile> getBlockEntityClass() {
-        return null;
+        return Myblocktile.class;
     }
 
     @Override
@@ -36,3 +36,4 @@ public class Myblock extends DirectionalKineticBlock implements IBE<Myblocktile>
         return null;
     }
 }
+v
