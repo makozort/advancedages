@@ -5,9 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a43f3d0b-5fb9-445f-a9d3-c3a911833bd7" name="Changes" comment="hello!">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/AllBlockEntities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/refined_oil_block.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/refined_oil_flow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/refined_oil_still.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/item/refined_oil_bucket.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/misc/in_refined_oil.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/liquid_burning/refined_fuel.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/mixing/crude_oil_fluid.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/.cache/9a666821f5d507a7d2617fd261298dd7ce37e1ab" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/.cache/9a666821f5d507a7d2617fd261298dd7ce37e1ab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_ud.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_ud.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/Advancedages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/Advancedages.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Modblocks/Myblock/Myblock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Modblocks/Myblock/Myblock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/fluid/ModFluidTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/fluid/ModFluidTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/AllBlockEntities.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/AllBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/AllBlocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allfluids.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allfluids.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allitems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allitems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_block.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_block.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_flow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_flow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_still.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_still.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +62,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="advancedages" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="advancedages" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="forgegradle runs" type="c8890929:TasksNode$1" />
               </path>
             </expand>
@@ -59,6 +86,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -68,30 +96,59 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/moddev/advancedages/src/main/resources/assets/advancedages/textures/item&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/moddev/advancedages/src/main/resources",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\item" />
-      <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\block" />
+      <recent name="C:\moddev\advancedages\src\main\resources" />
+      <recent name="C:\moddev\advancedages\src\main\resources\data" />
       <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\misc" />
-      <recent name="C:\moddev\advancedages\src\main\resources\assets" />
+      <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\block" />
+      <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\item" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\moddev\advancedages\src\main\resources\data" />
+      <recent name="C:\moddev\advancedages\src\main\resources\data\advancedages" />
       <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\block" />
+      <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\item" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="net.makozort.advancedages.content.fluid" />
     </key>
   </component>
   <component name="RunManager" selected="Application.runClient">
+    <configuration name="advancedages [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <configuration name="advancedages [genIntellijRuns]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -160,6 +217,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.advancedages [build]" />
         <item itemvalue="Gradle.advancedages [runData]" />
         <item itemvalue="Gradle.advancedages [runClient]" />
         <item itemvalue="Gradle.advancedages [genIntellijRuns]" />

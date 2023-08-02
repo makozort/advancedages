@@ -1,5 +1,7 @@
 {
   "block.advancedages.crude_oil_block": "Crude Oil",
+  "block.advancedages.refined_oil_block": "Refined Oil",
   "block.advancedages.tin_ore": "Tin Ore",
-  "item.advancedages.crude_oil_bucket": "Crude Oil Bucket"
+  "item.advancedages.crude_oil_bucket": "Crude Oil Bucket",
+  "item.advancedages.refined_oil_bucket": "Refined Oil Bucket"
 }

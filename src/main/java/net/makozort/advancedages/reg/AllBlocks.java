@@ -47,6 +47,11 @@ public class AllBlocks {
             .register();
 
 
+    public static final BlockEntry<LiquidBlock> REFINED_OIL_BLOCK = REGISTRATE.block("refined_oil_block",b ->
+                    new LiquidBlock(Allfluids.SOURCE_REFINED_OIL, BlockBehaviour.Properties.copy(Blocks.LAVA)))
+            .lang("Refined Oil")
+            .register();
+
     public static void register() {
 
     }

@@ -26,6 +26,21 @@ public class Allfluids {
             .bucket(Allitems.CRUDE_OIL_BUCKET)
             .tickRate(30);
 
+
+
+    public static final RegistryObject<FlowingFluid> SOURCE_REFINED_OIL = FLUIDS.register("refined_oil_fluid",
+            () -> new ForgeFlowingFluid.Source(Allfluids.REFINED_OIL_FLUID_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_REFINED_OIL = FLUIDS.register("flowing_refined_oil",
+            () -> new ForgeFlowingFluid.Flowing(Allfluids.REFINED_OIL_FLUID_PROPERTIES));
+
+    public static final ForgeFlowingFluid.Properties REFINED_OIL_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
+            ModFluidTypes.REFINED_OIL_FLUID_TYPE, SOURCE_REFINED_OIL, FLOWING_REFINED_OIL)
+            .slopeFindDistance(3).levelDecreasePerBlock(2).block(AllBlocks.REFINED_OIL_BLOCK)
+            .bucket(Allitems.REFINED_OIL_BUCKET)
+            .tickRate(30);
+
+
+
     public static void register(IEventBus eventBus) {
         FLUIDS.register(eventBus);
     }

@@ -15,6 +15,12 @@ public class Allitems {
                     p -> new BucketItem(Allfluids.SOURCE_CRUDE_OIL,props().craftRemainder(Items.BUCKET).stacksTo(1)))
             .register();
 
+
+    public static final ItemEntry<BucketItem> REFINED_OIL_BUCKET = REGISTRATE.item("refined_oil_bucket",
+                    p -> new BucketItem(Allfluids.SOURCE_REFINED_OIL,props().craftRemainder(Items.BUCKET).stacksTo(1)))
+            .register();
+
+
     private static Item.Properties props() {
         return new Item.Properties().tab(ModCreativeModeTab.BIG_TAB.hideScroll());
     }
