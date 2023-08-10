@@ -5,6 +5,33 @@
       "item": "minecraft:coal"
     },
     {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
       "item": "minecraft:sugar"
     },
     {
@@ -17,6 +44,5 @@
       "fluid": "advancedages:crude_oil_fluid",
       "amount": 2000
     }
-  ],
-  "heatRequirement": "heated"
+  ]
 }

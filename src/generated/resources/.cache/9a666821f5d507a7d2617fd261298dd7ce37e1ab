@@ -1,4 +1,4 @@
-// 1.19.2	2023-08-02T21:23:31.487863	Registrate Provider for advancedages [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-08-06T13:39:45.9672221	Registrate Provider for advancedages [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 d5cad28e814cb293e146dea47368ccb3f43c6e97 assets/advancedages/blockstates/crude_oil_block.json
 74d5b42444e23cf9c847367edd6292b3d011da1b assets/advancedages/blockstates/refined_oil_block.json
 ddc6a57f70ce32b29d11c3519e04f07f76a52464 assets/advancedages/blockstates/tin_ore.json
@@ -13,3 +13,5 @@ c717ce38ce579954cd2fa09fafe10d78dae6d1d0 assets/advancedages/lang/en_us.json
 2b2a4bde1a1c86393b28fa3ff9b81ef1ddeed22d data/advancedages/loot_tables/blocks/crude_oil_block.json
 2b2a4bde1a1c86393b28fa3ff9b81ef1ddeed22d data/advancedages/loot_tables/blocks/refined_oil_block.json
 9ed8e6e7e48b1cd4414a90c7dc8116187751cdec data/advancedages/loot_tables/blocks/tin_ore.json
+5706a0fd61a81feff96958ecde097862db28627a data/create/tags/items/blaze_burner_fuel/special.json
+5706a0fd61a81feff96958ecde097862db28627a data/create/tags/items/upright_on_belt.json

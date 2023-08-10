@@ -3,5 +3,15 @@
   "block.advancedages.refined_oil_block": "Refined Oil",
   "block.advancedages.tin_ore": "Tin Ore",
   "item.advancedages.crude_oil_bucket": "Crude Oil Bucket",
-  "item.advancedages.refined_oil_bucket": "Refined Oil Bucket"
+  "item.advancedages.refined_oil_bucket": "Refined Oil Bucket",
+
+
+  "fluid_type.advancedages.crude_oil_fluid": "Crude Oil",
+
+  "fluid_type.advancedages.refined_oil_fluid": "Refined Oil",
+
+  "itemGroup.bigtab": "Create: Advanced Ages",
+
+  "effect.advancedages.pollution": "Pollutin Sickness",
+  "death.attack.Pollution_Sickness": "%1$s suffocated on fumes"
 }

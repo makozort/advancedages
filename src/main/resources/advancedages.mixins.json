@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "priority": 1000,
+  "package": "net.makozort.advancedages.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "advancedages.refmap.json",
+  "mixins": [
+    "BurnerMixin"
+  ],
+  "minVersion": "0.8.5"
+}

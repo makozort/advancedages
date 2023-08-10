@@ -1,6 +1,7 @@
 package net.makozort.advancedages.content.fluid;
 
 import com.mojang.math.Vector3f;
+import net.makozort.advancedages.AdvancedAges;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
@@ -10,13 +11,11 @@ import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import net.makozort.advancedages.Advancedages;
-import net.makozort.advancedages.content.fluid.BaseFluidType;
 
 public class ModFluidTypes {
 
     public static final DeferredRegister<FluidType> FLUID_TYPES =
-            DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, Advancedages.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, net.makozort.advancedages.AdvancedAges.MOD_ID);
 
     public static final RegistryObject<FluidType> CRUDE_OIL_FLUID_TYPE = register("crude_oil_fluid",
             FluidType.Properties.create().lightLevel(15).density(3000).viscosity(6000)
@@ -24,7 +23,7 @@ public class ModFluidTypes {
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
                     .temperature(1500).pathType(BlockPathTypes.LAVA).adjacentPathType(null)
                     .canSwim(true).canDrown(true).fallDistanceModifier(-1),
-            new ResourceLocation(Advancedages.MOD_ID, "block/crude_oil_still"), new ResourceLocation(Advancedages.MOD_ID, "block/crude_oil_flow"), new ResourceLocation(Advancedages.MOD_ID, "misc/in_crude_oil") // <- defined elsewhere, or replaced with "new ResourceLocation(...)"
+            new ResourceLocation(AdvancedAges.MOD_ID, "block/crude_oil_still"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "block/crude_oil_flow"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "misc/in_crude_oil") // <- defined elsewhere, or replaced with "new ResourceLocation(...)"
             );
 
 
@@ -34,7 +33,7 @@ public class ModFluidTypes {
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
                     .temperature(1500).pathType(BlockPathTypes.LAVA).adjacentPathType(null)
                     .canSwim(true).canDrown(true).fallDistanceModifier(-1),
-            new ResourceLocation(Advancedages.MOD_ID, "block/refined_oil_still"), new ResourceLocation(Advancedages.MOD_ID, "block/refined_oil_flow"), new ResourceLocation(Advancedages.MOD_ID, "misc/in_refined_oil") // <- defined elsewhere, or replaced with "new ResourceLocation(...)"
+            new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "block/refined_oil_still"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "block/refined_oil_flow"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "misc/in_refined_oil") // <- defined elsewhere, or replaced with "new ResourceLocation(...)"
     );
 
 

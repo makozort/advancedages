@@ -4,6 +4,7 @@ package net.makozort.advancedages;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.makozort.advancedages.content.fluid.ModFluidTypes;
+import net.makozort.advancedages.effect.ModEffects;
 import net.makozort.advancedages.reg.AllBlocks;
 import net.makozort.advancedages.reg.Allfluids;
 import net.makozort.advancedages.reg.Allitems;
@@ -18,8 +19,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(Advancedages.MOD_ID)
-public class Advancedages {
+@Mod(net.makozort.advancedages.AdvancedAges.MOD_ID)
+public class AdvancedAges {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "advancedages";
     // Directly reference a slf4j logger
@@ -28,7 +29,7 @@ public class Advancedages {
 
     public static final CreateRegistrate REGISTRATE = ModRegistrate.REGISTRATE;
 
-    public Advancedages() {
+    public AdvancedAges() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
 
@@ -42,14 +43,13 @@ public class Advancedages {
         Allfluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
         ModCreativeModeTab.register();
-
+        ModEffects.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
     }
 
     public static ResourceLocation asResource(String path) {

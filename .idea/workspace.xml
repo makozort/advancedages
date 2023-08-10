@@ -4,31 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a43f3d0b-5fb9-445f-a9d3-c3a911833bd7" name="Changes" comment="hello!">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/refined_oil_block.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/refined_oil_flow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/refined_oil_still.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/item/refined_oil_bucket.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/misc/in_refined_oil.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/liquid_burning/refined_fuel.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/mixing/crude_oil_fluid.json" afterDir="false" />
+    <list default="true" id="a43f3d0b-5fb9-445f-a9d3-c3a911833bd7" name="Changes" comment="oils">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Pollution/PollutionData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Pollution/SaveTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/effect/ModEffects.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/effect/PollutionEffect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/event/ModEvents.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/mixin/BurnerMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/advancedages.mixins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/mob_effect/pollution.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/mixing/refined_oil_fluid.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/advancedages.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/advancedages.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runClient.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runClient.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runData.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runData.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runGameTestServer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runGameTestServer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runServer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runServer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generated/resources/.cache/9a666821f5d507a7d2617fd261298dd7ce37e1ab" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/.cache/9a666821f5d507a7d2617fd261298dd7ce37e1ab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_ud.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_ud.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/Advancedages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/Advancedages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Modblocks/Myblock/Myblock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Modblocks/Myblock/Myblock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/Advancedages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/AdvancedAges.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/ModRegistrate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/ModRegistrate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/fluid/ModFluidTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/fluid/ModFluidTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/AllBlockEntities.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/AllBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/AllBlocks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allfluids.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allfluids.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allitems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allitems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_block.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_block.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_flow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_flow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_still.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/block/crude_oil_still.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/ModCreativeModeTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/ModCreativeModeTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/item/crude_oil_bucket.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/item/crude_oil_bucket.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/item/refined_oil_bucket.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/item/refined_oil_bucket.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/misc/in_crude_oil.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/misc/in_crude_oil.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/liquid_burning/refined_fuel.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/mixing/crude_oil_fluid.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/mixing/crude_oil_fluid.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,31 +104,33 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/moddev/advancedages/src/main/resources",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;1.19.2-dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/moddev/advancedages/src/main/resources/assets/advancedages/textures/misc&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\moddev\advancedages\src\main\resources" />
-      <recent name="C:\moddev\advancedages\src\main\resources\data" />
       <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\misc" />
-      <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\block" />
-      <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\item" />
+      <recent name="C:\moddev\advancedages\run\mods" />
+      <recent name="C:\moddev\advancedages\src\main\resources\data\advancedages\recipes\liquid_burning" />
+      <recent name="C:\moddev\advancedages\src\main\resources\data\advancedages\recipes\mixing" />
+      <recent name="C:\moddev\advancedages\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\mob_effects" />
+      <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\item" />
       <recent name="C:\moddev\advancedages\src\main\resources\data" />
       <recent name="C:\moddev\advancedages\src\main\resources\data\advancedages" />
       <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\block" />
-      <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\item" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="net.makozort.advancedages.content.fluid" />
@@ -218,9 +228,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.advancedages [build]" />
+        <item itemvalue="Gradle.advancedages [genIntellijRuns]" />
         <item itemvalue="Gradle.advancedages [runData]" />
         <item itemvalue="Gradle.advancedages [runClient]" />
-        <item itemvalue="Gradle.advancedages [genIntellijRuns]" />
       </list>
     </recent_temporary>
   </component>
@@ -261,11 +271,39 @@
       <option name="project" value="LOCAL" />
       <updated>1688568230857</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="oils">
+      <created>1690977699833</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1690977699833</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hello!" />
-    <option name="LAST_COMMIT_MESSAGE" value="hello!" />
+    <MESSAGE value="oils" />
+    <option name="LAST_COMMIT_MESSAGE" value="oils" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>jar://$USER_HOME$/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.2.3_mapped_official_1.19.2/forge-1.19.2-43.2.3_mapped_official_1.19.2-sources.jar!/net/minecraft/world/entity/item/ItemEntity.java</url>
+          <line>260</line>
+          <properties class="net.minecraft.world.entity.item.ItemEntity" method="hurt">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.2.3_mapped_official_1.19.2/forge-1.19.2-43.2.3_mapped_official_1.19.2-sources.jar!/net/minecraft/world/effect/MobEffect.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
