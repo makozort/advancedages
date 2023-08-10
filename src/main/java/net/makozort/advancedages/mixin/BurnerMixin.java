@@ -3,7 +3,7 @@ package net.makozort.advancedages.mixin;
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
 //import net.makozort.advancedages.content.Pollution.PollutionData;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.Pollution.SaveTest;
+import net.makozort.advancedages.content.Pollution.PollutionData;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
@@ -30,8 +30,8 @@ public class BurnerMixin extends BlockEntity {
     if (itemStack.is(Allitems.REFINED_OIL_BUCKET.get())) {
             this.remainingBurnTime = 36000;
             BlockPos pos = this.getBlockPos();
-            SaveTest.get(this.level).setPollution(pos,.5);
-            AdvancedAges.LOGGER.info(String.valueOf(SaveTest.get(this.level).getPollution(pos)));
+            PollutionData.get(this.level).setPollution(pos,.5);
+            AdvancedAges.LOGGER.info(String.valueOf(PollutionData.get(this.level).getPollution(pos)));
         }
     }
 

@@ -4,39 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a43f3d0b-5fb9-445f-a9d3-c3a911833bd7" name="Changes" comment="oils">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Pollution/PollutionData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Pollution/SaveTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/effect/ModEffects.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/effect/PollutionEffect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/event/ModEvents.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/mixin/BurnerMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/advancedages.mixins.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/mob_effect/pollution.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/mixing/refined_oil_fluid.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/advancedages.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/advancedages.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runClient.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runClient.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runData.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runData.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runGameTestServer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runGameTestServer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runServer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runServer.xml" afterDir="false" />
+    <list default="true" id="a43f3d0b-5fb9-445f-a9d3-c3a911833bd7" name="Changes" comment="pollution">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/.cache/9a666821f5d507a7d2617fd261298dd7ce37e1ab" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/.cache/9a666821f5d507a7d2617fd261298dd7ce37e1ab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/Advancedages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/AdvancedAges.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/ModRegistrate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/ModRegistrate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/fluid/ModFluidTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/fluid/ModFluidTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/AllBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/AllBlocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allfluids.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allfluids.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Pollution/PollutionData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Pollution/PollutionData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Pollution/SaveTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/effect/PollutionEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/effect/PollutionEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/event/ModEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/event/ModEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/mixin/BurnerMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/mixin/BurnerMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allitems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allitems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/ModCreativeModeTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/ModCreativeModeTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/item/crude_oil_bucket.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/item/crude_oil_bucket.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/item/refined_oil_bucket.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/item/refined_oil_bucket.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/misc/in_crude_oil.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/misc/in_crude_oil.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/liquid_burning/refined_fuel.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/mixing/crude_oil_fluid.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/advancedages/recipes/mixing/crude_oil_fluid.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,13 +253,28 @@
       <option name="project" value="LOCAL" />
       <updated>1690977699833</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="pollution">
+      <created>1691674175588</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1691674175588</updated>
+    </task>
+    <task id="LOCAL-00007" summary="pollution">
+      <created>1691674193801</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1691674193801</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hello!" />
     <MESSAGE value="oils" />
-    <option name="LAST_COMMIT_MESSAGE" value="oils" />
+    <MESSAGE value="pollution" />
+    <option name="LAST_COMMIT_MESSAGE" value="pollution" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

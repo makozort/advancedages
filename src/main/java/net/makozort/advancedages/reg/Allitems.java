@@ -2,6 +2,7 @@ package net.makozort.advancedages.reg;
 
 import com.simibubi.create.AllTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -21,7 +22,6 @@ public class Allitems {
                     p -> new BucketItem(Allfluids.SOURCE_REFINED_OIL,props().craftRemainder(Items.BUCKET).stacksTo(1)))
             .tag(AllTags.AllItemTags.BLAZE_BURNER_FUEL_SPECIAL.tag, AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
             .register();
-
 
     private static Item.Properties props() {
         return new Item.Properties().tab(ModCreativeModeTab.BIG_TAB.hideScroll());

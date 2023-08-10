@@ -17,29 +17,31 @@ public class PollutionEffect extends MobEffect {
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         switch (pAmplifier) {
-            case  0:
-            pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 10, 1));
-            break;
-            case 1:
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 10, 0));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 0));
+            case 0:
                 break;
+            case  1:
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 3000, 0));
+            break;
             case 2:
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 10, 2));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 0));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 10, 0));
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 3000, 0));
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 3000, 0));
                 break;
             case 3:
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 10, 2));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 1));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 10, 0));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 10, 0));
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 3000, 2));
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 3000, 0));
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 3000, 0));
+                break;
+            case 4:
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 3000, 2));
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 3000, 1));
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 3000, 0));
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 3000, 0));
                 break;
             default:
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 10, 2));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 1));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 10, 0));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 10, 0));
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 3000, 2));
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 3000, 1));
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 3000, 0));
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 3000, 0));
                 int hit = 50;
                 Random rand = new Random();
                 int roll = rand.nextInt(80);
