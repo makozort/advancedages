@@ -5,12 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a43f3d0b-5fb9-445f-a9d3-c3a911833bd7" name="Changes" comment="pollution">
+      <change afterPath="$PROJECT_DIR$/.idea/modules/advancedagesnew.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/advancedagesnew.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/ModItems/PollutionMaskItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/item/pollution_mask.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/advancedages/textures/models/armor/pollution_mask_layer_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runClient.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runClient.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runData.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runData.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runGameTestServer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runGameTestServer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/runServer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/runServer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Pollution/PollutionData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Pollution/PollutionData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/content/Pollution/SaveTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/.cache/9a666821f5d507a7d2617fd261298dd7ce37e1ab" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/.cache/9a666821f5d507a7d2617fd261298dd7ce37e1ab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_ud.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_ud.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/advancedages/lang/en_us.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/effect/PollutionEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/effect/PollutionEffect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/event/ModEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/event/ModEvents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/mixin/BurnerMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/mixin/BurnerMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allitems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/makozort/advancedages/reg/Allitems.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,29 +44,7 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="advancedages" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="advancedages" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="advancedages" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="advancedages" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="forgegradle runs" type="c8890929:TasksNode$1" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -74,38 +65,42 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2S15rMGtcS0rt4hflYjslZh82BV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;1.19.2-dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/moddev/advancedages/src/main/resources/assets/advancedages/textures/misc&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "android.gradle.sync.needed": "true",
+    "git-widget-placeholder": "1.19.2-dev",
+    "last_opened_file_path": "C:/Users/jackr/IdeaProjects/advancedagesnew/src/main/resources/assets/advancedages/textures/models/armor",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jackr\IdeaProjects\advancedagesnew\src\main\resources\assets\advancedages\textures\models\armor" />
       <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\misc" />
       <recent name="C:\moddev\advancedages\run\mods" />
       <recent name="C:\moddev\advancedages\src\main\resources\data\advancedages\recipes\liquid_burning" />
       <recent name="C:\moddev\advancedages\src\main\resources\data\advancedages\recipes\mixing" />
-      <recent name="C:\moddev\advancedages\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jackr\IdeaProjects\advancedagesnew\src\main\resources\assets\advancedages\textures\item" />
       <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\mob_effects" />
       <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\item" />
       <recent name="C:\moddev\advancedages\src\main\resources\data" />
       <recent name="C:\moddev\advancedages\src\main\resources\data\advancedages" />
-      <recent name="C:\moddev\advancedages\src\main\resources\assets\advancedages\textures\block" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="net.makozort.advancedages.content.fluid" />
@@ -131,7 +126,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="advancedages [genIntellijRuns]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -153,7 +148,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="advancedages [runClient]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -175,7 +170,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="advancedages [runData]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -197,15 +192,15 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.advancedages [build]" />
-        <item itemvalue="Gradle.advancedages [genIntellijRuns]" />
-        <item itemvalue="Gradle.advancedages [runData]" />
         <item itemvalue="Gradle.advancedages [runClient]" />
+        <item itemvalue="Gradle.advancedages [runData]" />
+        <item itemvalue="Gradle.advancedages [genIntellijRuns]" />
       </list>
     </recent_temporary>
   </component>

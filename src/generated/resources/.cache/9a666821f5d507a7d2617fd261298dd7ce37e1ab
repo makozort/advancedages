@@ -1,13 +1,14 @@
-// 1.19.2	2023-08-06T13:39:45.9672221	Registrate Provider for advancedages [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-08-11T15:23:43.5351085	Registrate Provider for advancedages [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 d5cad28e814cb293e146dea47368ccb3f43c6e97 assets/advancedages/blockstates/crude_oil_block.json
 74d5b42444e23cf9c847367edd6292b3d011da1b assets/advancedages/blockstates/refined_oil_block.json
 ddc6a57f70ce32b29d11c3519e04f07f76a52464 assets/advancedages/blockstates/tin_ore.json
-569992df59cd3c092dadbf4f32880be1cddb7090 assets/advancedages/lang/en_ud.json
-c717ce38ce579954cd2fa09fafe10d78dae6d1d0 assets/advancedages/lang/en_us.json
+ebf003aaac6b2282260802fd20ef5b691e719b25 assets/advancedages/lang/en_ud.json
+9a32329fffc88c1d3979c1c65918e498be96e431 assets/advancedages/lang/en_us.json
 002cebefe3bb04118fc4f85d89535338cc7a2866 assets/advancedages/models/block/crude_oil_block.json
 40ad05c77c3161404890dd8d4a00010f0932978b assets/advancedages/models/block/refined_oil_block.json
 8c56b842af4a3aac2bf897caf7826bf5778d88f2 assets/advancedages/models/block/tin_ore.json
 366581dc227b7c6bc117535ea05270b231be11bc assets/advancedages/models/item/crude_oil_bucket.json
+c4845ce53b72a4bc0f26aff96cfde72f5c22829f assets/advancedages/models/item/pollution_mask.json
 67ba4eb3d07b8870a46c88462367929dfdd3dc8b assets/advancedages/models/item/refined_oil_bucket.json
 002cff4164ee4db35bfe479e605cc4e026f79fb0 assets/advancedages/models/item/tin_ore.json
 2b2a4bde1a1c86393b28fa3ff9b81ef1ddeed22d data/advancedages/loot_tables/blocks/crude_oil_block.json
@@ -15,3 +16,4 @@ c717ce38ce579954cd2fa09fafe10d78dae6d1d0 assets/advancedages/lang/en_us.json
 9ed8e6e7e48b1cd4414a90c7dc8116187751cdec data/advancedages/loot_tables/blocks/tin_ore.json
 5706a0fd61a81feff96958ecde097862db28627a data/create/tags/items/blaze_burner_fuel/special.json
 5706a0fd61a81feff96958ecde097862db28627a data/create/tags/items/upright_on_belt.json
+eb083d8bd536daba1ffc00dadc82c0dca6189713 data/forge/tags/items/armors/helmets.json
