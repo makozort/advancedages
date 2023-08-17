@@ -10,26 +10,31 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.*;
 
-public class ModEvents {
+public class ModEvents extends BlockEntity {
+    public ModEvents(BlockEntityType<?> p_155228_, BlockPos p_155229_, BlockState p_155230_) {
+        super(p_155228_, p_155229_, p_155230_);
+    }
+
     @Mod.EventBusSubscriber(modid = AdvancedAges.MOD_ID)
     public static class ForgeEvents {
-        @SubscribeEvent// i personally think that the event is incorrectly named it should be called makozortsubsrice//
+        @SubscribeEvent
         public static void onLiving(LivingEvent.LivingTickEvent event) {
             Entity entity = event.getEntity();
             if (entity.getLevel() instanceof ServerLevel) {
                 Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(entity.level).getMap();
                 map.forEach((BlockPos, pollution) -> {
                     int distance = (entity.getOnPos().distManhattan(BlockPos));
-                    if (distance <= 100) {
-                        if (!event.getEntity().hasEffect(ModEffects.POLLUTION.get())) {
+                    if (distance <= 500) {
                             int reducer = 0;
                             if (entity instanceof Player) {
                                 if (((Player) entity).getInventory().getArmor(3).is(new ItemStack(Allitems.POLLUTION_MASK.get()).getItem())) {
@@ -52,9 +57,21 @@ public class ModEvents {
                                 event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (5 - reducer)));
                             }
                         }
-                    }
                 });
             }
+        }
+
+        static int tick;
+        @SubscribeEvent
+        public static void levelTick(TickEvent.LevelTickEvent event) {
+            tick = tick + 1;
+            Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(event.level).getMap();
+            map.forEach((BlockPos, pollution) -> {
+                if (tick >= 72000) {
+                    PollutionData.get(event.level).changePollution(BlockPos,-1);
+                    tick = 0;
+                }
+            });
         }
     }
 }

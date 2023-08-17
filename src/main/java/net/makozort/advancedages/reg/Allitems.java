@@ -6,7 +6,10 @@ import com.simibubi.create.content.equipment.armor.AllArmorMaterials;
 import com.simibubi.create.content.equipment.armor.DivingHelmetItem;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.makozort.advancedages.AdvancedAges;
+import net.makozort.advancedages.content.ModItems.OilBucketItem;
+import net.makozort.advancedages.content.ModItems.PollutionDetectorItem;
 import net.makozort.advancedages.content.ModItems.PollutionMaskItem;
+import net.makozort.advancedages.content.ModItems.PollutionSpongeItem;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
@@ -24,10 +27,16 @@ public class Allitems {
                     p -> new BucketItem(Allfluids.SOURCE_CRUDE_OIL,props().craftRemainder(Items.BUCKET).stacksTo(1)))
             .register();
 
+    public static final ItemEntry<PollutionDetectorItem> POLLUTION_DETECTOR_ITEM = REGISTRATE.item("pollution_detector",
+                    p -> new PollutionDetectorItem(props().stacksTo(1).durability(6)))
+            .register();
+    public static final ItemEntry<PollutionSpongeItem> POLLUTION_SPONGE = REGISTRATE.item("pollution_sponge",
+                    p -> new PollutionSpongeItem(props().stacksTo(1).durability(1)))
+            .register();
 
-    public static final ItemEntry<BucketItem> REFINED_OIL_BUCKET = REGISTRATE.item("refined_oil_bucket",
-                    p -> new BucketItem(Allfluids.SOURCE_REFINED_OIL,props().craftRemainder(Items.BUCKET).stacksTo(1)))
-            .tag(AllTags.AllItemTags.BLAZE_BURNER_FUEL_SPECIAL.tag, AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
+    public static final ItemEntry<OilBucketItem> REFINED_OIL_BUCKET = REGISTRATE.item("refined_oil_bucket",
+                    p -> new OilBucketItem(Allfluids.SOURCE_REFINED_OIL,props().craftRemainder(Items.BUCKET).stacksTo(1)))
+            .tag(AllTags.AllItemTags.BLAZE_BURNER_FUEL_SPECIAL.tag)
             .register();
 
     public static final ItemEntry<? extends PollutionMaskItem> POLLUTION_MASK = REGISTRATE.item("pollution_mask",

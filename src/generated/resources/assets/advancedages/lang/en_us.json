@@ -4,5 +4,10 @@
   "block.advancedages.tin_ore": "Tin Ore",
   "item.advancedages.crude_oil_bucket": "Crude Oil Bucket",
   "item.advancedages.pollution_mask": "Pollution Mask",
-  "item.advancedages.refined_oil_bucket": "Refined Oil Bucket"
+  "item.advancedages.refined_oil_bucket": "Refined Oil Bucket",
+
+  "fluid_type.advancedages.refined_oil_fluid": "Refined Oil",
+  "fluid_type.advancedages.crude_oil_fluid": "Crude Oil",
+
+  "effect.advancedages.pollution": "Pollution Sickness"
 }

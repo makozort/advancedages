@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "R": {
+      "item": "minecraft:sponge"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "S": {
+      "tag": "minecraft:saplings"
+    }
+  },
+  "pattern": [
+    "SDS",
+    "DRD",
+    "SDS"
+  ],
+  "result": {
+    "item": "advancedages:pollution_sponge"
+  }
+}

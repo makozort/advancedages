@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "advancedages.refmap.json",
   "mixins": [
-    "BurnerMixin"
+    "BurnerMixin",
+    "FurnaceMixin"
   ],
   "minVersion": "0.8.5"
 }

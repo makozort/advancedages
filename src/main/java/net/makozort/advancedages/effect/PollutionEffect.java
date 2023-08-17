@@ -16,38 +16,66 @@ public class PollutionEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
+        if (pAmplifier > 0) {
         switch (pAmplifier) {
-            case 0:
+            case 1:
+                if (!pLivingEntity.hasEffect(MobEffects.WEAKNESS)) {
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 0));
+                }
                 break;
-            case  1:
-                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 0));
-            break;
             case 2:
+                if (!pLivingEntity.hasEffect(MobEffects.WEAKNESS)) {
                     pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 0));
+                }
+                if (!pLivingEntity.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)) {
                     pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 0));
+                }
                 break;
             case 3:
+                if (!pLivingEntity.hasEffect(MobEffects.WEAKNESS)) {
                     pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 2));
+                }
+                if (!pLivingEntity.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)) {
                     pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 0));
+                }
+                if (!pLivingEntity.hasEffect(MobEffects.HUNGER)) {
                     pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 100, 0));
+                }
                 break;
             case 4:
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 2));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 100, 0));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 0));
+                if (!pLivingEntity.hasEffect(MobEffects.WEAKNESS)) {
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 2));
+                }
+                if (!pLivingEntity.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)) {
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
+                }
+                if (!pLivingEntity.hasEffect(MobEffects.HUNGER)) {
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 100, 0));
+                }
+                if (!pLivingEntity.hasEffect(MobEffects.DIG_SLOWDOWN)) {
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 0));
+                }
                 break;
-            default:
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 2));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 100, 0));
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 0));
+            case 5:
+                if (!pLivingEntity.hasEffect(MobEffects.WEAKNESS)) {
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 2));
+                }
+                if (!pLivingEntity.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)) {
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
+                }
+                if (!pLivingEntity.hasEffect(MobEffects.HUNGER)) {
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 100, 0));
+                }
+                if (!pLivingEntity.hasEffect(MobEffects.DIG_SLOWDOWN)) {
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 0));
+                }
                 int hit = 50;
                 Random rand = new Random();
                 int roll = rand.nextInt(80);
                 if (roll == hit) {
                     pLivingEntity.hurt(new DamageSource("Pollution_Sickness"), 4);
                 }
+        }
         }
     }
 

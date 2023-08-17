@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "create:brass_sheet"
+    },
+    "Z": {
+      "item": "minecraft:iron_ingot"
+    },
+    "P": {
+      "item": "minecraft:glass_pane"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "XPX",
+    "ZWZ"
+  ],
+  "result": {
+    "item": "advancedages:pollution_mask"
+  }
+}

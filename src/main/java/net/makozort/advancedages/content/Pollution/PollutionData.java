@@ -16,6 +16,9 @@ public class PollutionData extends SavedData {
 
     public final Map<BlockPos, Pollution> PollutionMap = new HashMap<>();
 
+     int tick;
+
+
     @Nonnull
     public static PollutionData get(Level level) {
         if (level.isClientSide) {
@@ -41,10 +44,20 @@ public class PollutionData extends SavedData {
         return pollution.getPollution();
     }
 
-    public int setPollution(BlockPos pos, double i) {
+    public int changePollution(BlockPos pos, double i) {
+        if (i >=0){
+            //todo: particles/sounds here
+        }
         Pollution pollution = getPollutionInternal(pos);
         double present = pollution.getPollution();
-        pollution.setPollution(present + i);
+        double result = (present + i);
+        if (result > 12) {
+            pollution.setPollution(12);
+        } else if (result < 0) {
+            pollution.setPollution(0);
+        } else {
+            pollution.setPollution(result);
+        }
             setDirty();
             return 1;
     }

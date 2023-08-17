@@ -20,13 +20,13 @@ public class AllBlocks {
         REGISTRATE.creativeModeTab(() -> ModCreativeModeTab.BIG_TAB);
     }
 
-    public static final BlockEntry<DropExperienceBlock> TIN_ORE = REGISTRATE.block("tin_ore", p ->
-                    new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
-                            .requiresCorrectToolForDrops().explosionResistance(6).strength(3),
-                            UniformInt.of(3,7)))
-            .item(BlockItem::new)
-            .build()
-            .register();
+    //public static final BlockEntry<DropExperienceBlock> TIN_ORE = REGISTRATE.block("tin_ore", p ->
+    //                new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
+    //                        .requiresCorrectToolForDrops().explosionResistance(6).strength(3),
+    //                        UniformInt.of(3,7)))
+    //        .item(BlockItem::new)
+    //        .build()
+    //        .register();
 
 
     public static final BlockEntry<LiquidBlock> CRUDE_OIL_BLOCK = REGISTRATE.block("crude_oil_block",b ->
@@ -39,6 +39,8 @@ public class AllBlocks {
                     new LiquidBlock(Allfluids.SOURCE_REFINED_OIL, BlockBehaviour.Properties.copy(Blocks.LAVA)))
             .lang("Refined Oil")
             .register();
+
+
 
     public static void register() {
 

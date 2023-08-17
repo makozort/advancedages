@@ -5,8 +5,8 @@
       "item": "minecraft:iron_block"
     },
     {
-      "fluid": "minecraft:lava",
-      "amount": 100
+      "fluid": "advancedages:crude_oil_fluid",
+      "amount": 1000
     }
   ],
   "results": [
@@ -14,5 +14,6 @@
       "fluid": "advancedages:refined_oil_fluid",
       "amount": 2000
     }
-  ]
+  ],
+  "heatRequirement": "heated"
 }
