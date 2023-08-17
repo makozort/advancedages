@@ -1,13 +1,16 @@
 {
   "block.advancedages.crude_oil_block": "Crude Oil",
   "block.advancedages.refined_oil_block": "Refined Oil",
-  "block.advancedages.tin_ore": "Tin Ore",
   "item.advancedages.crude_oil_bucket": "Crude Oil Bucket",
+  "item.advancedages.pollution_detector": "Pollution Detector",
   "item.advancedages.pollution_mask": "Pollution Mask",
+  "item.advancedages.pollution_sponge": "Pollution Sponge",
   "item.advancedages.refined_oil_bucket": "Refined Oil Bucket",
 
   "fluid_type.advancedages.refined_oil_fluid": "Refined Oil",
   "fluid_type.advancedages.crude_oil_fluid": "Crude Oil",
 
-  "effect.advancedages.pollution": "Pollution Sickness"
+  "effect.advancedages.pollution": "Pollution Sickness",
+
+  "itemGroup.bigtab": "Create: Advanced Ages"
 }

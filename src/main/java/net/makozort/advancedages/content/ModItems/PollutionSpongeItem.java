@@ -25,7 +25,7 @@ public class PollutionSpongeItem extends Item {
             map.forEach((BlockPos, pollution) -> {
                 int distance = (player.getOnPos().distManhattan(BlockPos));
                 if (distance <= 15) {
-                    PollutionData.get(level).changePollution(BlockPos,-12);
+                    PollutionData.get(level).changePollution(BlockPos,-12,level);
                     player.getItemInHand(hand).hurtAndBreak(1,player,p -> p.broadcastBreakEvent(hand));
                 }
             });

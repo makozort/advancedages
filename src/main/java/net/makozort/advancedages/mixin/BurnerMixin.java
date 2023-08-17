@@ -33,7 +33,7 @@ public class BurnerMixin extends BlockEntity {
     if (itemStack.is(Allitems.REFINED_OIL_BUCKET.get())) {
             this.remainingBurnTime = 36000;
             BlockPos pos = this.getBlockPos();
-            PollutionData.get(this.level).changePollution(pos,.5);
+            PollutionData.get(this.level).changePollution(pos,.5,this.level);
         }
     }
 

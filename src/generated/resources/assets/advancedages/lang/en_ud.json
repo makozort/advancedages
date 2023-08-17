@@ -1,8 +1,9 @@
 {
   "block.advancedages.crude_oil_block": "ןıO ǝpnɹƆ",
   "block.advancedages.refined_oil_block": "ןıO pǝuıɟǝᴚ",
-  "block.advancedages.tin_ore": "ǝɹO uı⟘",
   "item.advancedages.crude_oil_bucket": "ʇǝʞɔnᗺ ןıO ǝpnɹƆ",
+  "item.advancedages.pollution_detector": "ɹoʇɔǝʇǝᗡ uoıʇnןןoԀ",
   "item.advancedages.pollution_mask": "ʞsɐW uoıʇnןןoԀ",
+  "item.advancedages.pollution_sponge": "ǝbuodS uoıʇnןןoԀ",
   "item.advancedages.refined_oil_bucket": "ʇǝʞɔnᗺ ןıO pǝuıɟǝᴚ"
 }

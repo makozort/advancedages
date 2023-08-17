@@ -36,6 +36,7 @@ public class ModEvents extends BlockEntity {
                     int distance = (entity.getOnPos().distManhattan(BlockPos));
                     if (distance <= 500) {
                             int reducer = 0;
+                        if (pollution.getPollution() > (1.0)) {
                             if (entity instanceof Player) {
                                 if (((Player) entity).getInventory().getArmor(3).is(new ItemStack(Allitems.POLLUTION_MASK.get()).getItem())) {
                                     reducer = 4;
@@ -57,6 +58,7 @@ public class ModEvents extends BlockEntity {
                                 event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (5 - reducer)));
                             }
                         }
+                        }
                 });
             }
         }
@@ -68,7 +70,7 @@ public class ModEvents extends BlockEntity {
             Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(event.level).getMap();
             map.forEach((BlockPos, pollution) -> {
                 if (tick >= 72000) {
-                    PollutionData.get(event.level).changePollution(BlockPos,-1);
+                    PollutionData.get(event.level).changePollution(BlockPos,-1,event.level);
                     tick = 0;
                 }
             });

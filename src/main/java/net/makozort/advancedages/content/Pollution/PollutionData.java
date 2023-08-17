@@ -1,5 +1,6 @@
 package net.makozort.advancedages.content.Pollution;
 
+import net.makozort.advancedages.AdvancedAges;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -44,9 +45,12 @@ public class PollutionData extends SavedData {
         return pollution.getPollution();
     }
 
-    public int changePollution(BlockPos pos, double i) {
+    public int changePollution(BlockPos pos, double i, Level level) {
         if (i >=0){
-            //todo: particles/sounds here
+            if (!level.isClientSide) {
+                AdvancedAges.LOGGER.info("true");
+                //((ServerLevel)level).addParticle(ParticleTypes.LARGE_SMOKE,pos,10,.5,.5,.5);
+            }
         }
         Pollution pollution = getPollutionInternal(pos);
         double present = pollution.getPollution();

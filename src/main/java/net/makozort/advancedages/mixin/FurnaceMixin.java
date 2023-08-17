@@ -35,8 +35,7 @@ public abstract class FurnaceMixin extends BlockEntity {
     @Inject(method = "getBurnDuration", at = @At("TAIL"), remap = false)
     private void getBurnDuration(CallbackInfoReturnable<Map<Item, Integer>> cir) {
         if (this.getItem(1).is(Allitems.REFINED_OIL_BUCKET.get())) {
-            PollutionData.get(this.level).changePollution(this.getBlockPos(),.10);
-            AdvancedAges.LOGGER.info("true");
+            PollutionData.get(this.level).changePollution(this.getBlockPos(),.25,this.level);
         }
 
     }
