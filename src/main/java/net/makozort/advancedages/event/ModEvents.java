@@ -36,7 +36,7 @@ public class ModEvents extends BlockEntity {
                     int distance = (entity.getOnPos().distManhattan(BlockPos));
                     if (distance <= 500) {
                             int reducer = 0;
-                        if (pollution.getPollution() > (1.0)) {
+                        if (pollution.getPollution() >= (1.0)) {
                             if (entity instanceof Player) {
                                 if (((Player) entity).getInventory().getArmor(3).is(new ItemStack(Allitems.POLLUTION_MASK.get()).getItem())) {
                                     reducer = 4;
@@ -64,6 +64,7 @@ public class ModEvents extends BlockEntity {
         }
 
         static int tick;
+        // handles decaying pollution and clearing old pollution values of 0
         @SubscribeEvent
         public static void levelTick(TickEvent.LevelTickEvent event) {
             tick = tick + 1;
@@ -74,6 +75,7 @@ public class ModEvents extends BlockEntity {
                     tick = 0;
                 }
             });
+            PollutionData.get(event.level).clearOldPollution();
         }
     }
 }

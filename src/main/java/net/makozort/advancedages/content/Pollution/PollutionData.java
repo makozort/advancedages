@@ -2,6 +2,7 @@ package net.makozort.advancedages.content.Pollution;
 
 import net.makozort.advancedages.AdvancedAges;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
@@ -16,9 +17,7 @@ import java.util.*;
 public class PollutionData extends SavedData {
 
     public final Map<BlockPos, Pollution> PollutionMap = new HashMap<>();
-
-     int tick;
-
+    List<BlockPos> clearList = new ArrayList<BlockPos>();
 
     @Nonnull
     public static PollutionData get(Level level) {
@@ -48,8 +47,8 @@ public class PollutionData extends SavedData {
     public int changePollution(BlockPos pos, double i, Level level) {
         if (i >=0){
             if (!level.isClientSide) {
-                AdvancedAges.LOGGER.info("true");
-                //((ServerLevel)level).addParticle(ParticleTypes.LARGE_SMOKE,pos,10,.5,.5,.5);
+                ServerLevel serverLevel = (ServerLevel) level;
+                serverLevel.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, pos.getX(),pos.getY(),pos.getZ(), 100, 0,2,0,.1);
             }
         }
         Pollution pollution = getPollutionInternal(pos);
@@ -57,13 +56,22 @@ public class PollutionData extends SavedData {
         double result = (present + i);
         if (result > 12) {
             pollution.setPollution(12);
-        } else if (result < 0) {
+        } else if (result <= 0) {
             pollution.setPollution(0);
+            clearList.add(pos);
         } else {
             pollution.setPollution(result);
         }
             setDirty();
             return 1;
+    }
+
+    public int clearOldPollution() {
+        clearList.forEach((BlockPos) -> {
+            PollutionMap.remove(BlockPos);
+        });
+        setDirty();
+        return 1;
     }
 
 

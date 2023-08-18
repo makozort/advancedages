@@ -1,6 +1,7 @@
 package net.makozort.advancedages.content.ModItems;
 
 import net.makozort.advancedages.content.Pollution.PollutionData;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -27,12 +28,14 @@ public class PollutionDetectorItem extends Item {
                 Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(player.level).getMap();
                 map.forEach((BlockPos, pollution) -> {
                     int distance = (player.getOnPos().distManhattan(BlockPos));
-                    if (distance <= 500) {
-                        player.sendSystemMessage(Component.literal("pollution level " + String.valueOf(pollution.getPollution()) + " found at " + String.valueOf(BlockPos)));
-                        player.getItemInHand(hand).hurtAndBreak(1,player,p -> p.broadcastBreakEvent(hand));
-                    }
+                        if (distance <= 500) {
+                            if (pollution.getPollution() > 0) {
+                                player.sendSystemMessage(Component.literal("pollution level " + String.valueOf(pollution.getPollution()) + " found at " + String.valueOf(BlockPos)).withStyle(ChatFormatting.RED));
+                            }
+                       }
             });
         }
+        player.getItemInHand(hand).hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
         return super.use(level,player,hand);
     }
 }
