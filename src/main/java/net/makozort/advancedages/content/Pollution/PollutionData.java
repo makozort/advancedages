@@ -48,7 +48,7 @@ public class PollutionData extends SavedData {
         if (i >=0){
             if (!level.isClientSide) {
                 ServerLevel serverLevel = (ServerLevel) level;
-                serverLevel.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, pos.getX(),pos.getY(),pos.getZ(), 100, 0,2,0,.1);
+                serverLevel.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, pos.getX() + .5,pos.getY() + .5,pos.getZ() + .5, 5000, 0.3,100,0.3,0);
             }
         }
         Pollution pollution = getPollutionInternal(pos);
@@ -70,6 +70,7 @@ public class PollutionData extends SavedData {
         clearList.forEach((BlockPos) -> {
             PollutionMap.remove(BlockPos);
         });
+        clearList.removeAll(clearList);
         setDirty();
         return 1;
     }

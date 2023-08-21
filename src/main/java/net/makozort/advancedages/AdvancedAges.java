@@ -5,10 +5,7 @@ package net.makozort.advancedages;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.makozort.advancedages.content.fluid.ModFluidTypes;
 import net.makozort.advancedages.effect.ModEffects;
-import net.makozort.advancedages.reg.AllBlocks;
-import net.makozort.advancedages.reg.Allfluids;
-import net.makozort.advancedages.reg.Allitems;
-import net.makozort.advancedages.reg.ModCreativeModeTab;
+import net.makozort.advancedages.reg.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -39,6 +36,7 @@ public class AdvancedAges {
 
         REGISTRATE.registerEventListeners(modEventBus);
         AllBlocks.register();
+        //AllBlockEntitys.register();
         Allitems.register();
         Allfluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
