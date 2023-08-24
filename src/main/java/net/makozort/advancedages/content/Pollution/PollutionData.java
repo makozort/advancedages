@@ -54,8 +54,8 @@ public class PollutionData extends SavedData {
         Pollution pollution = getPollutionInternal(pos);
         double present = pollution.getPollution();
         double result = (present + i);
-        if (result > 12) {
-            pollution.setPollution(12);
+        if (result > 20) {
+            pollution.setPollution(20);
         } else if (result <= 0) {
             pollution.setPollution(0);
             clearList.add(pos);

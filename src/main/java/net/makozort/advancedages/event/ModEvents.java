@@ -17,6 +17,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -32,36 +33,39 @@ public class ModEvents extends BlockEntity {
             Entity entity = event.getEntity();
             if (entity.getLevel() instanceof ServerLevel) {
                 Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(entity.level).getMap();
+                List<Double> list = new ArrayList<>();
                 map.forEach((BlockPos, pollution) -> {
                     int distance = (entity.getOnPos().distManhattan(BlockPos));
                     if (distance <= 500) {
-                            int reducer = 0;
-                        if (pollution.getPollution() >= (1.0)) {
+                        list.add(pollution.getPollution());
+                    }
+                });
+                double total = list.stream().mapToDouble(f -> f.doubleValue()).sum();
+                        int reducer = 0;
+                        if (total >= (1.0)) {
                             if (entity instanceof Player) {
                                 if (((Player) entity).getInventory().getArmor(3).is(new ItemStack(Allitems.POLLUTION_MASK.get()).getItem())) {
                                     reducer = 4;
                                 }
                             }
-                            if (pollution.getPollution() >= (1.0)) {
+                            if (total >= (2)) {
                                 event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (1 - reducer)));
                             }
-                            if (pollution.getPollution() >= (3.0 - reducer)) {
+                            if (total >= (6 - reducer)) {
                                 event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (2 - reducer)));
                             }
-                            if (pollution.getPollution() >= (4.0 - reducer)) {
+                            if (total >= (8 - reducer)) {
                                 event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (3 - reducer)));
                             }
-                            if (pollution.getPollution() >= (5.0 - reducer)) {
+                            if (total >= (10 - reducer)) {
                                 event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (4 - reducer)));
                             }
-                            if (pollution.getPollution() >= (8.0 - reducer)) {
+                            if (total >= (16 - reducer)) {
                                 event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (5 - reducer)));
                             }
                         }
-                        }
-                });
-            }
         }
+    }
 
         static int tick;
         // handles decaying pollution and clearing old pollution values of 0
