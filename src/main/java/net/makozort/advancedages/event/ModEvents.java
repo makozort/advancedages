@@ -2,6 +2,7 @@ package net.makozort.advancedages.event;
 
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.Pollution.PollutionData;
+import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.effect.ModEffects;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;
@@ -13,10 +14,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.server.command.ConfigCommand;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -80,6 +83,12 @@ public class ModEvents extends BlockEntity {
                 }
             });
             PollutionData.get(event.level).clearOldPollution();
+        }
+
+        @SubscribeEvent
+        public static void onCommandRegister(RegisterCommandsEvent event) {
+            new ClearPollutionCommand(event.getDispatcher());
+            ConfigCommand.register(event.getDispatcher());
         }
     }
 }

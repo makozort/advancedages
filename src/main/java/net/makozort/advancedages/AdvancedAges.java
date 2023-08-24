@@ -3,6 +3,7 @@ package net.makozort.advancedages;
 // https://www.youtube.com/playlist?list=PLKGarocXCE1HrC60yuTNTGRoZc6hf5Uvl
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.content.fluid.ModFluidTypes;
 import net.makozort.advancedages.effect.ModEffects;
 import net.makozort.advancedages.reg.*;

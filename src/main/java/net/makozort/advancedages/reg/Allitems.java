@@ -1,16 +1,13 @@
 package net.makozort.advancedages.reg;
 
 import com.simibubi.create.AllTags;
-import com.simibubi.create.Create;
 import com.simibubi.create.content.equipment.armor.AllArmorMaterials;
-import com.simibubi.create.content.equipment.armor.DivingHelmetItem;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.ModItems.OilBucketItem;
 import net.makozort.advancedages.content.ModItems.PollutionDetectorItem;
 import net.makozort.advancedages.content.ModItems.PollutionMaskItem;
 import net.makozort.advancedages.content.ModItems.PollutionSpongeItem;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
