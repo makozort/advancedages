@@ -10,15 +10,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.monster.Zoglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -96,33 +93,28 @@ public class ModEvents extends BlockEntity {
         }
 
 
-
-
+        // handles the initial generation of crude oil deposits
         @SubscribeEvent
         public static void chunkload(ChunkEvent.Load event) {
                 if (event.getLevel() instanceof ServerLevel serverLevel) {
                     if(serverLevel.dimension() == Level.OVERWORLD) {
                         if (!OilGenData.get(serverLevel).isGenned(event.getChunk().getPos())) {
+                            long result = (serverLevel.getSeed() * event.getChunk().getPos().z*event.getChunk().getPos().x);
                             Random rand = new Random();
-                            if (rand.nextFloat() < 0.05) {
+                            if (rand.nextFloat() < 0.025) {
                                 float max = 200000;
-                                float mid = 80000;
+                                float mid = max/2;
                                 float p = (float) (Math.log(mid/max)/Math.log(0.5));
                                 float r = (float) Math.pow(rand.nextFloat(),p);
                                 r *= max;
                                 float finalR = r;
                                 OilGenData.get(serverLevel).changeOilGen(event.getChunk().getPos(),finalR);
-                            } else {
-                                OilGenData.get(serverLevel).changeOilGen(event.getChunk().getPos(),0);
                             }
                             OilGenData.get(serverLevel).setGenned(event.getChunk().getPos());
                         }
                     }
                 }
         }
-
-
-
         @SubscribeEvent
         public static void onCommandRegister(RegisterCommandsEvent event) {
             new ClearPollutionCommand(event.getDispatcher());

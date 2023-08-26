@@ -1,16 +1,19 @@
-// 1.19.2	2023-08-17T23:18:31.045763	Registrate Provider for advancedages [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-08-24T21:53:33.2403017	Registrate Provider for advancedages [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 d5cad28e814cb293e146dea47368ccb3f43c6e97 assets/advancedages/blockstates/crude_oil_block.json
+226203312abe7995d6b07fa754a16d85f14b8bd7 assets/advancedages/blockstates/oil_refinery.json
 74d5b42444e23cf9c847367edd6292b3d011da1b assets/advancedages/blockstates/refined_oil_block.json
-aaaa83dabcc2fca0b7c401e3878fa83b2033d158 assets/advancedages/lang/en_ud.json
-3c6e17ddc4cc1135dad0bf131af648c14318d5d3 assets/advancedages/lang/en_us.json
+5a9e506344a8162243c4e8b8625f70bb75ef902a assets/advancedages/lang/en_ud.json
+bcb6c5dc9da8fac9bc38130f6f6c547145dfb88c assets/advancedages/lang/en_us.json
 002cebefe3bb04118fc4f85d89535338cc7a2866 assets/advancedages/models/block/crude_oil_block.json
 40ad05c77c3161404890dd8d4a00010f0932978b assets/advancedages/models/block/refined_oil_block.json
 366581dc227b7c6bc117535ea05270b231be11bc assets/advancedages/models/item/crude_oil_bucket.json
+85431f8cca755be7dca2220bfcb1459f209a4824 assets/advancedages/models/item/oil_refinery.json
 7244cb0d006b0c19d73f947c83eb22a5762fc8a4 assets/advancedages/models/item/pollution_detector.json
 c4845ce53b72a4bc0f26aff96cfde72f5c22829f assets/advancedages/models/item/pollution_mask.json
 a13832a38d6f560472219f76fdca814696592594 assets/advancedages/models/item/pollution_sponge.json
 67ba4eb3d07b8870a46c88462367929dfdd3dc8b assets/advancedages/models/item/refined_oil_bucket.json
 2b2a4bde1a1c86393b28fa3ff9b81ef1ddeed22d data/advancedages/loot_tables/blocks/crude_oil_block.json
+48e4194ea4f864d7d7f28a441acaf6042ad038a2 data/advancedages/loot_tables/blocks/oil_refinery.json
 2b2a4bde1a1c86393b28fa3ff9b81ef1ddeed22d data/advancedages/loot_tables/blocks/refined_oil_block.json
 5706a0fd61a81feff96958ecde097862db28627a data/create/tags/items/blaze_burner_fuel/special.json
 eb083d8bd536daba1ffc00dadc82c0dca6189713 data/forge/tags/items/armors/helmets.json
