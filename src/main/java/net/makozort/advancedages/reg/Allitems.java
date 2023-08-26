@@ -38,9 +38,8 @@ public class Allitems {
 
     public static final ItemEntry<? extends PollutionMaskItem> POLLUTION_MASK = REGISTRATE.item("pollution_mask",
                     p -> new PollutionMaskItem(AllArmorMaterials.COPPER, p, AdvancedAges.asResource("pollution_mask")))
-                    .tag(forgeItemTag("armors/helmets"))
-                    .register();
-
+            .tag(forgeItemTag("armors/helmets"))
+            .register();
 
 
     private static Item.Properties props() {

@@ -4,6 +4,7 @@ package net.makozort.advancedages.content.Modblocks.block;
 import com.simibubi.create.foundation.block.IBE;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.Modblocks.entity.OilRefineryBlockEntity;
+import net.makozort.advancedages.reg.AllBlockEntitys;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -63,12 +64,12 @@ public class OilRefineryBlock extends Block implements IBE<OilRefineryBlockEntit
 
     @Override
     public Class<OilRefineryBlockEntity> getBlockEntityClass() {
-        return null;
+        return OilRefineryBlockEntity.class;
     }
 
     @Override
     public BlockEntityType<? extends OilRefineryBlockEntity> getBlockEntityType() {
-        return null;
+        return AllBlockEntitys.OIL_REFINERY_BLOCK_ENTITY.get();
     }
 
     /* BLOCK ENTITY */
@@ -78,24 +79,6 @@ public class OilRefineryBlock extends Block implements IBE<OilRefineryBlockEntit
     public RenderShape getRenderShape(BlockState p_60550_) {
         return super.getRenderShape(p_60550_);
     }
-
-
-    @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
-        if (!level.isClientSide) {
-            BlockEntity entity = level.getBlockEntity(pos);
-            if(entity instanceof OilRefineryBlockEntity) {
-                AdvancedAges.LOGGER.info("true");
-
-            }
-        }
-
-
-
-        return super.use(blockState, level, pos, player, hand, blockHitResult);
-    }
-
-
 
 
 

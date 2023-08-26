@@ -1,6 +1,6 @@
 package net.makozort.advancedages.content.ModItems;
 
-import net.makozort.advancedages.content.Pollution.PollutionData;
+import net.makozort.advancedages.content.Data.PollutionData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -13,7 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 
-import java.awt.*;
 import java.util.Map;
 
 public class PollutionDetectorItem extends Item {

@@ -29,6 +29,7 @@ public class AllBlocks {
     public static final BlockEntry<OilRefineryBlock> OIL_REFINERY_BLOCK = REGISTRATE
             .block("oil_refinery", OilRefineryBlock::new)
             .blockstate((BlockStateGen.horizontalBlockProvider(false)))
+            .simpleItem()
             .register();
     public static final BlockEntry<LiquidBlock> REFINED_OIL_BLOCK = REGISTRATE.block("refined_oil_block",b ->
                     new LiquidBlock(Allfluids.SOURCE_REFINED_OIL, BlockBehaviour.Properties.copy(Blocks.LAVA)))

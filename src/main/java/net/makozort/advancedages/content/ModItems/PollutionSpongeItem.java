@@ -1,6 +1,6 @@
 package net.makozort.advancedages.content.ModItems;
 
-import net.makozort.advancedages.content.Pollution.PollutionData;
+import net.makozort.advancedages.content.Data.PollutionData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;

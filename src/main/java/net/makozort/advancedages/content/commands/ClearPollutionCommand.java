@@ -3,7 +3,7 @@ package net.makozort.advancedages.content.commands;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.Pollution.PollutionData;
+import net.makozort.advancedages.content.Data.PollutionData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;

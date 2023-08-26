@@ -1,9 +1,14 @@
 {
   "block.advancedages.crude_oil_block": "ןıO ǝpnɹƆ",
+  "block.advancedages.oil_refinery": "ʎɹǝuıɟǝᴚ ןıO",
   "block.advancedages.refined_oil_block": "ןıO pǝuıɟǝᴚ",
   "item.advancedages.crude_oil_bucket": "ʇǝʞɔnᗺ ןıO ǝpnɹƆ",
+  "item.advancedages.crude_oil_bucket.tooltip.summary": "˙˙˙‾pǝuıɟǝɹ‾ ǝq uɐɔ ʇɐɥʇ pınןɟ ssǝןǝsn Ɐ",
   "item.advancedages.pollution_detector": "ɹoʇɔǝʇǝᗡ uoıʇnןןoԀ",
+  "item.advancedages.pollution_detector.tooltip.summary": "ןǝʌǝן ‾uoıʇnןןod‾ ןɐʇoʇ ɹnoʎ sʇǝb puɐ noʎ buıʇɔǝɟɟǝ ʎןʇuǝɹɹnɔ sǝɔɹnos ‾uoıʇnןןod‾ ǝɥʇ ןןɐ spuıɟ",
   "item.advancedages.pollution_mask": "ʞsɐW uoıʇnןןoԀ",
+  "item.advancedages.pollution_mask.tooltip.summary": "ɹǝsn ǝɥʇ oʇ ‾uoıʇnןןod‾ ɯoɹɟ uoıʇɔǝʇoɹd ɟo ʇunoɯɐ uıɐʇɹǝɔ ɐ sǝpıʌoɹd",
   "item.advancedages.pollution_sponge": "ǝbuodS uoıʇnןןoԀ",
+  "item.advancedages.pollution_sponge.tooltip.summary": "snıpɐɹ ʞɔoןq 0Ɛ ɐ uı ןǝʌǝן ‾uoıʇnןןod‾ ǝɥʇ sʇǝsǝɹ",
   "item.advancedages.refined_oil_bucket": "ʇǝʞɔnᗺ ןıO pǝuıɟǝᴚ"
 }

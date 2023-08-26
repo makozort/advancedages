@@ -3,6 +3,10 @@ package net.makozort.advancedages;
 // https://www.youtube.com/playlist?list=PLKGarocXCE1HrC60yuTNTGRoZc6hf5Uvl
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.foundation.item.ItemDescription;
+import com.simibubi.create.foundation.item.KineticStats;
+import com.simibubi.create.foundation.item.TooltipHelper;
+import com.simibubi.create.foundation.item.TooltipModifier;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.content.fluid.ModFluidTypes;
 import net.makozort.advancedages.effect.ModEffects;
@@ -26,7 +30,13 @@ public class AdvancedAges {
     public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
 
     public static final CreateRegistrate REGISTRATE = ModRegistrate.REGISTRATE;
+    static {
+        REGISTRATE.setTooltipModifierFactory(item -> {
+            return new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
+                    .andThen(TooltipModifier.mapNull(KineticStats.create(item)));
+        });
 
+    }
     public AdvancedAges() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -37,13 +47,15 @@ public class AdvancedAges {
 
         REGISTRATE.registerEventListeners(modEventBus);
         AllBlocks.register();
-        //AllBlockEntitys.register();
+        AllBlockEntitys.register();
         Allitems.register();
         Allfluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
         ModCreativeModeTab.register();
         ModEffects.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
+
+
 
         MinecraftForge.EVENT_BUS.register(this);
     }

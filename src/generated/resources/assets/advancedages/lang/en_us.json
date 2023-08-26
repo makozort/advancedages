@@ -1,16 +1,23 @@
 {
   "block.advancedages.crude_oil_block": "Crude Oil",
+  "block.advancedages.oil_refinery": "Oil Refinery",
   "block.advancedages.refined_oil_block": "Refined Oil",
   "item.advancedages.crude_oil_bucket": "Crude Oil Bucket",
+  "item.advancedages.crude_oil_bucket.tooltip.summary": "A useless fluid that can be _refined_...",
   "item.advancedages.pollution_detector": "Pollution Detector",
+  "item.advancedages.pollution_detector.tooltip.summary": "finds all the _pollution_ sources currently effecting you and gets your total _pollution_ level",
   "item.advancedages.pollution_mask": "Pollution Mask",
+  "item.advancedages.pollution_mask.tooltip.summary": "provides a certain amount of protection from _pollution_ to the user",
   "item.advancedages.pollution_sponge": "Pollution Sponge",
+  "item.advancedages.pollution_sponge.tooltip.summary": "resets the _pollution_ level in a 30 block radius",
   "item.advancedages.refined_oil_bucket": "Refined Oil Bucket",
 
+  "item.advancedages.pollution_detector.tooltip": "Pollution Detector",
+  "item.advancedages.crude_oil_bucket.tooltip": "Crude Oil Bucket",
+  "item.advancedages.pollution_sponge.tooltip": "Pollution Sponge",
+  "item.advancedages.pollution_mask.tooltip" : "Pollution Mask",
   "fluid_type.advancedages.refined_oil_fluid": "Refined Oil",
   "fluid_type.advancedages.crude_oil_fluid": "Crude Oil",
-
   "effect.advancedages.pollution": "Pollution Sickness",
-
   "itemGroup.bigtab": "Create: Advanced Ages"
 }

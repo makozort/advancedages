@@ -1,8 +1,7 @@
 package net.makozort.advancedages.mixin;
 
 
-import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.Pollution.PollutionData;
+import net.makozort.advancedages.content.Data.PollutionData;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;
 

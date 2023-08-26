@@ -1,6 +1,5 @@
-package net.makozort.advancedages.content.Pollution;
+package net.makozort.advancedages.content.Data;
 
-import net.makozort.advancedages.AdvancedAges;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
