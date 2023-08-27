@@ -93,22 +93,30 @@ public class ModEvents extends BlockEntity {
         }
 
 
+
+        static long hash(long x, long y, long z) {
+            long a = ((x >> 16) ^ y) * 0x45d9f3b;
+            a = ((a >> 16) ^ z) * 0x45d9f3b;
+            a = (a >> 16) ^ x;
+            return a;
+        }
+
         // handles the initial generation of crude oil deposits
         @SubscribeEvent
         public static void chunkload(ChunkEvent.Load event) {
                 if (event.getLevel() instanceof ServerLevel serverLevel) {
                     if(serverLevel.dimension() == Level.OVERWORLD) {
                         if (!OilGenData.get(serverLevel).isGenned(event.getChunk().getPos())) {
-                            long result = (serverLevel.getSeed() * event.getChunk().getPos().z*event.getChunk().getPos().x);
-                            Random rand = new Random();
+                            long seed = hash(serverLevel.getSeed(),event.getChunk().getPos().x,event.getChunk().getPos().z);
+                            Random rand = new Random(seed);
                             if (rand.nextFloat() < 0.025) {
-                                float max = 200000;
-                                float mid = max/2;
+                                float max = 250000;
+                                float mid = max/3;
                                 float p = (float) (Math.log(mid/max)/Math.log(0.5));
                                 float r = (float) Math.pow(rand.nextFloat(),p);
                                 r *= max;
-                                float finalR = r;
-                                OilGenData.get(serverLevel).changeOilGen(event.getChunk().getPos(),finalR);
+                                OilGenData.get(serverLevel).changeOilGen(event.getChunk().getPos(),r);
+                                AdvancedAges.LOGGER.info(String.valueOf(r) + "  " + event.getChunk().getPos().getWorldPosition());
                             }
                             OilGenData.get(serverLevel).setGenned(event.getChunk().getPos());
                         }

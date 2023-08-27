@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class OilRefineryBlockEntity extends SmartBlockEntity implements IHaveGoggleInformation {
-    private static final int TANK_CAPACITY = 3000;
+    private static final int TANK_CAPACITY = 80000;
     SmartFluidTankBehaviour inputtank;
     SmartFluidTankBehaviour outputtank;
     protected LazyOptional<IFluidHandler> fluidCapability;
@@ -34,11 +34,13 @@ public class OilRefineryBlockEntity extends SmartBlockEntity implements IHaveGog
 
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
+        behaviours.add(outputtank = SmartFluidTankBehaviour.single(this,1000000)
+                .allowExtraction()
+                .forbidInsertion()
+        );
         behaviours.add(inputtank = SmartFluidTankBehaviour.single(this,TANK_CAPACITY)
                 .allowInsertion()
-        );
-        behaviours.add(outputtank = SmartFluidTankBehaviour.single(this,TANK_CAPACITY)
-                .allowExtraction()
+                .forbidExtraction()
         );
         fluidCapability = LazyOptional.of(() -> {
           LazyOptional<? extends  IFluidHandler> inCap = inputtank.getCapability();
