@@ -28,9 +28,9 @@ public class BurnerMixin extends BlockEntity {
     @Inject(at = @At("TAIL"), method = "tryUpdateFuel", remap = false)
     private void durChange(ItemStack itemStack, boolean forceOverflow, boolean simulate, CallbackInfoReturnable<Boolean> cir) {
     if (itemStack.is(Allitems.REFINED_OIL_BUCKET.get())) {
-            this.remainingBurnTime = 36000;
+            this.remainingBurnTime = 72000;
             BlockPos pos = this.getBlockPos();
-            PollutionData.get(this.level).changePollution(pos,.1,this.level);
+            PollutionData.get(this.level).changePollution(pos,.25,this.level);
         }
     }
 

@@ -1,4 +1,4 @@
-package net.makozort.advancedages.effect;
+package net.makozort.advancedages.content.effect;
 
 import com.mojang.blaze3d.shaders.Effect;
 import net.makozort.advancedages.AdvancedAges;

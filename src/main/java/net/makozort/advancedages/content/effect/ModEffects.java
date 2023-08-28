@@ -1,4 +1,4 @@
-package net.makozort.advancedages.effect;
+package net.makozort.advancedages.content.effect;
 
 import net.makozort.advancedages.AdvancedAges;
 import net.minecraft.world.effect.MobEffect;

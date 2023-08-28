@@ -7,7 +7,7 @@ import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
 
 import net.makozort.advancedages.content.fluid.ModFluidTypes;
-import net.makozort.advancedages.effect.ModEffects;
+import net.makozort.advancedages.content.effect.ModEffects;
 import net.makozort.advancedages.reg.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;

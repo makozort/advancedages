@@ -4,7 +4,7 @@ import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.data.OilGenData;
 import net.makozort.advancedages.content.data.PollutionData;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
-import net.makozort.advancedages.effect.ModEffects;
+import net.makozort.advancedages.content.effect.ModEffects;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -38,24 +38,27 @@ public class ModEvents extends BlockEntity {
 
     @Mod.EventBusSubscriber(modid = AdvancedAges.MOD_ID)
     public static class ForgeEvents {
+
+
+
         @SubscribeEvent
         public static void onLiving(LivingEvent.LivingTickEvent event) {
             Entity entity = event.getEntity();
             if (entity.getLevel() instanceof ServerLevel) {
                 Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(entity.level).getMap();
                 List<Double> list = new ArrayList<>();
-                map.forEach((BlockPos, pollution) -> {
+                map.forEach((BlockPos, pollution) -> { // this loops through every entry in the pollution and checks if is close enough, applying effects based on the level
                     int distance = (entity.getOnPos().distManhattan(BlockPos));
                     if (distance <= 500) {
-                        list.add(pollution.getPollution());
+                        list.add(pollution.getPollution()); // this part makes it cumulative
                     }
                 });
                 double total = list.stream().mapToDouble(f -> f.doubleValue()).sum();
                         int reducer = 0;
                         if (total >= (1.0)) {
                             if (entity instanceof Player) {
-                                if (((Player) entity).getInventory().getArmor(3).is(new ItemStack(Allitems.POLLUTION_MASK.get()).getItem())) {
-                                    reducer = 4;
+                                if (((Player) entity).getInventory().getArmor(3).is(new ItemStack(Allitems.POLLUTION_MASK.get()).getItem())) { // remove some pollution from player if there are wearing mask
+                                    reducer = 2;
                                 }
                             }
                             if (total >= (2)) {
@@ -77,8 +80,9 @@ public class ModEvents extends BlockEntity {
         }
     }
 
-        static int tick;
+
         // handles decaying pollution and clearing old pollution values of 0
+        static int tick;
         @SubscribeEvent
         public static void levelTick(TickEvent.LevelTickEvent event) {
             tick = tick + 1;
@@ -94,7 +98,7 @@ public class ModEvents extends BlockEntity {
 
 
 
-        static long hash(long x, long y, long z) { //handles seed based randomness
+        static long hash(long x, long y, long z) { // handles seed-based randomness
             long a = ((x >> 16) ^ y) * 0x45d9f3b;
             a = ((a >> 16) ^ z) * 0x45d9f3b;
             a = (a >> 16) ^ x;
@@ -109,9 +113,9 @@ public class ModEvents extends BlockEntity {
                         if (!OilGenData.get(serverLevel).isGenned(event.getChunk().getPos())) {
                             long seed = hash(serverLevel.getSeed(),event.getChunk().getPos().x,event.getChunk().getPos().z);
                             Random rand = new Random(seed);
-                            if (rand.nextFloat() < 0.025) {
+                            if (rand.nextFloat() < 0.005) {
                                 float max = 250000;
-                                float mid = max/3;
+                                float mid = 100000;
                                 float p = (float) (Math.log(mid/max)/Math.log(0.5));
                                 float r = (float) Math.pow(rand.nextFloat(),p);
                                 r *= max;
@@ -123,6 +127,7 @@ public class ModEvents extends BlockEntity {
                     }
                 }
         }
+
         @SubscribeEvent
         public static void onCommandRegister(RegisterCommandsEvent event) {
             new ClearPollutionCommand(event.getDispatcher());
