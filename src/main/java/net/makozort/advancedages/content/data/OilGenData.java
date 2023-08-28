@@ -1,6 +1,5 @@
-package net.makozort.advancedages.content.Data;
+package net.makozort.advancedages.content.data;
 
-import net.makozort.advancedages.AdvancedAges;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;

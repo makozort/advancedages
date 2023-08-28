@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.Recipes;
+package net.makozort.advancedages.content.recipes;
 
 import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;

@@ -5,7 +5,7 @@ import com.simibubi.create.foundation.data.BlockStateGen;
 import com.tterrag.registrate.util.entry.BlockEntry;
 
 //import net.makozort.advancedages.content.Modblocks.block.OilRefineryBlock;
-import net.makozort.advancedages.content.Modblocks.block.OilRefineryBlock;
+import net.makozort.advancedages.content.modblocks.block.OilRefineryBlock;
 
 import net.minecraft.world.level.block.*;
 

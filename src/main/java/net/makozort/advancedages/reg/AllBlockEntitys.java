@@ -1,6 +1,6 @@
 package net.makozort.advancedages.reg;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import net.makozort.advancedages.content.Modblocks.entity.OilRefineryBlockEntity;
+import net.makozort.advancedages.content.modblocks.entity.OilRefineryBlockEntity;
 
 import static net.makozort.advancedages.ModRegistrate.REGISTRATE;
 

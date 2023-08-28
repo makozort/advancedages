@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.Data;
+package net.makozort.advancedages.content.data;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -104,8 +104,6 @@ public class PollutionData extends SavedData {
         tag.put("pollution", list);
         return tag;
     }
-
-
     public class Pollution {
         private double pollution;
 

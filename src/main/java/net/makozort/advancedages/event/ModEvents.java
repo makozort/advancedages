@@ -1,8 +1,8 @@
 package net.makozort.advancedages.event;
 
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.Data.OilGenData;
-import net.makozort.advancedages.content.Data.PollutionData;
+import net.makozort.advancedages.content.data.OilGenData;
+import net.makozort.advancedages.content.data.PollutionData;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.effect.ModEffects;
 import net.makozort.advancedages.reg.Allitems;
@@ -94,7 +94,7 @@ public class ModEvents extends BlockEntity {
 
 
 
-        static long hash(long x, long y, long z) {
+        static long hash(long x, long y, long z) { //handles seed based randomness
             long a = ((x >> 16) ^ y) * 0x45d9f3b;
             a = ((a >> 16) ^ z) * 0x45d9f3b;
             a = (a >> 16) ^ x;

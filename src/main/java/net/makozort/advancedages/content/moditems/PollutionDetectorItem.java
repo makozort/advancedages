@@ -1,6 +1,6 @@
-package net.makozort.advancedages.content.ModItems;
+package net.makozort.advancedages.content.moditems;
 
-import net.makozort.advancedages.content.Data.PollutionData;
+import net.makozort.advancedages.content.data.PollutionData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

@@ -2,7 +2,7 @@ package net.makozort.advancedages.mixin;
 
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
 //import net.makozort.advancedages.content.Pollution.PollutionData;
-import net.makozort.advancedages.content.Data.PollutionData;
+import net.makozort.advancedages.content.data.PollutionData;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
