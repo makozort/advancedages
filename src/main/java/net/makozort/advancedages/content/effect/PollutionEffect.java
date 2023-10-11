@@ -14,6 +14,33 @@ public class PollutionEffect extends MobEffect {
         super(mobEffectCategory, color);
     }
 
+
+
+
+
+
+
+
+
+
+
+    // don't look at this please I beg you
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         if (pAmplifier > 0) {

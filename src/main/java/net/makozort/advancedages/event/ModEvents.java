@@ -115,7 +115,7 @@ public class ModEvents extends BlockEntity {
                             Random rand = new Random(seed);
                             if (rand.nextFloat() < 0.005) {
                                 float max = 250000;
-                                float mid = 100000;
+                                float mid = 80000;
                                 float p = (float) (Math.log(mid/max)/Math.log(0.5));
                                 float r = (float) Math.pow(rand.nextFloat(),p);
                                 r *= max;
