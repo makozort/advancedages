@@ -1,12 +1,11 @@
 package net.makozort.advancedages.reg;
 
 
-import com.simibubi.create.foundation.data.BlockStateGen;
 import com.tterrag.registrate.util.entry.BlockEntry;
 
-//import net.makozort.advancedages.content.Modblocks.block.OilRefineryBlock;
-import net.makozort.advancedages.content.modblocks.block.OilRefineryBlock;
+import net.makozort.advancedages.content.modblocks.block.HornBlock;
 
+import net.makozort.advancedages.content.modblocks.block.TitanHornBlock;
 import net.minecraft.world.level.block.*;
 
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -22,13 +21,13 @@ public class AllBlocks {
 
 
     public static final BlockEntry<LiquidBlock> CRUDE_OIL_BLOCK = REGISTRATE.block("crude_oil_block",b ->
-                    new LiquidBlock(Allfluids.SOURCE_CRUDE_OIL, BlockBehaviour.Properties.copy(Blocks.WATER)))
+                    new LiquidBlock(Allfluids.SOURCE_CRUDE_OIL, BlockBehaviour.Properties.copy(Blocks.LAVA)))
             .lang("Crude Oil")
             .register();
 
-    public static final BlockEntry<OilRefineryBlock> OIL_REFINERY_BLOCK = REGISTRATE
-            .block("oil_refinery", OilRefineryBlock::new)
-            .blockstate((BlockStateGen.horizontalBlockProvider(false)))
+
+    public static final BlockEntry<TitanHornBlock> TITAN_HORN_BLOCK = REGISTRATE
+            .block("titan_horn_block", TitanHornBlock::new)
             .simpleItem()
             .register();
     public static final BlockEntry<LiquidBlock> REFINED_OIL_BLOCK = REGISTRATE.block("refined_oil_block",b ->

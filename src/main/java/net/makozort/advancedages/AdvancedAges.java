@@ -6,7 +6,7 @@ import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
 
-import net.makozort.advancedages.content.ModFeatures;
+import net.makozort.advancedages.reg.AllFeatures;
 import net.makozort.advancedages.content.fluid.ModFluidTypes;
 import net.makozort.advancedages.content.effect.ModEffects;
 import net.makozort.advancedages.reg.*;
@@ -35,6 +35,7 @@ public class AdvancedAges {
                     .andThen(TooltipModifier.mapNull(KineticStats.create(item)));
         });
     }
+
     public AdvancedAges() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         REGISTRATE.registerEventListeners(modEventBus);
@@ -45,12 +46,14 @@ public class AdvancedAges {
         ModFluidTypes.register(modEventBus);
         ModCreativeModeTab.register();
         ModEffects.register(modEventBus);
+        AllSoundEvents.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::register);
+        modEventBus.addListener((this::register));
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void register(RegisterEvent event) {
-        event.register(Registry.FEATURE_REGISTRY,new ResourceLocation(MOD_ID,"very_large_lake"),() -> ModFeatures.VERY_LARGE_LAKE);
+        event.register(Registry.FEATURE_REGISTRY,new ResourceLocation(MOD_ID,"very_large_lake"),() -> AllFeatures.VERY_LARGE_LAKE);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

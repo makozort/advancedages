@@ -1,7 +1,7 @@
 package net.makozort.advancedages.event;
 
+import com.simibubi.create.content.kinetics.saw.SawBlock;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.data.OilGenData;
 import net.makozort.advancedages.content.data.PollutionData;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.content.effect.ModEffects;
@@ -10,6 +10,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -19,7 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.level.ChunkEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
@@ -28,18 +30,12 @@ import java.util.*;
 
 public class ModEvents extends BlockEntity {
 
-
-
-
-
     public ModEvents(BlockEntityType<?> p_155228_, BlockPos p_155229_, BlockState p_155230_) {
         super(p_155228_, p_155229_, p_155230_);
     }
 
     @Mod.EventBusSubscriber(modid = AdvancedAges.MOD_ID)
     public static class ForgeEvents {
-
-
 
         @SubscribeEvent
         public static void onLiving(LivingEvent.LivingTickEvent event) {
@@ -80,6 +76,20 @@ public class ModEvents extends BlockEntity {
         }
     }
 
+    @SubscribeEvent
+    public static void sawHurt(LivingHurtEvent event) { // villager meat
+        Entity entity = event.getEntity();
+        Level world = event.getEntity().getLevel();
+        if (entity.getLevel() instanceof ServerLevel) {
+            if (entity instanceof Villager) {
+                if (event.getSource() == SawBlock.damageSourceSaw) {
+                    world.addFreshEntity(new ItemEntity(world, entity.getBlockX(), entity.getBlockY() + 2, entity.getBlockZ(),
+                            new ItemStack(Allitems.MYSTERY_MEAT.get(),2)));
+                }
+            }
+        }
+    }
+
 
         // handles decaying pollution and clearing old pollution values of 0
         static int tick;
@@ -94,38 +104,6 @@ public class ModEvents extends BlockEntity {
                 }
             });
             PollutionData.get(event.level).clearOldPollution();
-        }
-
-
-
-        static long hash(long x, long y, long z) { // handles seed-based randomness
-            long a = ((x >> 16) ^ y) * 0x45d9f3b;
-            a = ((a >> 16) ^ z) * 0x45d9f3b;
-            a = (a >> 16) ^ x;
-            return a;
-        }
-
-        // handles the initial generation of crude oil deposits
-        @SubscribeEvent
-        public static void chunkload(ChunkEvent.Load event) {
-                if (event.getLevel() instanceof ServerLevel serverLevel) {
-                    if(serverLevel.dimension() == Level.OVERWORLD) {
-                        if (!OilGenData.get(serverLevel).isGenned(event.getChunk().getPos())) {
-                            long seed = hash(serverLevel.getSeed(),event.getChunk().getPos().x,event.getChunk().getPos().z);
-                            Random rand = new Random(seed);
-                            if (rand.nextFloat() < 0.005) {
-                                float max = 250000;
-                                float mid = 80000;
-                                float p = (float) (Math.log(mid/max)/Math.log(0.5));
-                                float r = (float) Math.pow(rand.nextFloat(),p);
-                                r *= max;
-                                OilGenData.get(serverLevel).changeOilGen(event.getChunk().getPos(),r);
-                                AdvancedAges.LOGGER.info(String.valueOf(r) + "  " + event.getChunk().getPos().getWorldPosition());
-                            }
-                            OilGenData.get(serverLevel).setGenned(event.getChunk().getPos());
-                        }
-                    }
-                }
         }
 
         @SubscribeEvent

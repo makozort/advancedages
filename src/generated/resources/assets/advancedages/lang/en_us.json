@@ -12,6 +12,8 @@
   "item.advancedages.pollution_sponge.tooltip.summary": "resets the _pollution_ level in a 30 block radius",
   "item.advancedages.refined_oil_bucket": "Refined Oil Bucket",
 
+  "item.advancedages.meat_sandwich": "\"Meat\" Sandwich",
+  "item.advancedages.meat": "\"Meat\"",
   "item.advancedages.pollution_detector.tooltip": "Pollution Detector",
   "item.advancedages.crude_oil_bucket.tooltip": "Crude Oil Bucket",
   "item.advancedages.pollution_sponge.tooltip": "Pollution Sponge",
@@ -19,5 +21,6 @@
   "fluid_type.advancedages.refined_oil_fluid": "Refined Oil",
   "fluid_type.advancedages.crude_oil_fluid": "Crude Oil",
   "effect.advancedages.pollution": "Pollution Sickness",
-  "itemGroup.bigtab": "Create: Advanced Ages"
+  "itemGroup.bigtab": "Create: Advanced Ages",
+  "sounds.advancedages.titan_horn" : "Titan War-horn"
 }

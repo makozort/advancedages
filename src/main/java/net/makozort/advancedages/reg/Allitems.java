@@ -1,13 +1,12 @@
 package net.makozort.advancedages.reg;
 
 import com.simibubi.create.AllTags;
+import com.simibubi.create.Create;
 import com.simibubi.create.content.equipment.armor.AllArmorMaterials;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.moditems.OilBucketItem;
-import net.makozort.advancedages.content.moditems.PollutionDetectorItem;
-import net.makozort.advancedages.content.moditems.PollutionMaskItem;
-import net.makozort.advancedages.content.moditems.PollutionSpongeItem;
+import net.makozort.advancedages.content.moditems.*;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -27,6 +26,11 @@ public class Allitems {
     public static final ItemEntry<PollutionDetectorItem> POLLUTION_DETECTOR_ITEM = REGISTRATE.item("pollution_detector",
                     p -> new PollutionDetectorItem(props().stacksTo(1).durability(6)))
             .register();
+
+
+    public static final ItemEntry<OilScannerItem> OIL_SCANNER_ITEM = REGISTRATE.item("oil_scanner",
+                    p -> new OilScannerItem(props().stacksTo(1).durability(6)))
+            .register();
     public static final ItemEntry<PollutionSpongeItem> POLLUTION_SPONGE = REGISTRATE.item("pollution_sponge",
                     p -> new PollutionSpongeItem(props().stacksTo(1).durability(1)))
             .register();
@@ -41,6 +45,20 @@ public class Allitems {
             .tag(forgeItemTag("armors/helmets"))
             .register();
 
+
+    public static final ItemEntry<Item> MYSTERY_MEAT = REGISTRATE.item("meat", Item::new)
+            .properties(p -> p.food(new FoodProperties.Builder().nutrition(10)
+                            .meat()
+                    .saturationMod(1)
+                    .build()))
+            .register();
+
+    public static final ItemEntry<Item> MYSTERY_MEAT_SANDWICH = REGISTRATE.item("meat_sandwich", Item::new)
+            .properties(p -> p.food(new FoodProperties.Builder().nutrition(15)
+                    .meat()
+                    .saturationMod(5)
+                    .build()))
+            .register();
 
     private static Item.Properties props() {
         return new Item.Properties().tab(ModCreativeModeTab.BIG_TAB.hideScroll());

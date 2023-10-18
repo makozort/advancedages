@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "advancedages:meat"
+    }
+  ],
+  "results": [
+    {
+      "item": "advancedages:meat_sandwich"
+    }
+  ]
+}
