@@ -40,7 +40,7 @@ public class AdvancedAges {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         REGISTRATE.registerEventListeners(modEventBus);
         AllBlocks.register();
-        AllBlockEntitys.register();
+        AllBlockEntities.register();
         Allitems.register();
         Allfluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
