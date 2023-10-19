@@ -1,12 +1,14 @@
-// 1.19.2	2023-08-24T21:53:33.2403017	Registrate Provider for advancedages [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-10-15T19:12:00.2335152	Registrate Provider for advancedages [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 d5cad28e814cb293e146dea47368ccb3f43c6e97 assets/advancedages/blockstates/crude_oil_block.json
 226203312abe7995d6b07fa754a16d85f14b8bd7 assets/advancedages/blockstates/oil_refinery.json
 74d5b42444e23cf9c847367edd6292b3d011da1b assets/advancedages/blockstates/refined_oil_block.json
-5a9e506344a8162243c4e8b8625f70bb75ef902a assets/advancedages/lang/en_ud.json
-bcb6c5dc9da8fac9bc38130f6f6c547145dfb88c assets/advancedages/lang/en_us.json
+d9396c4da260957f69b4cce315ef743b583a3f34 assets/advancedages/lang/en_ud.json
+bcd5023f71ec74fa4706b01ba3dabcf181292f1f assets/advancedages/lang/en_us.json
 002cebefe3bb04118fc4f85d89535338cc7a2866 assets/advancedages/models/block/crude_oil_block.json
 40ad05c77c3161404890dd8d4a00010f0932978b assets/advancedages/models/block/refined_oil_block.json
 366581dc227b7c6bc117535ea05270b231be11bc assets/advancedages/models/item/crude_oil_bucket.json
+5baa61083ba88df1f6eab4e3eee874d66644d8b0 assets/advancedages/models/item/meat.json
+62c56a2c39545700baf163f4eb1e8cd0c1bfc88c assets/advancedages/models/item/meat_sandwich.json
 85431f8cca755be7dca2220bfcb1459f209a4824 assets/advancedages/models/item/oil_refinery.json
 7244cb0d006b0c19d73f947c83eb22a5762fc8a4 assets/advancedages/models/item/pollution_detector.json
 c4845ce53b72a4bc0f26aff96cfde72f5c22829f assets/advancedages/models/item/pollution_mask.json
