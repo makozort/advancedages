@@ -1,8 +1,8 @@
-package net.makozort.advancedages.content.modblocks.block;
+package net.makozort.advancedages.content.modblocks.block.hornblocks;
 
 import net.makozort.advancedages.reg.AllSoundEvents;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
+
 
 public class TitanHornBlock extends HornBlock {
     public TitanHornBlock(Properties p_49795_) {

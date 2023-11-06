@@ -1,6 +1,5 @@
 {
-  "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "advancedages:block/crude_oil_block"
+    "particle": "advancedages:fluids/crude_oil_still"
   }
 }

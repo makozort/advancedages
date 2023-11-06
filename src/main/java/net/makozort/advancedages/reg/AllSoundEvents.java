@@ -12,10 +12,18 @@ import net.minecraftforge.registries.RegistryObject;
 public class AllSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, AdvancedAges.MOD_ID);
-
-
     public static final RegistryObject<SoundEvent> TITAN_HORN =
             registerSoundEvent("titan_horn");
+
+    public static final RegistryObject<SoundEvent> GJALLAR_HORN =
+            registerSoundEvent("gjallar_horn");
+    public static final RegistryObject<SoundEvent> GRAND_HORN =
+            registerSoundEvent("grand_horn");
+
+    public static final RegistryObject<SoundEvent> OMINOUS_HORN =
+            registerSoundEvent("ominous_horn");
+    public static final RegistryObject<SoundEvent> REAPER_HORN =
+            registerSoundEvent("reaper_horn");
 
     public static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = new ResourceLocation(AdvancedAges.MOD_ID, name);

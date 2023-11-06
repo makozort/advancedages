@@ -14,7 +14,7 @@ public class AllBlockEntities {
     }
     public static final BlockEntityEntry<HornBlockEntity> HORN_BLOCK = REGISTRATE
             .blockEntity("horn_block", HornBlockEntity::new)
-            .validBlocks(AllBlocks.TITAN_HORN_BLOCK)
+            .validBlocks(AllBlocks.TITAN_HORN_BLOCK,AllBlocks.REAPER_HORN_BLOCK,AllBlocks.GJALLAR_HORN_BLOCK,AllBlocks.GRAND_HORN_BLOCK,AllBlocks.OMINOUS_HORN_BLOCK)
             .register();
 
 

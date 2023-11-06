@@ -1,5 +1,8 @@
 package net.makozort.advancedages.reg;
 
+import com.simibubi.create.AllFluids;
+import com.simibubi.create.AllTags;
+import com.tterrag.registrate.util.entry.FluidEntry;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.fluid.ModFluidTypes;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -10,11 +13,14 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import static com.simibubi.create.Create.REGISTRATE;
+
 public class Allfluids {
     public static final DeferredRegister<Fluid> FLUIDS =
             DeferredRegister.create(ForgeRegistries.FLUIDS, AdvancedAges.MOD_ID);
 
-    public static final RegistryObject<FlowingFluid> SOURCE_CRUDE_OIL = FLUIDS.register("crude_oil_fluid",
+
+    public static final RegistryObject<ForgeFlowingFluid.Source> SOURCE_CRUDE_OIL = FLUIDS.register("crude_oil_fluid",
             () -> new ForgeFlowingFluid.Source(Allfluids.CRUDE_OIL_FLUID_PROPERTIES));
     public static final RegistryObject<FlowingFluid> FLOWING_CRUDE_OIL = FLUIDS.register("flowing_crude_oil",
             () -> new ForgeFlowingFluid.Flowing(Allfluids.CRUDE_OIL_FLUID_PROPERTIES));

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "advancedages:block/reaper_horn_block_off"
+    },
+    "lit=true": {
+      "model": "advancedages:block/reaper_horn_block_on"
+    }
+  }
+}

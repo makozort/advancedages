@@ -4,5 +4,29 @@
     "sounds": [
       "advancedages:titan_horn"
     ]
+  },
+  "gjallar_horn": {
+    "subtitle": "sounds.advancedages.gjallar_horn",
+    "sounds": [
+      "advancedages:gjallar_horn"
+    ]
+  },
+  "grand_horn": {
+    "subtitle": "sounds.advancedages.grand_horn",
+    "sounds": [
+      "advancedages:grand_horn"
+    ]
+  },
+  "ominous_horn": {
+    "subtitle": "sounds.advancedages.ominous_horn",
+    "sounds": [
+      "advancedages:ominous_horn"
+    ]
+  },
+  "reaper_horn": {
+    "subtitle": "sounds.advancedages.reaper_horn",
+    "sounds": [
+      "advancedages:reaper_horn"
+    ]
   }
 }
