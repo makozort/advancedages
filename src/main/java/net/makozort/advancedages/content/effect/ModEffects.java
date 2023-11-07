@@ -12,7 +12,7 @@ public abstract class ModEffects {
     public static DeferredRegister<MobEffect> MOB_EFFECTS
             = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, AdvancedAges.MOD_ID);
     public static final RegistryObject<MobEffect> POLLUTION = MOB_EFFECTS.register("pollution",
-            () -> new PollutionEffect(MobEffectCategory.HARMFUL,3124687));
+            () -> new PollutionEffect(MobEffectCategory.HARMFUL, 3124687));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

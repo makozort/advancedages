@@ -10,8 +10,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.storage.DimensionDataStorage;
 import org.jetbrains.annotations.NotNull;
+
 import javax.annotation.Nonnull;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PollutionData extends SavedData {
 
@@ -23,7 +27,7 @@ public class PollutionData extends SavedData {
         if (level.isClientSide) {
             throw new RuntimeException("Don't access this client-side!");
         }
-        DimensionDataStorage storage = ((ServerLevel)level).getDataStorage();
+        DimensionDataStorage storage = ((ServerLevel) level).getDataStorage();
         return storage.computeIfAbsent(PollutionData::new, PollutionData::new, "pollutionmanager");
     }
 
@@ -44,10 +48,10 @@ public class PollutionData extends SavedData {
     }
 
     public int changePollution(BlockPos pos, double i, Level level) {
-        if (i >=0){
+        if (i >= 0) {
             if (!level.isClientSide) {
                 ServerLevel serverLevel = (ServerLevel) level;
-                serverLevel.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, pos.getX() + .5,pos.getY() + .5,pos.getZ() + .5, 5000, 0.3,100,0.3,0);
+                serverLevel.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 5000, 0.3, 100, 0.3, 0);
             }
         }
         Pollution pollution = getPollutionInternal(pos);
@@ -61,8 +65,8 @@ public class PollutionData extends SavedData {
         } else {
             pollution.setPollution(result);
         }
-            setDirty();
-            return 1;
+        setDirty();
+        return 1;
     }
 
     public int clearOldPollution() {
@@ -85,7 +89,7 @@ public class PollutionData extends SavedData {
         for (Tag t : list) {
             CompoundTag pollTag = (CompoundTag) t;
             Pollution pollution = new Pollution(pollTag.getInt("pollution"));
-            BlockPos pos = new BlockPos(pollTag.getInt("x"),pollTag.getInt("y"), pollTag.getInt("z"));
+            BlockPos pos = new BlockPos(pollTag.getInt("x"), pollTag.getInt("y"), pollTag.getInt("z"));
             PollutionMap.put(pos, pollution);
         }
     }
@@ -104,6 +108,7 @@ public class PollutionData extends SavedData {
         tag.put("pollution", list);
         return tag;
     }
+
     public class Pollution {
         private double pollution;
 

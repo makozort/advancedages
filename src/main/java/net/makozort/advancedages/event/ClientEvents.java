@@ -2,15 +2,10 @@ package net.makozort.advancedages.event;
 
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.client.MaskHudOverlay;
-import net.makozort.advancedages.content.fluid.ModFluidTypes;
-import net.makozort.advancedages.reg.Allfluids;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public class ClientEvents {
     @Mod.EventBusSubscriber(modid = AdvancedAges.MOD_ID, value = Dist.CLIENT)
@@ -21,11 +16,11 @@ public class ClientEvents {
             public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
                 event.registerAboveAll("mask", MaskHudOverlay.HUD_MASK);
             }
-            @SubscribeEvent
-            public static void onClientSetup(FMLClientSetupEvent event) {
-                ItemBlockRenderTypes.setRenderLayer(Allfluids.SOURCE_CRUDE_OIL.get(), RenderType.translucent());
-                ItemBlockRenderTypes.setRenderLayer(Allfluids.FLOWING_CRUDE_OIL.get(), RenderType.translucent());
-            }
+            //@SubscribeEvent
+            //public static void onClientSetup(FMLClientSetupEvent event) {
+            //    ItemBlockRenderTypes.setRenderLayer(Allfluids.SOURCE_CRUDE_OIL.get(), RenderType.translucent());
+            //    ItemBlockRenderTypes.setRenderLayer(Allfluids.FLOWING_CRUDE_OIL.get(), RenderType.translucent());
+            //}
 
         }
     }

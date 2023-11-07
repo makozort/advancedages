@@ -12,7 +12,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-
 import java.util.Map;
 
 public class PollutionDetectorItem extends Item {
@@ -23,18 +22,18 @@ public class PollutionDetectorItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-            if (player.getLevel() instanceof ServerLevel) {
-                Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(player.level).getMap();
-                map.forEach((BlockPos, pollution) -> {
-                    int distance = (player.getOnPos().distManhattan(BlockPos));
-                        if (distance <= 500) {
-                            if (pollution.getPollution() > 0) {
-                                player.sendSystemMessage(Component.literal("pollution level " + String.valueOf(pollution.getPollution()) + " found at " + String.valueOf(BlockPos)).withStyle(ChatFormatting.RED));
-                            }
-                       }
+        if (player.getLevel() instanceof ServerLevel) {
+            Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(player.level).getMap();
+            map.forEach((BlockPos, pollution) -> {
+                int distance = (player.getOnPos().distManhattan(BlockPos));
+                if (distance <= 500) {
+                    if (pollution.getPollution() > 0) {
+                        player.sendSystemMessage(Component.literal("pollution level " + pollution.getPollution() + " found at " + BlockPos).withStyle(ChatFormatting.RED));
+                    }
+                }
             });
         }
         player.getItemInHand(hand).hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
-        return super.use(level,player,hand);
+        return super.use(level, player, hand);
     }
 }

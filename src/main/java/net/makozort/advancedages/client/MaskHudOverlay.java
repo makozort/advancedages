@@ -8,12 +8,9 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
 public class MaskHudOverlay {
@@ -49,14 +46,14 @@ public class MaskHudOverlay {
         RenderSystem.setShaderTexture(0, MASK_HUD);
 
 
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             if (Minecraft.getInstance().options.getCameraType().isFirstPerson()) {
-                    ItemStack itemstack = Minecraft.getInstance().player.getInventory().getArmor(3);
-                    if (itemstack.is(Allitems.POLLUTION_MASK.get())) {
-                       renderTextureOverlay(MASK_HUD, 1.0F,x,y);
-                    }
+                ItemStack itemstack = Minecraft.getInstance().player.getInventory().getArmor(3);
+                if (itemstack.is(Allitems.POLLUTION_MASK.get())) {
+                    renderTextureOverlay(MASK_HUD, 1.0F, x, y);
                 }
             }
+        }
 
     });
 }

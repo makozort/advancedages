@@ -27,7 +27,7 @@ public class AllSoundEvents {
 
     public static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = new ResourceLocation(AdvancedAges.MOD_ID, name);
-        return SOUND_EVENTS.register(name,() -> new SoundEvent(new ResourceLocation(AdvancedAges.MOD_ID,name)));
+        return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(AdvancedAges.MOD_ID, name)));
     }
 
     public static void register(IEventBus eventBus) {

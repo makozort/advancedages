@@ -26,11 +26,11 @@ public class OilScannerItem extends Item {
         if (level instanceof ServerLevel) {
             BlockPos playerPos = player.getOnPos();
             for (int y = 255; y >= -16; y--) {
-                BlockPos searchPos = new BlockPos(playerPos.getX(),y,player.getZ());
+                BlockPos searchPos = new BlockPos(playerPos.getX(), y, player.getZ());
                 Block block = level.getBlockState(searchPos).getBlock();
                 if (block == AllBlocks.CRUDE_OIL_BLOCK.get()) {
                     player.sendSystemMessage(Component.literal("Oil found somewhere above or below you").withStyle(ChatFormatting.GREEN));
-                    level.playSound(null, playerPos, SoundEvents.NOTE_BLOCK_BELL, SoundSource.BLOCKS, 1.0f ,1.0f);
+                    level.playSound(null, playerPos, SoundEvents.NOTE_BLOCK_BELL, SoundSource.BLOCKS, 1.0f, 1.0f);
                     return InteractionResultHolder.success(player.getItemInHand(hand));
                 }
             }

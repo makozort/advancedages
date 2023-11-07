@@ -1,7 +1,6 @@
 package net.makozort.advancedages.reg;
 
 import com.simibubi.create.AllTags;
-import com.simibubi.create.Create;
 import com.simibubi.create.content.equipment.armor.AllArmorMaterials;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.makozort.advancedages.AdvancedAges;
@@ -19,8 +18,9 @@ public class Allitems {
     static {
         REGISTRATE.creativeModeTab(() -> ModCreativeModeTab.BIG_TAB);
     }
+
     public static final ItemEntry<BucketItem> CRUDE_OIL_BUCKET = REGISTRATE.item("crude_oil_bucket",
-                    p -> new BucketItem(Allfluids.SOURCE_CRUDE_OIL,props().craftRemainder(Items.BUCKET).stacksTo(1)))
+                    p -> new BucketItem(AllFluids.SOURCE_CRUDE_OIL, props().craftRemainder(Items.BUCKET).stacksTo(1)))
             .register();
 
     public static final ItemEntry<PollutionDetectorItem> POLLUTION_DETECTOR_ITEM = REGISTRATE.item("pollution_detector",
@@ -35,8 +35,8 @@ public class Allitems {
                     p -> new PollutionSpongeItem(props().stacksTo(1).durability(1)))
             .register();
 
-    public static final ItemEntry<OilBucketItem> REFINED_OIL_BUCKET = REGISTRATE.item("refined_oil_bucket",
-                    p -> new OilBucketItem(Allfluids.SOURCE_REFINED_OIL,props().craftRemainder(Items.BUCKET).stacksTo(1)))
+    public static final ItemEntry<OilBucketItem> HEAVY_OIL_BUCKET = REGISTRATE.item("heavy_oil_bucket",
+                    p -> new OilBucketItem(AllFluids.SOURCE_HEAVY_OIL, props().craftRemainder(Items.BUCKET).stacksTo(1)))
             .tag(AllTags.AllItemTags.BLAZE_BURNER_FUEL_SPECIAL.tag)
             .register();
 
@@ -48,7 +48,7 @@ public class Allitems {
 
     public static final ItemEntry<Item> MYSTERY_MEAT = REGISTRATE.item("meat", Item::new)
             .properties(p -> p.food(new FoodProperties.Builder().nutrition(10)
-                            .meat()
+                    .meat()
                     .saturationMod(1)
                     .build()))
             .register();
@@ -63,7 +63,9 @@ public class Allitems {
     private static Item.Properties props() {
         return new Item.Properties().tab(ModCreativeModeTab.BIG_TAB.hideScroll());
     }
-    public static void register() {}
+
+    public static void register() {
+    }
 }
 
 

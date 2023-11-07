@@ -8,7 +8,7 @@ public class ModCreativeModeTab {
     public static final CreativeModeTab BIG_TAB = new CreativeModeTab("bigtab") {
         @Override
         public @NotNull ItemStack makeIcon() {
-            return new ItemStack(Allitems.REFINED_OIL_BUCKET.get());
+            return new ItemStack(Allitems.HEAVY_OIL_BUCKET.get());
         }
     };
 

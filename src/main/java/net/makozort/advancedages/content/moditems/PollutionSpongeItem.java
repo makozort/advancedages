@@ -1,9 +1,7 @@
 package net.makozort.advancedages.content.moditems;
 
 import net.makozort.advancedages.content.data.PollutionData;
-import net.makozort.advancedages.reg.AllBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -11,7 +9,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 
 import java.util.Map;
 
@@ -27,12 +24,12 @@ public class PollutionSpongeItem extends Item {
             map.forEach((BlockPos, pollution) -> {
                 int distance = (player.getOnPos().distManhattan(BlockPos));
                 if (distance <= 30) {
-                    PollutionData.get(level).changePollution(BlockPos,-12,level);
+                    PollutionData.get(level).changePollution(BlockPos, -12, level);
                 }
             });
         }
-        player.getItemInHand(hand).hurtAndBreak(1,player,p -> p.broadcastBreakEvent(hand));
-        return super.use(level,player,hand);
+        player.getItemInHand(hand).hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
+        return super.use(level, player, hand);
     }
 }
 

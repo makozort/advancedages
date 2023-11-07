@@ -5,10 +5,8 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
-
-import net.makozort.advancedages.reg.AllFeatures;
-import net.makozort.advancedages.content.fluid.ModFluidTypes;
 import net.makozort.advancedages.content.effect.ModEffects;
+import net.makozort.advancedages.content.fluid.ModFluidTypes;
 import net.makozort.advancedages.reg.*;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -20,6 +18,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegisterEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 @Mod(net.makozort.advancedages.AdvancedAges.MOD_ID)
 public class AdvancedAges {
     // Define mod id in a common place for everything to reference
@@ -29,6 +28,7 @@ public class AdvancedAges {
     public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
 
     public static final CreateRegistrate REGISTRATE = ModRegistrate.REGISTRATE;
+
     static {
         REGISTRATE.setTooltipModifierFactory(item -> {
             return new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
@@ -42,7 +42,7 @@ public class AdvancedAges {
         AllBlocks.register();
         AllBlockEntities.register();
         Allitems.register();
-        Allfluids.register(modEventBus);
+        AllFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
         ModCreativeModeTab.register();
         ModEffects.register(modEventBus);
@@ -53,11 +53,12 @@ public class AdvancedAges {
     }
 
     private void register(RegisterEvent event) {
-        event.register(Registry.FEATURE_REGISTRY,new ResourceLocation(MOD_ID,"very_large_lake"),() -> AllFeatures.VERY_LARGE_LAKE);
+        event.register(Registry.FEATURE_REGISTRY, new ResourceLocation(MOD_ID, "very_large_lake"), () -> AllFeatures.VERY_LARGE_LAKE);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
     }
+
     public static ResourceLocation asResource(String path) {
         return new ResourceLocation(MOD_ID, path);
     }

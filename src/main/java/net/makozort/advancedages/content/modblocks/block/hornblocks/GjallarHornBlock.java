@@ -11,7 +11,7 @@ public class GjallarHornBlock extends HornBlock {
 
 
     @Override
-    public SoundEvent GetSoundEvent(){
+    public SoundEvent GetSoundEvent() {
         return AllSoundEvents.GJALLAR_HORN.get();
     }
 

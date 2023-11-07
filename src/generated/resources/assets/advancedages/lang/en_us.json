@@ -4,7 +4,7 @@
   "block.advancedages.grand_horn_block": "Grand Horn Block",
   "block.advancedages.ominous_horn_block": "Ominous Horn Block",
   "block.advancedages.reaper_horn_block": "Reaper Horn Block",
-  "block.advancedages.refined_oil_block": "Refined Oil",
+  "block.advancedages.heavy_oil_block": "Heavy Oil",
   "block.advancedages.titan_horn_block": "Titan Horn Block",
   "item.advancedages.crude_oil_bucket": "Crude Oil Bucket",
   "item.advancedages.crude_oil_bucket.tooltip.summary": "A useless fluid that can be _refined_...",
@@ -16,7 +16,7 @@
   "item.advancedages.pollution_mask.tooltip.summary": "provides a certain amount of protection from _pollution_ to the user",
   "item.advancedages.pollution_sponge": "Pollution Sponge",
   "item.advancedages.pollution_sponge.tooltip.summary": "resets the _pollution_ level in a 30 block radius",
-  "item.advancedages.refined_oil_bucket": "Refined Oil Bucket",
+  "item.advancedages.heavy_oil_bucket": "Heavy Oil Bucket",
 
 
   "item.advancedages.meat_sandwich": "\"Meat\" Sandwich",
@@ -25,7 +25,7 @@
   "item.advancedages.crude_oil_bucket.tooltip": "Crude Oil Bucket",
   "item.advancedages.pollution_sponge.tooltip": "Pollution Sponge",
   "item.advancedages.pollution_mask.tooltip" : "Pollution Mask",
-  "fluid_type.advancedages.refined_oil_fluid": "Refined Oil",
+  "fluid_type.advancedages.heavy_oil_fluid": "Heavy Oil",
   "fluid_type.advancedages.crude_oil_fluid": "Crude Oil",
   "effect.advancedages.pollution": "Pollution Sickness",
   "itemGroup.bigtab": "Create: Advanced Ages",

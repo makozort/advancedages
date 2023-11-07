@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "advancedages:block/refined_oil_block"
+    "all": "advancedages:block/heavy_oil_block"
   }
 }

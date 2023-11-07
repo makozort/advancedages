@@ -1,8 +1,5 @@
 package net.makozort.advancedages.reg;
 
-import com.simibubi.create.AllFluids;
-import com.simibubi.create.AllTags;
-import com.tterrag.registrate.util.entry.FluidEntry;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.fluid.ModFluidTypes;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -13,17 +10,15 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import static com.simibubi.create.Create.REGISTRATE;
-
-public class Allfluids {
+public class AllFluids {
     public static final DeferredRegister<Fluid> FLUIDS =
             DeferredRegister.create(ForgeRegistries.FLUIDS, AdvancedAges.MOD_ID);
 
 
     public static final RegistryObject<ForgeFlowingFluid.Source> SOURCE_CRUDE_OIL = FLUIDS.register("crude_oil_fluid",
-            () -> new ForgeFlowingFluid.Source(Allfluids.CRUDE_OIL_FLUID_PROPERTIES));
+            () -> new ForgeFlowingFluid.Source(AllFluids.CRUDE_OIL_FLUID_PROPERTIES));
     public static final RegistryObject<FlowingFluid> FLOWING_CRUDE_OIL = FLUIDS.register("flowing_crude_oil",
-            () -> new ForgeFlowingFluid.Flowing(Allfluids.CRUDE_OIL_FLUID_PROPERTIES));
+            () -> new ForgeFlowingFluid.Flowing(AllFluids.CRUDE_OIL_FLUID_PROPERTIES));
 
     public static final ForgeFlowingFluid.Properties CRUDE_OIL_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
             ModFluidTypes.CRUDE_OIL_FLUID_TYPE, SOURCE_CRUDE_OIL, FLOWING_CRUDE_OIL)
@@ -32,18 +27,16 @@ public class Allfluids {
             .tickRate(30);
 
 
+    public static final RegistryObject<FlowingFluid> SOURCE_HEAVY_OIL = FLUIDS.register("heavy_oil_fluid",
+            () -> new ForgeFlowingFluid.Source(AllFluids.HEAVY_OIL_FLUID_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_HEAVY_OIL = FLUIDS.register("flowing_heavy_oil",
+            () -> new ForgeFlowingFluid.Flowing(AllFluids.HEAVY_OIL_FLUID_PROPERTIES));
 
-    public static final RegistryObject<FlowingFluid> SOURCE_REFINED_OIL = FLUIDS.register("refined_oil_fluid",
-            () -> new ForgeFlowingFluid.Source(Allfluids.REFINED_OIL_FLUID_PROPERTIES));
-    public static final RegistryObject<FlowingFluid> FLOWING_REFINED_OIL = FLUIDS.register("flowing_refined_oil",
-            () -> new ForgeFlowingFluid.Flowing(Allfluids.REFINED_OIL_FLUID_PROPERTIES));
-
-    public static final ForgeFlowingFluid.Properties REFINED_OIL_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
-            ModFluidTypes.REFINED_OIL_FLUID_TYPE, SOURCE_REFINED_OIL, FLOWING_REFINED_OIL)
-            .slopeFindDistance(3).levelDecreasePerBlock(2).block(AllBlocks.REFINED_OIL_BLOCK)
-            .bucket(Allitems.REFINED_OIL_BUCKET)
+    public static final ForgeFlowingFluid.Properties HEAVY_OIL_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
+            ModFluidTypes.HEAVY_OIL_TYPE, SOURCE_HEAVY_OIL, FLOWING_HEAVY_OIL)
+            .slopeFindDistance(3).levelDecreasePerBlock(2).block(AllBlocks.HEAVY_OIL_BLOCK)
+            .bucket(Allitems.HEAVY_OIL_BUCKET)
             .tickRate(30);
-
 
 
     public static void register(IEventBus eventBus) {

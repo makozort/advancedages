@@ -11,7 +11,7 @@ public class TitanHornBlock extends HornBlock {
 
 
     @Override
-    public SoundEvent GetSoundEvent(){
+    public SoundEvent GetSoundEvent() {
         return AllSoundEvents.TITAN_HORN.get();
     }
 

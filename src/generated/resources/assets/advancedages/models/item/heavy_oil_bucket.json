@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "advancedages:item/refined_oil_bucket"
+    "layer0": "advancedages:item/heavy_oil_bucket"
   }
 }

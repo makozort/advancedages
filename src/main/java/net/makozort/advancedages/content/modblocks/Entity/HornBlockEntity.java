@@ -1,9 +1,6 @@
 package net.makozort.advancedages.content.modblocks.Entity;
 
-import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.inventory.ContainerData;
@@ -13,8 +10,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class HornBlockEntity extends BlockEntity {
-
-
 
 
     protected final ContainerData data;
@@ -40,10 +35,10 @@ public class HornBlockEntity extends BlockEntity {
         };
     }
 
-    public void play(Level level, BlockPos pos, SoundEvent soundEvent, int dis,int time) {
+    public void play(Level level, BlockPos pos, SoundEvent soundEvent, int dis, int time) {
         if (this.cooldown == 0) {
             level.playSound(null, pos, soundEvent, SoundSource.RECORDS, dis, 1.0F);
-            this.cooldown= time;
+            this.cooldown = time;
         }
     }
 
