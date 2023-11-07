@@ -6,6 +6,7 @@ import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 
+import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -79,7 +80,7 @@ public class SteelFluidTankItem extends BlockItem {
             return;
         boolean creative = getBlock().equals(AllBlocks.CREATIVE_FLUID_TANK.get());
         SteelFluidTankBlockEntity tankAt = ConnectivityHandler.partAt(
-                creative ? AllBlockEntityTypes.CREATIVE_FLUID_TANK.get() : AllBlockEntityTypes.FLUID_TANK.get(), world, placedOnPos
+                creative ? AllBlockEntityTypes.CREATIVE_FLUID_TANK.get() : AllBlockEntities.STEEL_FLUID_TANK.get(), world, placedOnPos
         );
         if (tankAt == null)
             return;

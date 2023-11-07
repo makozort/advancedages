@@ -11,6 +11,10 @@ import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import net.makozort.advancedages.content.fluid.tank.SteelFluidTankBlock;
+import net.makozort.advancedages.content.fluid.tank.SteelFluidTankGenerator;
+import net.makozort.advancedages.content.fluid.tank.SteelFluidTankItem;
+import net.makozort.advancedages.content.fluid.tank.SteelFluidTankModel;
 import net.makozort.advancedages.content.modblocks.block.hornblocks.*;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Blocks;
@@ -61,16 +65,16 @@ public class AllBlocks {
                     new LiquidBlock(AllFluids.SOURCE_HEAVY_OIL, BlockBehaviour.Properties.copy(Blocks.WATER)))
             .lang("Heavy Oil")
             .register();
-    public static final BlockEntry<FluidTankBlock> STEEL_FLUID_TANK = Create.REGISTRATE.block("steel_fluid_tank", FluidTankBlock::regular)
+    public static final BlockEntry<SteelFluidTankBlock> STEEL_FLUID_TANK = Create.REGISTRATE.block("steel_fluid_tank", SteelFluidTankBlock::regular)
             .initialProperties(SharedProperties::copperMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
             .properties(p -> p.isRedstoneConductor((p1, p2, p3) -> true))
             .transform(pickaxeOnly())
-            .blockstate(new FluidTankGenerator()::generate)
-            .onRegister(CreateRegistrate.blockModel(() -> FluidTankModel::standard))
+            .blockstate(new SteelFluidTankGenerator()::generate)
+            .onRegister(CreateRegistrate.blockModel(() -> SteelFluidTankModel::standard))
             .onRegister(assignDataBehaviour(new BoilerDisplaySource(), "boiler_status"))
             .addLayer(() -> RenderType::cutoutMipped)
-            .item(FluidTankItem::new)
+            .item(SteelFluidTankItem::new)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();

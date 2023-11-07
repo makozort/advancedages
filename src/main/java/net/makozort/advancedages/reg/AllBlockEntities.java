@@ -33,7 +33,7 @@ public class AllBlockEntities {
 
     public static final BlockEntityEntry<SteelFluidTankBlockEntity> STEEL_FLUID_TANK = Create.REGISTRATE
             .blockEntity("steel_fluid_tank", SteelFluidTankBlockEntity::new)
-            .validBlocks(com.simibubi.create.AllBlocks.FLUID_TANK)
+            .validBlocks(AllBlocks.STEEL_FLUID_TANK)
             .renderer(() -> SteelFluidTankRenderer::new)
             .register();
     public static void register() {
