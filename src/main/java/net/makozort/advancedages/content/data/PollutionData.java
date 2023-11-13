@@ -51,7 +51,7 @@ public class PollutionData extends SavedData {
         if (i >= 0) {
             if (!level.isClientSide) {
                 ServerLevel serverLevel = (ServerLevel) level;
-                serverLevel.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 5000, 0.3, 100, 0.3, 0);
+                //serverLevel.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 5000, 0.3, 100, 0.3, 0);
             }
         }
         Pollution pollution = getPollutionInternal(pos);

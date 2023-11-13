@@ -22,22 +22,6 @@
       "model": "advancedages:block/grand_horn_block_on",
       "y": 180
     },
-    "facing=up,lit=false": {
-      "model": "advancedages:block/grand_horn_block_off",
-      "x": 270
-    },
-    "facing=up,lit=true": {
-      "model": "advancedages:block/grand_horn_block_on",
-      "x": 270
-    },
-    "facing=down,lit=false": {
-      "model": "advancedages:block/grand_horn_block_off",
-      "x": 270
-    },
-    "facing=down,lit=true": {
-      "model": "advancedages:block/grand_horn_block_on",
-      "x": 270
-    },
     "facing=west,lit=false": {
       "model": "advancedages:block/grand_horn_block_off",
       "y": 270

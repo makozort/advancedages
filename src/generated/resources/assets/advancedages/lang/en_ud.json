@@ -2,12 +2,14 @@
   "block.advancedages.crude_oil_block": "ןıO ǝpnɹƆ",
   "block.advancedages.gjallar_horn_block": "ʞɔoןᗺ uɹoH ɹɐןןɐظ⅁",
   "block.advancedages.grand_horn_block": "ʞɔoןᗺ uɹoH puɐɹ⅁",
+  "block.advancedages.heavy_oil_block": "ןıO ʎʌɐǝH",
   "block.advancedages.ominous_horn_block": "ʞɔoןᗺ uɹoH snouıɯO",
   "block.advancedages.reaper_horn_block": "ʞɔoןᗺ uɹoH ɹǝdɐǝᴚ",
-  "block.advancedages.refined_oil_block": "ןıO pǝuıɟǝᴚ",
+  "block.advancedages.steel_fluid_tank": "ʞuɐ⟘ pınןℲ ןǝǝʇS",
   "block.advancedages.titan_horn_block": "ʞɔoןᗺ uɹoH uɐʇı⟘",
   "item.advancedages.crude_oil_bucket": "ʇǝʞɔnᗺ ןıO ǝpnɹƆ",
   "item.advancedages.crude_oil_bucket.tooltip.summary": "˙˙˙‾pǝuıɟǝɹ‾ ǝq uɐɔ ʇɐɥʇ pınןɟ ssǝןǝsn Ɐ",
+  "item.advancedages.heavy_oil_bucket": "ʇǝʞɔnᗺ ןıO ʎʌɐǝH",
   "item.advancedages.meat": "ʇɐǝW",
   "item.advancedages.meat_sandwich": "ɥɔıʍpuɐS ʇɐǝW",
   "item.advancedages.oil_scanner": "ɹǝuuɐɔS ןıO",
@@ -17,6 +19,5 @@
   "item.advancedages.pollution_mask": "ʞsɐW uoıʇnןןoԀ",
   "item.advancedages.pollution_mask.tooltip.summary": "ɹǝsn ǝɥʇ oʇ ‾uoıʇnןןod‾ ɯoɹɟ uoıʇɔǝʇoɹd ɟo ʇunoɯɐ uıɐʇɹǝɔ ɐ sǝpıʌoɹd",
   "item.advancedages.pollution_sponge": "ǝbuodS uoıʇnןןoԀ",
-  "item.advancedages.pollution_sponge.tooltip.summary": "snıpɐɹ ʞɔoןq 0Ɛ ɐ uı ןǝʌǝן ‾uoıʇnןןod‾ ǝɥʇ sʇǝsǝɹ",
-  "item.advancedages.refined_oil_bucket": "ʇǝʞɔnᗺ ןıO pǝuıɟǝᴚ"
+  "item.advancedages.pollution_sponge.tooltip.summary": "snıpɐɹ ʞɔoןq 0Ɛ ɐ uı ןǝʌǝן ‾uoıʇnןןod‾ ǝɥʇ sʇǝsǝɹ"
 }

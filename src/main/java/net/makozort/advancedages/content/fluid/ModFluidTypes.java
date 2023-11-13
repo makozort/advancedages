@@ -23,17 +23,17 @@ public class ModFluidTypes {
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
                     .temperature(1500).pathType(BlockPathTypes.LAVA).adjacentPathType(null)
                     .canSwim(true).canDrown(true).fallDistanceModifier(-1),
-            new ResourceLocation(AdvancedAges.MOD_ID, "fluid/crude_oil_still"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "fluid/crude_oil_flow"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "fluid/in_crude_oil")
+            new ResourceLocation(AdvancedAges.MOD_ID, "fluid/crude_oil_still"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "fluid/crude_oil_flow"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "fluid/crude_oil_flow")
     );
 
 
-    public static final RegistryObject<FluidType> HEAVY_OIL_TYPE = register("refined_oil_fluid",
+    public static final RegistryObject<FluidType> HEAVY_OIL_TYPE = register("heavy_oil_fluid",
             FluidType.Properties.create().lightLevel(15).density(3000).viscosity(6000)
                     .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
                     .temperature(1500).pathType(BlockPathTypes.LAVA).adjacentPathType(null)
                     .canSwim(true).canDrown(true).fallDistanceModifier(-1),
-            new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "fluid/heavy_oil_still"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "fluid/heavy_oil_flow"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "fluid/in_heavy_oil")
+            new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "fluid/heavy_oil_still"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "fluid/heavy_oil_flow"), new ResourceLocation(net.makozort.advancedages.AdvancedAges.MOD_ID, "fluid/heavy_oil_flow")
     );
 
 

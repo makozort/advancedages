@@ -65,7 +65,7 @@ public class AllBlocks {
                     new LiquidBlock(AllFluids.SOURCE_HEAVY_OIL, BlockBehaviour.Properties.copy(Blocks.WATER)))
             .lang("Heavy Oil")
             .register();
-    public static final BlockEntry<SteelFluidTankBlock> STEEL_FLUID_TANK = Create.REGISTRATE.block("steel_fluid_tank", SteelFluidTankBlock::regular)
+    public static final BlockEntry<SteelFluidTankBlock> STEEL_FLUID_TANK = REGISTRATE.block("steel_fluid_tank", SteelFluidTankBlock::regular)
             .initialProperties(SharedProperties::copperMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
             .properties(p -> p.isRedstoneConductor((p1, p2, p3) -> true))
