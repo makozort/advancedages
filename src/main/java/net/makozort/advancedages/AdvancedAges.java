@@ -30,10 +30,8 @@ public class AdvancedAges {
     public static final CreateRegistrate REGISTRATE = ModRegistrate.REGISTRATE;
 
     static {
-        REGISTRATE.setTooltipModifierFactory(item -> {
-            return new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
-                    .andThen(TooltipModifier.mapNull(KineticStats.create(item)));
-        });
+        REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
+                .andThen(TooltipModifier.mapNull(KineticStats.create(item))));
     }
 
     public AdvancedAges() {

@@ -4,7 +4,7 @@ import com.simibubi.create.AllTags;
 import com.simibubi.create.content.equipment.armor.AllArmorMaterials;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.moditems.*;
+import net.makozort.advancedages.content.items.*;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;

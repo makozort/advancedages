@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.moditems;
+package net.makozort.advancedages.content.items;
 
 import com.simibubi.create.content.equipment.armor.BaseArmorItem;
 import net.minecraft.resources.ResourceLocation;

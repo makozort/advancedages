@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.fluid.tank;
+package net.makozort.advancedages.content.items;
 
 
 
@@ -6,6 +6,8 @@ import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 
+import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
+import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
 import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -88,7 +90,7 @@ public class SteelFluidTankItem extends BlockItem {
         if (controllerBE == null)
             return;
 
-        int width = controllerBE.width;
+        int width = controllerBE.getWidth();
         if (width == 1)
             return;
 
@@ -96,7 +98,7 @@ public class SteelFluidTankItem extends BlockItem {
         BlockPos startPos = face == Direction.DOWN ? controllerBE.getBlockPos()
                 .below()
                 : controllerBE.getBlockPos()
-                .above(controllerBE.height);
+                .above(controllerBE.getHeight());
 
         if (startPos.getY() != pos.getY())
             return;

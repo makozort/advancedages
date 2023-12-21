@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SteelBoilerHeaters {
+public class RefineryHeaters {
     private static final AttachedRegistry<Block, Heater> BLOCK_HEATERS = new AttachedRegistry<>(ForgeRegistries.BLOCKS);
     private static final List<HeaterProvider> GLOBAL_HEATERS = new ArrayList<>();
 

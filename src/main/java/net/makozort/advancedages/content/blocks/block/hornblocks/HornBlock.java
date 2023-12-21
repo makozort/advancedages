@@ -1,6 +1,6 @@
-package net.makozort.advancedages.content.modblocks.block.hornblocks;
+package net.makozort.advancedages.content.blocks.block.hornblocks;
 
-import net.makozort.advancedages.content.modblocks.Entity.HornBlockEntity;
+import net.makozort.advancedages.content.blocks.Entity.HornBlockEntity;
 import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

@@ -1,10 +1,8 @@
-package net.makozort.advancedages.content.fluid.tank;
+package net.makozort.advancedages.content.blocks.block.oil;
 
-import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.fluids.tank.CreativeFluidTankBlockEntity.CreativeSmartFluidTank;
-import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
 import com.simibubi.create.content.fluids.transfer.GenericItemEmptying;
 import com.simibubi.create.content.fluids.transfer.GenericItemFilling;
 import com.simibubi.create.foundation.advancement.AdvancementBehaviour;
@@ -14,6 +12,7 @@ import com.simibubi.create.foundation.fluid.FluidHelper;
 import com.simibubi.create.foundation.fluid.FluidHelper.FluidExchange;
 import com.simibubi.create.foundation.utility.Lang;
 
+import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
 import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -54,8 +53,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.util.ForgeSoundType;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+
+import static net.minecraftforge.fluids.capability.CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
 
 public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<SteelFluidTankBlockEntity> {
 
@@ -63,14 +63,8 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
     public static final BooleanProperty BOTTOM = BooleanProperty.create("bottom");
     public static final EnumProperty<Shape> SHAPE = EnumProperty.create("shape", Shape.class);
 
-    private boolean creative;
-
     public static SteelFluidTankBlock regular(Properties p_i48440_1_) {
         return new SteelFluidTankBlock(p_i48440_1_, false);
-    }
-
-    public static SteelFluidTankBlock creative(Properties p_i48440_1_) {
-        return new SteelFluidTankBlock(p_i48440_1_, true);
     }
 
     @Override
@@ -81,7 +75,6 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
 
     protected SteelFluidTankBlock(Properties p_i48440_1_, boolean creative) {
         super(p_i48440_1_);
-        this.creative = creative;
         registerDefaultState(defaultBlockState().setValue(TOP, true)
                 .setValue(BOTTOM, true)
                 .setValue(SHAPE, Shape.WINDOW));
@@ -111,9 +104,9 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
         if (tankAt == null)
             return 0;
         SteelFluidTankBlockEntity controllerBE = tankAt.getControllerBE();
-        if (controllerBE == null || !controllerBE.window)
+        if (controllerBE == null || !controllerBE.isWindow())
             return 0;
-        return tankAt.luminosity;
+        return tankAt.getLuminosity();
     }
 
     @Override
@@ -153,7 +146,7 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
 
         if (heldItem.isEmpty())
             return InteractionResult.PASS;
-        if (!player.isCreative() && !creative)
+        if (!player.isCreative())
             return InteractionResult.PASS;
 
         FluidExchange exchange = null;
@@ -161,7 +154,7 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
         if (be == null)
             return InteractionResult.FAIL;
 
-        LazyOptional<IFluidHandler> tankCapability = be.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY);
+        LazyOptional<IFluidHandler> tankCapability = be.getCapability(FLUID_HANDLER_CAPABILITY);
         if (!tankCapability.isPresent())
             return InteractionResult.PASS;
         IFluidHandler fluidTank = tankCapability.orElse(null);
@@ -186,13 +179,6 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
                 .orElse(FluidStack.EMPTY);
 
         if (exchange == FluidExchange.ITEM_TO_TANK) {
-            if (creative && !onClient) {
-                FluidStack fluidInItem = GenericItemEmptying.emptyItem(world, heldItem, true)
-                        .getFirst();
-                if (!fluidInItem.isEmpty() && fluidTank instanceof CreativeSmartFluidTank)
-                    ((CreativeSmartFluidTank) fluidTank).setContainedFluid(fluidInItem);
-            }
-
             Fluid fluid = fluidInTank.getFluid();
             fluidState = fluid.defaultFluidState()
                     .createLegacyBlock();
@@ -200,10 +186,6 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
         }
 
         if (exchange == FluidExchange.TANK_TO_ITEM) {
-            if (creative && !onClient)
-                if (fluidTank instanceof CreativeSmartFluidTank)
-                    ((CreativeSmartFluidTank) fluidTank).setContainedFluid(FluidStack.EMPTY);
-
             Fluid fluid = prevFluidInTank.getFluid();
             fluidState = fluid.defaultFluidState()
                     .createLegacyBlock();
@@ -236,7 +218,7 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
 
                         Vec3 vec = ray.getLocation();
                         vec = new Vec3(vec.x, controllerBE.getBlockPos()
-                                .getY() + level * (controllerBE.height - .5f) + .25f, vec.z);
+                                .getY() + level * (controllerBE.getHeight() - .5f) + .25f, vec.z);
                         Vec3 motion = player.position()
                                 .subtract(vec)
                                 .scale(1 / 20f);
@@ -273,7 +255,7 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
 
     @Override
     public BlockEntityType<? extends SteelFluidTankBlockEntity> getBlockEntityType() {
-        return creative ? AllBlockEntities.STEEL_CREATIVE_FLUID_TANK.get() : AllBlockEntities.STEEL_FLUID_TANK.get();
+        return AllBlockEntities.STEEL_FLUID_TANK.get();
     }
 
     @Override

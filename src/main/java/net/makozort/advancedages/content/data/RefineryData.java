@@ -1,9 +1,13 @@
-package net.makozort.advancedages.content.fluid.tank;
+package net.makozort.advancedages.content.data;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
+import net.makozort.advancedages.content.blocks.block.oil.OilFilterBlock;
+import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
+import net.makozort.advancedages.content.fluid.tank.RefineryHeaters;
 import org.jetbrains.annotations.NotNull;
 
 import com.simibubi.create.AllBlocks;
@@ -12,7 +16,6 @@ import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleBlockEntity;
 import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.content.kinetics.BlockStressValues;
-import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
 import com.simibubi.create.foundation.advancement.AdvancementBehaviour;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.fluid.FluidHelper;
@@ -35,7 +38,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
-public class SteelBoilerData {
+public class RefineryData {
 
     static final int SAMPLE_RATE = 5;
 
@@ -54,8 +57,7 @@ public class SteelBoilerData {
     public int activeHeat;
 
     public float waterSupply;
-    public int attachedEngines;
-    public int attachedWhistles;
+    public int attachedFilters;
 
     // display
     private int maxHeatForSize = 0;
@@ -80,7 +82,7 @@ public class SteelBoilerData {
         ticksUntilNextSample--;
         if (ticksUntilNextSample > 0)
             return;
-        int capacity = controller.tankInventory.getCapacity();
+        int capacity = controller.getTankInventory().getCapacity();
         if (capacity == 0)
             return;
 
@@ -95,9 +97,6 @@ public class SteelBoilerData {
             for (float i : supplyOverTime)
                 waterSupply = Math.max(i, waterSupply);
         }
-
-        if (controller instanceof SteelCreativeFluidTankBlockEntity)
-            waterSupply = waterSupplyPerLevel * 20;
 
         if (getActualHeat(controller.getTotalTankSize()) == 18)
             controller.award(AllAdvancements.STEAM_ENGINE_MAXED);
@@ -128,11 +127,11 @@ public class SteelBoilerData {
 
     public float getEngineEfficiency(int boilerSize) {
         if (isPassive(boilerSize))
-            return passiveEngineEfficiency / attachedEngines;
+            return passiveEngineEfficiency / attachedFilters;
         if (activeHeat == 0)
             return 0;
         int actualHeat = getActualHeat(boilerSize);
-        return attachedEngines <= actualHeat ? 1 : (float) actualHeat / attachedEngines;
+        return attachedFilters <= actualHeat ? 1 : (float) actualHeat / attachedFilters;
     }
 
     private int getActualHeat(int boilerSize) {
@@ -161,16 +160,16 @@ public class SteelBoilerData {
         tooltip.add(indent2.plainCopy()
                 .append(getHeatComponent(true, false)));
 
-        if (attachedEngines == 0)
+        if (attachedFilters == 0)
             return true;
 
         int boilerLevel = Math.min(activeHeat, Math.min(maxHeatForWater, maxHeatForSize));
-        double totalSU = getEngineEfficiency(boilerSize) * 16 * Math.max(boilerLevel, attachedEngines)
+        double totalSU = getEngineEfficiency(boilerSize) * 16 * Math.max(boilerLevel, attachedFilters)
                 * BlockStressValues.getCapacity(AllBlocks.STEAM_ENGINE.get());
 
         tooltip.add(Components.immutableEmpty());
 
-        if (attachedEngines > 0 && maxHeatForSize > 0 && maxHeatForWater == 0 && (passiveHeat ? 1 : activeHeat) > 0) {
+        if (attachedFilters > 0 && maxHeatForSize > 0 && maxHeatForWater == 0 && (passiveHeat ? 1 : activeHeat) > 0) {
             Lang.translate("boiler.water_input_rate")
                     .style(ChatFormatting.GRAY)
                     .forGoggles(tooltip);
@@ -194,8 +193,8 @@ public class SteelBoilerData {
                 .translate("generic.unit.stress")
                 .style(ChatFormatting.AQUA)
                 .space()
-                .add((attachedEngines == 1 ? Lang.translate("boiler.via_one_engine")
-                        : Lang.translate("boiler.via_engines", attachedEngines)).style(ChatFormatting.DARK_GRAY))
+                .add((attachedFilters == 1 ? Lang.translate("boiler.via_one_engine")
+                        : Lang.translate("boiler.via_engines", attachedFilters)).style(ChatFormatting.DARK_GRAY))
                 .forGoggles(tooltip, 1);
 
         return true;
@@ -272,14 +271,12 @@ public class SteelBoilerData {
     public boolean evaluate(SteelFluidTankBlockEntity controller) {
         BlockPos controllerPos = controller.getBlockPos();
         Level level = controller.getLevel();
-        int prevEngines = attachedEngines;
-        int prevWhistles = attachedWhistles;
-        attachedEngines = 0;
-        attachedWhistles = 0;
+        int prevEngines = attachedFilters;
+        attachedFilters = 0;
 
-        for (int yOffset = 0; yOffset < controller.height; yOffset++) {
-            for (int xOffset = 0; xOffset < controller.width; xOffset++) {
-                for (int zOffset = 0; zOffset < controller.width; zOffset++) {
+        for (int yOffset = 0; yOffset < controller.getHeight(); yOffset++) {
+            for (int xOffset = 0; xOffset < controller.getWidth(); xOffset++) {
+                for (int zOffset = 0; zOffset < controller.getWidth(); zOffset++) {
 
                     BlockPos pos = controllerPos.offset(xOffset, yOffset, zOffset);
                     BlockState blockState = level.getBlockState(pos);
@@ -288,19 +285,15 @@ public class SteelBoilerData {
                     for (Direction d : Iterate.directions) {
                         BlockPos attachedPos = pos.relative(d);
                         BlockState attachedState = level.getBlockState(attachedPos);
-                        if (AllBlocks.STEAM_ENGINE.has(attachedState) && SteamEngineBlock.getFacing(attachedState) == d)
-                            attachedEngines++;
-                        if (AllBlocks.STEAM_WHISTLE.has(attachedState)
-                                && WhistleBlock.getAttachedDirection(attachedState)
-                                .getOpposite() == d)
-                            attachedWhistles++;
+                        if (AllBlocks.STEAM_ENGINE.has(attachedState) && OilFilterBlock.getFacing(attachedState) == d)
+                            attachedFilters++;
                     }
                 }
             }
         }
 
         needsHeatLevelUpdate = true;
-        return prevEngines != attachedEngines || prevWhistles != attachedWhistles;
+        return prevEngines != attachedFilters;
     }
 
     public void checkPipeOrganAdvancement(SteelFluidTankBlockEntity controller) {
@@ -312,9 +305,9 @@ public class SteelBoilerData {
         Level level = controller.getLevel();
         Set<Integer> whistlePitches = new HashSet<>();
 
-        for (int yOffset = 0; yOffset < controller.height; yOffset++) {
-            for (int xOffset = 0; xOffset < controller.width; xOffset++) {
-                for (int zOffset = 0; zOffset < controller.width; zOffset++) {
+        for (int yOffset = 0; yOffset < controller.getHeight(); yOffset++) {
+            for (int xOffset = 0; xOffset < controller.getWidth(); xOffset++) {
+                for (int zOffset = 0; zOffset < controller.getWidth(); zOffset++) {
 
                     BlockPos pos = controllerPos.offset(xOffset, yOffset, zOffset);
                     BlockState blockState = level.getBlockState(pos);
@@ -348,11 +341,11 @@ public class SteelBoilerData {
         passiveHeat = false;
         activeHeat = 0;
 
-        for (int xOffset = 0; xOffset < controller.width; xOffset++) {
-            for (int zOffset = 0; zOffset < controller.width; zOffset++) {
+        for (int xOffset = 0; xOffset < controller.getWidth(); xOffset++) {
+            for (int zOffset = 0; zOffset < controller.getWidth(); zOffset++) {
                 BlockPos pos = controllerPos.offset(xOffset, -1, zOffset);
                 BlockState blockState = level.getBlockState(pos);
-                float heat = SteelBoilerHeaters.getActiveHeat(level, pos, blockState);
+                float heat = RefineryHeaters.getActiveHeat(level, pos, blockState);
                 if (heat == 0) {
                     passiveHeat = true;
                 } else if (heat > 0) {
@@ -367,14 +360,14 @@ public class SteelBoilerData {
     }
 
     public boolean isActive() {
-        return attachedEngines > 0 || attachedWhistles > 0;
+        return attachedFilters > 0;
     }
 
     public void clear() {
         waterSupply = 0;
         activeHeat = 0;
         passiveHeat = false;
-        attachedEngines = 0;
+        attachedFilters = 0;
         Arrays.fill(supplyOverTime, 0);
     }
 
@@ -383,8 +376,7 @@ public class SteelBoilerData {
         nbt.putFloat("Supply", waterSupply);
         nbt.putInt("ActiveHeat", activeHeat);
         nbt.putBoolean("PassiveHeat", passiveHeat);
-        nbt.putInt("Engines", attachedEngines);
-        nbt.putInt("Whistles", attachedWhistles);
+        nbt.putInt("Filters", attachedFilters);
         nbt.putBoolean("Update", needsHeatLevelUpdate);
         return nbt;
     }
@@ -393,8 +385,7 @@ public class SteelBoilerData {
         waterSupply = nbt.getFloat("Supply");
         activeHeat = nbt.getInt("ActiveHeat");
         passiveHeat = nbt.getBoolean("PassiveHeat");
-        attachedEngines = nbt.getInt("Engines");
-        attachedWhistles = nbt.getInt("Whistles");
+        attachedFilters = nbt.getInt("Filters");
         needsHeatLevelUpdate = nbt.getBoolean("Update");
         Arrays.fill(supplyOverTime, (int) waterSupply);
 

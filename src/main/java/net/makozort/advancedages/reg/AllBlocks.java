@@ -1,21 +1,17 @@
 package net.makozort.advancedages.reg;
 
 
-import com.simibubi.create.Create;
-import com.simibubi.create.content.fluids.tank.FluidTankBlock;
-import com.simibubi.create.content.fluids.tank.FluidTankGenerator;
-import com.simibubi.create.content.fluids.tank.FluidTankItem;
-import com.simibubi.create.content.fluids.tank.FluidTankModel;
 import com.simibubi.create.content.redstone.displayLink.source.BoilerDisplaySource;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.makozort.advancedages.content.fluid.tank.SteelFluidTankBlock;
+import net.makozort.advancedages.content.blocks.block.oil.OilFilterBlock;
+import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
 import net.makozort.advancedages.content.fluid.tank.SteelFluidTankGenerator;
-import net.makozort.advancedages.content.fluid.tank.SteelFluidTankItem;
+import net.makozort.advancedages.content.items.SteelFluidTankItem;
 import net.makozort.advancedages.content.fluid.tank.SteelFluidTankModel;
-import net.makozort.advancedages.content.modblocks.block.hornblocks.*;
+import net.makozort.advancedages.content.blocks.block.hornblocks.*;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -57,15 +53,18 @@ public class AllBlocks {
             .register();
 
 
-    public static final BlockEntry<LiquidBlock> CRUDE_OIL_BLOCK = REGISTRATE.block("crude_oil_block", b ->
+    public static final BlockEntry<LiquidBlock> CRUDE_OIL_BLOCK = REGISTRATE
+            .block("crude_oil_block", b ->
                     new LiquidBlock(AllFluids.SOURCE_CRUDE_OIL, BlockBehaviour.Properties.copy(Blocks.LAVA)))
             .lang("Crude Oil")
             .register();
-    public static final BlockEntry<LiquidBlock> HEAVY_OIL_BLOCK = REGISTRATE.block("heavy_oil_block", b ->
+    public static final BlockEntry<LiquidBlock> HEAVY_OIL_BLOCK = REGISTRATE
+            .block("heavy_oil_block", b ->
                     new LiquidBlock(AllFluids.SOURCE_HEAVY_OIL, BlockBehaviour.Properties.copy(Blocks.WATER)))
             .lang("Heavy Oil")
             .register();
-    public static final BlockEntry<SteelFluidTankBlock> STEEL_FLUID_TANK = REGISTRATE.block("steel_fluid_tank", SteelFluidTankBlock::regular)
+    public static final BlockEntry<SteelFluidTankBlock> STEEL_FLUID_TANK = REGISTRATE
+            .block("steel_fluid_tank", SteelFluidTankBlock::regular)
             .initialProperties(SharedProperties::copperMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
             .properties(p -> p.isRedstoneConductor((p1, p2, p3) -> true))
@@ -77,6 +76,13 @@ public class AllBlocks {
             .item(SteelFluidTankItem::new)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
+            .register();
+    public static final BlockEntry<OilFilterBlock> OIL_FILTER = REGISTRATE
+            .block("oil_filter", OilFilterBlock::new)
+            .initialProperties(SharedProperties::copperMetal)
+            .transform(pickaxeOnly())
+            .lang("Oil Filter")
+            .simpleItem()
             .register();
     public static void register() {
     }

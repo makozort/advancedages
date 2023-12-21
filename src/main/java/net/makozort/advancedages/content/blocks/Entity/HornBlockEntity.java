@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.modblocks.Entity;
+package net.makozort.advancedages.content.blocks.Entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;

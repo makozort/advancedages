@@ -7,12 +7,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.simibubi.create.AllSpriteShifts;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 import com.simibubi.create.foundation.block.connected.CTModel;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.utility.Iterate;
 
+import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankCTBehaviour;
+import net.makozort.advancedages.reg.AllSpriteShifts;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.BakedModel;
@@ -30,13 +31,8 @@ public class SteelFluidTankModel extends CTModel {
     protected static final ModelProperty<CullData> CULL_PROPERTY = new ModelProperty<>();
 
     public static SteelFluidTankModel standard(BakedModel originalModel) {
-        return new SteelFluidTankModel(originalModel, AllSpriteShifts.FLUID_TANK, AllSpriteShifts.FLUID_TANK_TOP,
-                AllSpriteShifts.FLUID_TANK_INNER);
-    }
-
-    public static SteelFluidTankModel creative(BakedModel originalModel) {
-        return new SteelFluidTankModel(originalModel, AllSpriteShifts.CREATIVE_FLUID_TANK, AllSpriteShifts.CREATIVE_CASING,
-                AllSpriteShifts.CREATIVE_CASING);
+        return new SteelFluidTankModel(originalModel, AllSpriteShifts.STEEL_FLUID_TANK, AllSpriteShifts.STEEL_FLUID_TANK_TOP,
+                AllSpriteShifts.STEEL_FLUID_TANK_INNER);
     }
 
     private SteelFluidTankModel(BakedModel originalModel, CTSpriteShiftEntry side, CTSpriteShiftEntry top,

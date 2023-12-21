@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.modblocks.block.hornblocks;
+package net.makozort.advancedages.content.blocks.block.hornblocks;
 
 import net.makozort.advancedages.reg.AllSoundEvents;
 import net.minecraft.sounds.SoundEvent;

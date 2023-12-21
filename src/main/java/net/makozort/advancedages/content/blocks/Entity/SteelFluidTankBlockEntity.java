@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.fluid.tank;
+package net.makozort.advancedages.content.blocks.Entity;
 
 import static java.lang.Math.abs;
 
@@ -6,7 +6,9 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import net.makozort.advancedages.content.fluid.tank.SteelFluidTankBlock.Shape;
+
+import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
+import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock.Shape;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
@@ -18,6 +20,7 @@ import com.simibubi.create.foundation.utility.animation.LerpedFloat;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat.Chaser;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 
+import net.makozort.advancedages.content.data.RefineryData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -53,7 +56,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     protected int width;
     protected int height;
 
-    public SteelBoilerData boiler;
+    public RefineryData refinery;
 
     private static final int SYNC_RATE = 8;
     protected int syncCooldown;
@@ -71,7 +74,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         window = true;
         height = 1;
         width = 1;
-        boiler = new SteelBoilerData();
+        refinery = new RefineryData();
         refreshCapability();
     }
 
@@ -79,7 +82,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         return new SmartFluidTank(getCapacityMultiplier(), this::onFluidStackChanged);
     }
 
-    protected void updateConnectivity() {
+    public void updateConnectivity() {
         updateConnectivity = false;
         if (level.isClientSide)
             return;
@@ -109,7 +112,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         if (fluidLevel != null)
             fluidLevel.tickChaser();
         if (isController())
-            boiler.tick(this);
+            refinery.tick(this);
     }
 
     @Override
@@ -215,7 +218,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         controller = null;
         width = 1;
         height = 1;
-        boiler.clear();
+        refinery.clear();
         onFluidStackChanged(tankInventory.getFluid());
 
         BlockState state = getBlockState();
@@ -235,7 +238,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         SteelFluidTankBlockEntity be = getControllerBE();
         if (be == null)
             return;
-        if (be.boiler.isActive())
+        if (be.refinery.isActive())
             return;
         be.setWindows(!be.window);
     }
@@ -244,9 +247,9 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         SteelFluidTankBlockEntity be = getControllerBE();
         if (be == null)
             return;
-        if (!be.boiler.isActive())
+        if (!be.refinery.isActive())
             return;
-        be.boiler.needsHeatLevelUpdate = true;
+        be.refinery.needsHeatLevelUpdate = true;
     }
 
     public void sendDataImmediately() {
@@ -304,11 +307,11 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         if (!isController())
             return;
 
-        boolean wasBoiler = boiler.isActive();
-        boolean changed = boiler.evaluate(this);
+        boolean wasBoiler = refinery.isActive();
+        boolean changed = refinery.evaluate(this);
 
-        if (wasBoiler != boiler.isActive()) {
-            if (boiler.isActive())
+        if (wasBoiler != refinery.isActive()) {
+            if (refinery.isActive())
                 setWindows(false);
 
             for (int yOffset = 0; yOffset < height; yOffset++)
@@ -321,7 +324,6 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
 
         if (changed) {
             notifyUpdate();
-            boiler.checkPipeOrganAdvancement(this);
         }
     }
 
@@ -344,7 +346,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     }
 
     private IFluidHandler handlerForCapability() {
-        return isController() ? boiler.isActive() ? boiler.createHandler() : tankInventory
+        return isController() ? refinery.isActive() ? refinery.createHandler() : tankInventory
                 : getControllerBE() != null ? getControllerBE().handlerForCapability() : new FluidTank(0);
     }
 
@@ -374,7 +376,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         SteelFluidTankBlockEntity controllerBE = getControllerBE();
         if (controllerBE == null)
             return false;
-        if (controllerBE.boiler.addToGoggleTooltip(tooltip, isPlayerSneaking, controllerBE.getTotalTankSize()))
+        if (controllerBE.refinery.addToGoggleTooltip(tooltip, isPlayerSneaking, controllerBE.getTotalTankSize()))
             return true;
         return containedFluidTooltip(tooltip, isPlayerSneaking,
                 controllerBE.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY));
@@ -409,7 +411,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
                 tankInventory.drain(-tankInventory.getSpace(), FluidAction.EXECUTE);
         }
 
-        boiler.read(compound.getCompound("Boiler"), width * width * height);
+        refinery.read(compound.getCompound("Refinery"), width * width * height);
 
         if (compound.contains("ForceFluidLevel") || fluidLevel == null)
             fluidLevel = LerpedFloat.linear()
@@ -451,7 +453,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     public void write(CompoundTag compound, boolean clientPacket) {
         if (updateConnectivity)
             compound.putBoolean("Uninitialized", true);
-        compound.put("Boiler", boiler.write());
+        compound.put("Refinery", refinery.write());
         if (lastKnownPos != null)
             compound.put("LastKnownPos", NbtUtils.writeBlockPos(lastKnownPos));
         if (!isController())
@@ -472,6 +474,14 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         if (queuedSync)
             compound.putBoolean("LazySync", true);
         forceFluidLevelUpdate = false;
+    }
+
+    public int getLuminosity() {
+        return luminosity;
+    }
+
+    public boolean isWindow() {
+        return window;
     }
 
     @Nonnull
