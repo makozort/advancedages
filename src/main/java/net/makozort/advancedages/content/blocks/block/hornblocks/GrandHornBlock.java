@@ -1,5 +1,6 @@
 package net.makozort.advancedages.content.blocks.block.hornblocks;
 
+
 import net.makozort.advancedages.reg.AllSoundEvents;
 import net.minecraft.sounds.SoundEvent;
 
@@ -12,4 +13,8 @@ public class GrandHornBlock extends HornBlock {
     public SoundEvent GetSoundEvent() {
         return AllSoundEvents.GRAND_HORN.get();
     }
+
+
+    @Override
+    public int ScreenShakeDuration() {return 300;}
 }

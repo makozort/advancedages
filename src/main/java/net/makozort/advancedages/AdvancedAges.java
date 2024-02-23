@@ -1,16 +1,21 @@
 package net.makozort.advancedages;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
+import com.simibubi.create.infrastructure.data.CreateDatagen;
 import net.makozort.advancedages.content.effect.ModEffects;
 import net.makozort.advancedages.content.fluid.ModFluidTypes;
 import net.makozort.advancedages.reg.*;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -21,6 +26,7 @@ import org.slf4j.LoggerFactory;
 
 @Mod(net.makozort.advancedages.AdvancedAges.MOD_ID)
 public class AdvancedAges {
+
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "advancedages";
     // Directly reference a slf4j logger
@@ -39,10 +45,13 @@ public class AdvancedAges {
         REGISTRATE.registerEventListeners(modEventBus);
         AllBlocks.register();
         AllBlockEntities.register();
+        AllCreativeModeTabs.register(modEventBus);
         Allitems.register();
+
+
+
         AllFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
-        ModCreativeModeTab.register();
         ModEffects.register(modEventBus);
         AllSoundEvents.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
@@ -51,7 +60,7 @@ public class AdvancedAges {
     }
 
     private void register(RegisterEvent event) {
-        event.register(Registry.FEATURE_REGISTRY, new ResourceLocation(MOD_ID, "very_large_lake"), () -> AllFeatures.VERY_LARGE_LAKE);
+        //event.register(Registry.FEATURE_REGISTRY, new ResourceLocation(MOD_ID, "very_large_lake"), () -> AllFeatures.VERY_LARGE_LAKE);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

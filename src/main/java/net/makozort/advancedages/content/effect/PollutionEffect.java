@@ -1,6 +1,9 @@
 package net.makozort.advancedages.content.effect;
 
+import net.minecraft.world.damagesource.DamageEffects;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -77,7 +80,7 @@ public class PollutionEffect extends MobEffect {
                     Random rand = new Random();
                     int roll = rand.nextInt(80);
                     if (roll == hit) {
-                        pLivingEntity.hurt(new DamageSource("Pollution_Sickness"), 4);
+                        pLivingEntity.hurt(pLivingEntity.level().damageSources().generic(),4);
                     }
             }
         }

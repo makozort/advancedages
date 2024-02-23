@@ -38,6 +38,5 @@ public abstract class FurnaceMixin extends BlockEntity {
                 PollutionData.get(this.level).changePollution(this.getBlockPos(), .25, this.level);
             }
         }
-
     }
 }

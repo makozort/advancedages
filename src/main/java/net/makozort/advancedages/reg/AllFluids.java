@@ -39,6 +39,18 @@ public class AllFluids {
             .tickRate(30);
 
 
+
+    //public static final RegistryObject<FlowingFluid> SOURCE_LIQUID_MEAT = FLUIDS.register("liquid_meat_fluid",
+    //        () -> new ForgeFlowingFluid.Source(AllFluids.LIQUID_MEAT_FLUID_PROPERTIES));
+    //public static final RegistryObject<FlowingFluid> FLOWING_LIQUID_MEAT = FLUIDS.register("flowing_liquid_meat",
+    //        () -> new ForgeFlowingFluid.Flowing(AllFluids.LIQUID_MEAT_FLUID_PROPERTIES));
+
+    //public static final ForgeFlowingFluid.Properties LIQUID_MEAT_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
+    //        ModFluidTypes.LIQUID_MEAT_TYPE, SOURCE_LIQUID_MEAT, FLOWING_LIQUID_MEAT)
+    //        .slopeFindDistance(3).levelDecreasePerBlock(2).block(AllBlocks.LIQUID_MEAT_BLOCK)
+    //        .bucket(Allitems.LIQUID_MEAT_BUCKET)
+    //        .tickRate(30);
+
     public static void register(IEventBus eventBus) {
         FLUIDS.register(eventBus);
     }

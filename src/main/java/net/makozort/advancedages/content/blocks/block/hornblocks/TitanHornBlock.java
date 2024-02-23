@@ -1,5 +1,6 @@
 package net.makozort.advancedages.content.blocks.block.hornblocks;
 
+
 import net.makozort.advancedages.reg.AllSoundEvents;
 import net.minecraft.sounds.SoundEvent;
 
@@ -14,5 +15,8 @@ public class TitanHornBlock extends HornBlock {
     public SoundEvent GetSoundEvent() {
         return AllSoundEvents.TITAN_HORN.get();
     }
+
+    @Override
+    public int ScreenShakeDuration() {return 160;}
 
 }

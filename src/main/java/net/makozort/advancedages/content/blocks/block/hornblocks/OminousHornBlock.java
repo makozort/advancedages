@@ -12,4 +12,7 @@ public class OminousHornBlock extends HornBlock {
     public SoundEvent GetSoundEvent() {
         return AllSoundEvents.OMINOUS_HORN.get();
     }
+    @Override
+    public int ScreenShakeDuration() {return 160;}
+
 }

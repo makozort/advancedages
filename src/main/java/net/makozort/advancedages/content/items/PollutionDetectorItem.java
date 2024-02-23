@@ -20,20 +20,24 @@ public class PollutionDetectorItem extends Item {
     }
 
 
+    double localPollution = 0.0;
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        if (player.getLevel() instanceof ServerLevel) {
-            Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(player.level).getMap();
+        if (player.level() instanceof ServerLevel) {
+            Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(player.level()).getMap();
             map.forEach((BlockPos, pollution) -> {
                 int distance = (player.getOnPos().distManhattan(BlockPos));
                 if (distance <= 500) {
                     if (pollution.getPollution() > 0) {
                         player.sendSystemMessage(Component.literal("pollution level " + pollution.getPollution() + " found at " + BlockPos).withStyle(ChatFormatting.RED));
+                        localPollution = (localPollution + pollution.getPollution());
                     }
                 }
             });
+            player.sendSystemMessage(Component.literal("Total Local Pollution Level " + localPollution).withStyle(ChatFormatting.YELLOW));
         }
         player.getItemInHand(hand).hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
+        localPollution = 0;
         return super.use(level, player, hand);
     }
 }

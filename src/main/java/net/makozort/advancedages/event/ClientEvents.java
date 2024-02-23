@@ -16,11 +16,7 @@ public class ClientEvents {
             public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
                 event.registerAboveAll("mask", MaskHudOverlay.HUD_MASK);
             }
-            //@SubscribeEvent
-            //public static void onClientSetup(FMLClientSetupEvent event) {
-            //    ItemBlockRenderTypes.setRenderLayer(Allfluids.SOURCE_CRUDE_OIL.get(), RenderType.translucent());
-            //    ItemBlockRenderTypes.setRenderLayer(Allfluids.FLOWING_CRUDE_OIL.get(), RenderType.translucent());
-            //}
+
 
         }
     }

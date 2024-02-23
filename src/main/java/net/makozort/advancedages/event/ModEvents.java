@@ -1,6 +1,7 @@
 package net.makozort.advancedages.event;
 
 import com.simibubi.create.content.kinetics.saw.SawBlock;
+import com.simibubi.create.foundation.damageTypes.CreateDamageSources;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.content.data.PollutionData;
@@ -42,8 +43,8 @@ public class ModEvents extends BlockEntity {
         @SubscribeEvent
         public static void onLiving(LivingEvent.LivingTickEvent event) {
             Entity entity = event.getEntity();
-            if (entity.getLevel() instanceof ServerLevel) {
-                Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(entity.level).getMap();
+            if (entity.level() instanceof ServerLevel) {
+                Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(entity.level()).getMap();
                 List<Double> list = new ArrayList<>();
                 map.forEach((BlockPos, pollution) -> { // this loops through every entry in the pollution and checks if is close enough, applying effects based on the level
                     int distance = (entity.getOnPos().distManhattan(BlockPos));
@@ -81,10 +82,10 @@ public class ModEvents extends BlockEntity {
         @SubscribeEvent
         public static void sawHurt(LivingHurtEvent event) { // villager meat
             Entity entity = event.getEntity();
-            Level world = event.getEntity().getLevel();
-            if (entity.getLevel() instanceof ServerLevel) {
+            Level world = event.getEntity().level();
+            if (entity.level() instanceof ServerLevel) {
                 if (entity instanceof Villager) {
-                    if (event.getSource() == SawBlock.damageSourceSaw) {
+                    if (event.getSource() == CreateDamageSources.saw(entity.level())) {
                         world.addFreshEntity(new ItemEntity(world, entity.getBlockX(), entity.getBlockY() + 2, entity.getBlockZ(),
                                 new ItemStack(Allitems.MYSTERY_MEAT.get(), 2)));
                     }

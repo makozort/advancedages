@@ -1,13 +1,19 @@
 package net.makozort.advancedages.content.blocks.block.hornblocks;
 
+import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
+import com.simibubi.create.content.kinetics.base.IRotate;
+import com.simibubi.create.foundation.block.IBE;
+import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.Entity.HornBlockEntity;
 import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -17,10 +23,14 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import org.jetbrains.annotations.Nullable;
 
 
-public class HornBlock extends BaseEntityBlock {
+import javax.annotation.Nullable;
+
+import static com.simibubi.create.content.kinetics.base.IRotate.StressImpact.HIGH;
+
+
+public class HornBlock extends DirectionalKineticBlock implements IBE<HornBlockEntity> {
 
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
 
@@ -36,17 +46,31 @@ public class HornBlock extends BaseEntityBlock {
         if (level instanceof ServerLevel) {
             if (level.hasNeighborSignal(pos) || level.hasNeighborSignal(pos.above())) {
                 if (level.getBlockEntity(pos) instanceof HornBlockEntity hornBlockEntity) {
-                    level.setBlock(pos, state.setValue(LIT, true), 3);
-                    hornBlockEntity.play(level, pos, GetSoundEvent(), 12, GetCoolDownTime());
-                    level.scheduleTick(pos, this, GetCoolDownTime());
+                    float rpm = (Math.abs(hornBlockEntity.getSpeed()));
+                    if (rpm > 0.0F) {
+                        if (rpm >= 256.0F) {
+                            hornBlockEntity.play(level, pos, GetSoundEvent(), (14*rpm/256), GetCoolDownTime(),ScreenShakeDuration(), state); // range is calculated where 1 = 16 block radius
+                        } else {
+                            hornBlockEntity.play(level, pos, GetSoundEvent(), (14*rpm/256), GetCoolDownTime(),0, state);
+                        }
+                        level.scheduleTick(pos, this, GetCoolDownTime());
+                    }
                 }
             }
         }
     }
 
+
+    //@Override
+    //public SpeedLevel getMinimumRequiredSpeedLevel() {
+    //    return SpeedLevel.FAST;
+    //}
+
     public int GetCoolDownTime() {
         return 1800;
     }
+
+    public int ScreenShakeDuration() {return 0;}
 
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource p_222948_) {
@@ -63,18 +87,31 @@ public class HornBlock extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 
+    @Override
+    public Class<HornBlockEntity> getBlockEntityClass() {return HornBlockEntity.class;}
+
+    @Override
+    public BlockEntityType<? extends HornBlockEntity> getBlockEntityType() {return AllBlockEntities.HORN_BLOCK.get();}
+
+
+
+
+    /* kinetics */
+    @Override
+    public Direction.Axis getRotationAxis(BlockState state) {
+        return state.getValue(FACING).getAxis();
+    }
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new HornBlockEntity(AllBlockEntities.HORN_BLOCK.get(), pos, state);
     }
 
-    @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, AllBlockEntities.HORN_BLOCK.get(),
-                HornBlockEntity::tick);
+    public boolean hasShaftTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
+        return face == state.getValue(FACING).getOpposite();
     }
+
 
     /* FACING */
 
@@ -98,4 +135,6 @@ public class HornBlock extends BaseEntityBlock {
         pBuilder.add(LIT);
         pBuilder.add(FACING);
     }
+
+
 }

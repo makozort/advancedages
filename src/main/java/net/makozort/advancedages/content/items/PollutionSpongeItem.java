@@ -19,8 +19,8 @@ public class PollutionSpongeItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        if (player.getLevel() instanceof ServerLevel) {
-            Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(player.level).getMap();
+        if (player.level() instanceof ServerLevel) {
+            Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(player.level()).getMap();
             map.forEach((BlockPos, pollution) -> {
                 int distance = (player.getOnPos().distManhattan(BlockPos));
                 if (distance <= 30) {

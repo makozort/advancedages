@@ -15,4 +15,8 @@ public class GjallarHornBlock extends HornBlock {
         return AllSoundEvents.GJALLAR_HORN.get();
     }
 
+
+    @Override
+    public int ScreenShakeDuration() {return 300;}
+
 }

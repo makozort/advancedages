@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "advancedages:empty_iv_bag"
+    },
+    {
+      "amount": 350,
+      "fluid": "create:honey",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "advancedages:iv_bag"
+    }
+  ]
+}
