@@ -1,7 +1,7 @@
 package net.makozort.advancedages.reg;
 
 import com.tterrag.registrate.util.entry.FluidEntry;
-import net.makozort.advancedages.AdvancedAges;
+import net.makozort.advancedages.content.fluid.VirtualGas;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
@@ -14,17 +14,9 @@ import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
 
 
 public class AllFluids {
-    static String id = AdvancedAges.MOD_ID;
-    static String fd = "fluid/";
-    static String st = "_still";
-    static String fl = "_flow";
-
-    // you now have to add the fluids to the atlas for some stupid fucking reason im so mad oh my fucking god
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> HEAVY_OIL =
             REGISTRATE.fluid("heavy_oil",
-                            new ResourceLocation(id,fd + "heavy_oil" + st),
-                            new ResourceLocation(id,fd + "heavy_oil" + fl),
                             AllFluids.NoColorFluidAttributes::new)
                     .lang("Heavy Oil")
                     .properties(b -> b.viscosity(1500)
@@ -38,8 +30,6 @@ public class AllFluids {
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> CRUDE_OIL =
             REGISTRATE.fluid("crude_oil",
-                            new ResourceLocation(id,fd + "crude_oil" + st),
-                            new ResourceLocation(id,fd + "crude_oil" + fl),
                             AllFluids.NoColorFluidAttributes::new)
                     .lang("Crude Oil")
                     .properties(b -> b.viscosity(1500)
@@ -54,10 +44,7 @@ public class AllFluids {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> LIQUID_MEAT =
-            REGISTRATE.fluid("liquid_meat",
-                            new ResourceLocation(id,fd + "liquid_meat" + st),
-                            new ResourceLocation(id,fd + "liquid_meat" + fl),
-                            AllFluids.NoColorFluidAttributes::new)
+            REGISTRATE.fluid("liquid_meat")
                     .lang("Liquid Meat")
                     .properties(b -> b.viscosity(1500)
                             .density(1400))
@@ -68,11 +55,20 @@ public class AllFluids {
                     .source(ForgeFlowingFluid.Source::new)
                     .register();
 
+    //Gasses
+    public static final FluidEntry<VirtualGas> CARBON_DIOXIDE = REGISTRATE
+            .virtualGas("preheated_air").lang("Preheated Air").register();
+    public static final FluidEntry<VirtualGas> AIR = REGISTRATE
+            .virtualGas("preheated_air").lang("Preheated Air").register();
+    public static final FluidEntry<VirtualGas> NATURAL_GAS = REGISTRATE
+            .virtualGas("preheated_air").lang("Preheated Air").register();
+
+
 
 
     public static void register() {}
 
-    private static class NoColorFluidAttributes extends com.simibubi.create.AllFluids.TintedFluidType {
+    public static class NoColorFluidAttributes extends com.simibubi.create.AllFluids.TintedFluidType {
 
         public NoColorFluidAttributes(Properties properties, ResourceLocation stillTexture,
                                       ResourceLocation flowingTexture) {

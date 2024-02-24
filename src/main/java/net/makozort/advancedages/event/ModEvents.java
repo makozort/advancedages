@@ -1,12 +1,9 @@
 package net.makozort.advancedages.event;
 
-import com.simibubi.create.AllDamageTypes;
-import com.simibubi.create.content.kinetics.saw.SawBlock;
-import com.simibubi.create.foundation.damageTypes.CreateDamageSources;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.content.data.PollutionData;
-import net.makozort.advancedages.content.effect.ModEffects;
+import net.makozort.advancedages.reg.AllEffects;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -63,19 +60,19 @@ public class ModEvents extends BlockEntity {
                         }
                     }
                     if (total >= (2)) {
-                        event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (1 - reducer)));
+                        event.getEntity().addEffect(new MobEffectInstance(AllEffects.POLLUTION.get(), 100, (1 - reducer)));
                     }
                     if (total >= (6 - reducer)) {
-                        event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (2 - reducer)));
+                        event.getEntity().addEffect(new MobEffectInstance(AllEffects.POLLUTION.get(), 100, (2 - reducer)));
                     }
                     if (total >= (8 - reducer)) {
-                        event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (3 - reducer)));
+                        event.getEntity().addEffect(new MobEffectInstance(AllEffects.POLLUTION.get(), 100, (3 - reducer)));
                     }
                     if (total >= (10 - reducer)) {
-                        event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (4 - reducer)));
+                        event.getEntity().addEffect(new MobEffectInstance(AllEffects.POLLUTION.get(), 100, (4 - reducer)));
                     }
                     if (total >= (16 - reducer)) {
-                        event.getEntity().addEffect(new MobEffectInstance(ModEffects.POLLUTION.get(), 100, (5 - reducer)));
+                        event.getEntity().addEffect(new MobEffectInstance(AllEffects.POLLUTION.get(), 100, (5 - reducer)));
                     }
                 }
             }

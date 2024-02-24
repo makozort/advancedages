@@ -6,8 +6,9 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import net.makozort.advancedages.content.effect.ModEffects;
+import net.makozort.advancedages.reg.AllEffects;
 import net.makozort.advancedages.reg.*;
+import net.makozort.advancedages.reg.utils.ModRegistrate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -27,7 +28,7 @@ public class AdvancedAges {
     public static final String NAME = "Advanced Ages";
     public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
 
-    public static final CreateRegistrate REGISTRATE = ModRegistrate.REGISTRATE;
+    public static final ModRegistrate REGISTRATE = ModRegistrate.create(MOD_ID);
 
     static {
         REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
@@ -45,7 +46,7 @@ public class AdvancedAges {
 
 
         AllFluids.register();
-        ModEffects.register(modEventBus);
+        AllEffects.register(modEventBus);
         AllSoundEvents.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener((this::register));

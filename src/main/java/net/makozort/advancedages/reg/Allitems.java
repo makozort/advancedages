@@ -14,12 +14,12 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
 import static com.simibubi.create.AllTags.forgeItemTag;
-import static net.makozort.advancedages.ModRegistrate.REGISTRATE;
+import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
 
 public class Allitems {
 
     static {
-        AdvancedAges.REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
+        REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
     }
 
     public static final ItemEntry<BucketItem> HEAVY_OIL_BUCKET = REGISTRATE.item("heavy_oil_bucket",

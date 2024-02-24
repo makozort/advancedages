@@ -1,22 +1,10 @@
 package net.makozort.advancedages.reg;
 
 
-import com.simibubi.create.content.kinetics.BlockStressDefaults;
-import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
-import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.block.HornBlock;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-import team.lodestar.lodestone.systems.block.LodestoneBlockProperties;
 
-import static net.makozort.advancedages.ModRegistrate.REGISTRATE;
+import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
 import static net.makozort.advancedages.reg.AllSoundEvents.*;
 
 public class AllBlocks {
