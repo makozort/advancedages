@@ -39,7 +39,7 @@ public class AllCreativeModeTabs {
             () -> CreativeModeTab.builder()
                     .title(Components.translatable("itemGroup.advancedages.base"))
                     .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
-                    .icon(() -> AllFluids.HEAVY_OIL.getBucket().get().asItem().getDefaultInstance())
+                    .icon(Allitems.HEAVY_OIL_BUCKET::asStack)
                     .displayItems(new net.makozort.advancedages.reg.AllCreativeModeTabs.RegistrateDisplayItemsGenerator(true, net.makozort.advancedages.reg.AllCreativeModeTabs.BASE_CREATIVE_TAB))
                     .build());
 

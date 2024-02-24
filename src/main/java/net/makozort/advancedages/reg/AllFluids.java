@@ -34,8 +34,6 @@ public class AllFluids {
                             .slopeFindDistance(3)
                             .explosionResistance(100f))
                     .source(ForgeFlowingFluid.Source::new)
-                    .bucket()
-                    .build()
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> CRUDE_OIL =
@@ -51,7 +49,7 @@ public class AllFluids {
                             .slopeFindDistance(3)
                             .explosionResistance(100f))
                     .source(ForgeFlowingFluid.Source::new)
-                    .bucket()
+                    .bucket().tab(AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey())
                     .build()
                     .register();
 

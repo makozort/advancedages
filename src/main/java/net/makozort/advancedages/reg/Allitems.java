@@ -1,12 +1,8 @@
 package net.makozort.advancedages.reg;
 
 
-import com.simibubi.create.AllTags;
-import com.simibubi.create.Create;
+
 import com.simibubi.create.content.equipment.armor.AllArmorMaterials;
-import com.simibubi.create.content.equipment.goggles.GogglesItem;
-import com.simibubi.create.content.equipment.goggles.GogglesModel;
-import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.items.*;
@@ -27,13 +23,12 @@ public class Allitems {
     }
 
 
-    //public static final ItemEntry<BucketItem> LIQUID_MEAT_BUCKET = REGISTRATE.item("liquid_meat_bucket",
-    //                p -> new BucketItem(AllFluids.SOURCE_LIQUID_MEAT, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)))
-    //        .register();
+    public static final ItemEntry<BucketItem> HEAVY_OIL_BUCKET = REGISTRATE.item("heavy_oil_bucket",
+                    p -> new BucketItem(AllFluids.HEAVY_OIL, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)))
+            .register();
     public static final ItemEntry<PollutionDetectorItem> POLLUTION_DETECTOR_ITEM = REGISTRATE.item("pollution_detector",
                     p -> new PollutionDetectorItem(new Item.Properties().stacksTo(1).durability(6)))
             .register();
-
 
     public static final ItemEntry<OilScannerItem> OIL_SCANNER_ITEM = REGISTRATE.item("oil_scanner",
                     p -> new OilScannerItem(new Item.Properties().stacksTo(1).durability(6)))

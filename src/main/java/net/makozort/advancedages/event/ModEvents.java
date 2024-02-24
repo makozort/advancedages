@@ -23,6 +23,7 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
@@ -93,6 +94,13 @@ public class ModEvents extends BlockEntity {
             }
         }
 
+
+        @SubscribeEvent
+        public static void furnaceEvent(FurnaceFuelBurnTimeEvent event) {
+            if (event.getItemStack().is(Allitems.HEAVY_OIL_BUCKET.get())) {
+                event.setBurnTime(32767);
+            }
+        }
 
         // handles decaying pollution and clearing old pollution values of 0
         static int tick;

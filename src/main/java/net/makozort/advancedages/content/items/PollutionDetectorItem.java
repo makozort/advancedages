@@ -1,5 +1,6 @@
 package net.makozort.advancedages.content.items;
 
+import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.data.PollutionData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -38,6 +39,7 @@ public class PollutionDetectorItem extends Item {
         }
         player.getItemInHand(hand).hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
         localPollution = 0;
+
         return super.use(level, player, hand);
     }
 }

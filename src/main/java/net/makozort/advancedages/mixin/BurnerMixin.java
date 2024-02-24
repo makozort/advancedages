@@ -1,8 +1,10 @@
 package net.makozort.advancedages.mixin;
 
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
+import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.data.PollutionData;
 import net.makozort.advancedages.reg.AllFluids;
+import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
@@ -26,7 +28,7 @@ public class BurnerMixin extends BlockEntity {
     }
     @Inject(at = @At("TAIL"), method = "tryUpdateFuel", remap = false)
     private void durChange(ItemStack itemStack, boolean forceOverflow, boolean simulate, CallbackInfoReturnable<Boolean> cir) {
-        if (itemStack.is(AllFluids.HEAVY_OIL.getBucket().get())) {
+        if (itemStack.is(Allitems.HEAVY_OIL_BUCKET.get().asItem())) {
             this.remainingBurnTime = 72000;
             BlockPos pos = this.getBlockPos();
             if (this.level instanceof ServerLevel) {

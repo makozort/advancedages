@@ -1,5 +1,6 @@
 package net.makozort.advancedages.content.data;
 
+import net.makozort.advancedages.AdvancedAges;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -21,6 +22,10 @@ public class PollutionData extends SavedData {
     public final Map<BlockPos, Pollution> PollutionMap = new HashMap<>();
     List<BlockPos> clearList = new ArrayList<BlockPos>();
 
+    public void writemap() {
+        AdvancedAges.LOGGER.info("john");
+        AdvancedAges.LOGGER.info(PollutionMap.toString());
+    }
     @Nonnull
     public static PollutionData get(Level level) {
         if (level.isClientSide) {
@@ -87,7 +92,7 @@ public class PollutionData extends SavedData {
         ListTag list = tag.getList("pollution", Tag.TAG_COMPOUND);
         for (Tag t : list) {
             CompoundTag pollTag = (CompoundTag) t;
-            Pollution pollution = new Pollution(pollTag.getInt("pollution"));
+            Pollution pollution = new Pollution(pollTag.getDouble("pollution"));
             BlockPos pos = new BlockPos(pollTag.getInt("x"), pollTag.getInt("y"), pollTag.getInt("z"));
             PollutionMap.put(pos, pollution);
         }
@@ -98,10 +103,10 @@ public class PollutionData extends SavedData {
         ListTag list = new ListTag();
         PollutionMap.forEach((BlockPos, pollution) -> {
             CompoundTag pollTag = new CompoundTag();
+            pollTag.putDouble("pollution", pollution.getPollution());
             pollTag.putInt("x", BlockPos.getX());
             pollTag.putInt("y", BlockPos.getY());
             pollTag.putInt("z", BlockPos.getZ());
-            pollTag.putDouble("pollution", pollution.getPollution());
             list.add(pollTag);
         });
         tag.put("pollution", list);
@@ -122,6 +127,8 @@ public class PollutionData extends SavedData {
         public void setPollution(double pollution) {
             this.pollution = pollution;
         }
+
+
     }
 
 }
