@@ -53,14 +53,14 @@ public class Allitems {
             .tag(forgeItemTag("armors/helmets"))
             .register();
 
-    public static final ItemEntry<Item> MYSTERY_MEAT = REGISTRATE.item("meat", Item::new)
+    public static final ItemEntry<Item>
+            MYSTERY_MEAT = REGISTRATE.item("meat", Item::new)
             .properties(p -> p.food(new FoodProperties.Builder().nutrition(10)
                     .meat()
                     .saturationMod(1)
                     .build()))
-            .register();
-
-    public static final ItemEntry<Item> MYSTERY_MEAT_SANDWICH = REGISTRATE.item("meat_sandwich", Item::new)
+            .register(),
+            MYSTERY_MEAT_SANDWICH = REGISTRATE.item("meat_sandwich", Item::new)
             .properties(p -> p.food(new FoodProperties.Builder().nutrition(15)
                     .meat()
                     .saturationMod(5)

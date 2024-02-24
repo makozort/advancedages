@@ -62,6 +62,9 @@ public class AdvancedAges {
     public static ResourceLocation asResource(String path) {
         return new ResourceLocation(MOD_ID, path);
     }
+    public static ResourceLocation asFluid(String fluid, boolean flowing) {
+        return new ResourceLocation(MOD_ID,"fluid/" + fluid + (flowing ? "_flow" : "_still"));
+    }
 
 
 }
