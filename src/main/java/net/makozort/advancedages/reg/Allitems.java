@@ -22,7 +22,6 @@ public class Allitems {
         AdvancedAges.REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
     }
 
-
     public static final ItemEntry<BucketItem> HEAVY_OIL_BUCKET = REGISTRATE.item("heavy_oil_bucket",
                     p -> new BucketItem(AllFluids.HEAVY_OIL, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)))
             .register();

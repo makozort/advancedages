@@ -3,6 +3,8 @@
     {"type": "single", "resource": "advancedages:fluid/crude_oil_flow"},
     {"type": "single", "resource": "advancedages:fluid/crude_oil_still"},
     {"type": "single", "resource": "advancedages:fluid/heavy_oil_flow"},
-    {"type": "single", "resource": "advancedages:fluid/heavy_oil_still"}
+    {"type": "single", "resource": "advancedages:fluid/heavy_oil_still"},
+    {"type": "single", "resource": "advancedages:fluid/liquid_meat_still"},
+    {"type": "single", "resource": "advancedages:fluid/liquid_meat_flow"}
   ]
 }

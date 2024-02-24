@@ -53,6 +53,21 @@ public class AllFluids {
                     .build()
                     .register();
 
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> LIQUID_MEAT =
+            REGISTRATE.fluid("liquid_meat",
+                            new ResourceLocation(id,fd + "liquid_meat" + st),
+                            new ResourceLocation(id,fd + "liquid_meat" + fl),
+                            AllFluids.NoColorFluidAttributes::new)
+                    .lang("Liquid Meat")
+                    .properties(b -> b.viscosity(1500)
+                            .density(1400))
+                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .register();
+
 
 
     public static void register() {}

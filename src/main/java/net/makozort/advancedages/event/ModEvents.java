@@ -1,5 +1,6 @@
 package net.makozort.advancedages.event;
 
+import com.simibubi.create.AllDamageTypes;
 import com.simibubi.create.content.kinetics.saw.SawBlock;
 import com.simibubi.create.foundation.damageTypes.CreateDamageSources;
 import net.makozort.advancedages.AdvancedAges;
@@ -86,7 +87,9 @@ public class ModEvents extends BlockEntity {
             Level world = event.getEntity().level();
             if (entity.level() instanceof ServerLevel) {
                 if (entity instanceof Villager) {
-                    if (event.getSource() == CreateDamageSources.saw(entity.level())) {
+                    AdvancedAges.LOGGER.info(event.getSource().toString());
+                    if (event.getSource().toString().equals("DamageSource (create.mechanical_saw)")) { //TODO: make this not completely fucked (or get rid of it)
+                        AdvancedAges.LOGGER.info(String.valueOf(event.getSource()));
                         world.addFreshEntity(new ItemEntity(world, entity.getBlockX(), entity.getBlockY() + 2, entity.getBlockZ(),
                                 new ItemStack(Allitems.MYSTERY_MEAT.get(), 2)));
                     }

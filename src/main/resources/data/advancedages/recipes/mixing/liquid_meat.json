@@ -5,16 +5,12 @@
     {
       "count": "10",
       "item": "advancedages:meat"
-    },
-    {
-      "amount": 250,
-      "fluid": "create:honey"
     }
   ],
   "results": [
     {
       "amount": 250,
-      "fluid": "create:chocolate"
+      "fluid": "advancedages:liquid_meat"
     }
   ]
 }
