@@ -54,7 +54,8 @@ public class HornBlockEntity extends KineticBlockEntity {
         if (this.cooldown == 0) {
             level.playSound(null, pos, soundEvent, SoundSource.RECORDS, dis, 1.0F);
             level.setBlock(pos, state.setValue(LIT, true), 3);
-            LodestonePacketRegistry.LODESTONE_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(pos)), new PositionedScreenshakePacket(duration, BlockHelper.fromBlockPos(pos), (dis*16), 200f, Easing.EXPO_OUT).setIntensity(2f, 0));
+            LodestonePacketRegistry.LODESTONE_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(pos)),
+                    new PositionedScreenshakePacket(duration, BlockHelper.fromBlockPos(pos), (dis*16), 200f, Easing.EXPO_OUT).setIntensity(.8f, .4f));
             this.cooldown = time;
         }
     }

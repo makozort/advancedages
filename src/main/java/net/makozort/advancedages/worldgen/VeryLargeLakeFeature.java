@@ -88,6 +88,7 @@
 //                }
 //            }
 //
+//
 //            //now place the feature itself being careful not to replace the wrong blocks
 //            BlockState fluidState = configuration.fluid().getState(randomsource, origin);
 //            for (int y = 0; y < depth; y++) {
@@ -95,7 +96,7 @@
 //                    for (int x = 0; x < width; x++) {
 //                        int index = x + width * z + width * width * y;
 //                        //offset so that we're centered on the lake, then offset again for the loop
-//                        BlockPos check = origin.offset(x - center.x, y - center.y, z - center.z);
+//                        BlockPos check = origin.offset((int) (x - center.x), (int) (y - center.y), (int) (z - center.z));
 //                        if (fill[index] && canReplaceBlock(worldgenlevel.getBlockState(check))) {
 //                            worldgenlevel.setBlock(check, fluidState, 2);
 //                        }
@@ -107,7 +108,7 @@
 //                for (int x = 0; x < 16; ++x) {
 //                    for (int z = 0; z < 16; ++z) {
 //                        int y = 4;
-//                        BlockPos offset = origin.offset(x - center.x, y - center.y, z - center.z);
+//                        BlockPos offset = origin.offset((int) (x - center.x), (int) (y - center.y), (int) (z - center.z));
 //                        if (worldgenlevel.getBiome(offset).value().shouldFreeze(worldgenlevel, offset, false) && this.canReplaceBlock(worldgenlevel.getBlockState(offset))) {
 //                            worldgenlevel.setBlock(offset, Blocks.ICE.defaultBlockState(), 2);
 //                        }
@@ -137,3 +138,4 @@
 //    }
 //
 //}
+//

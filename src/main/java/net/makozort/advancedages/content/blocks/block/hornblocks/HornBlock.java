@@ -50,10 +50,12 @@ public class HornBlock extends DirectionalKineticBlock implements IBE<HornBlockE
                     if (rpm > 0.0F) {
                         if (rpm >= 256.0F) {
                             hornBlockEntity.play(level, pos, GetSoundEvent(), (14*rpm/256), GetCoolDownTime(),ScreenShakeDuration(), state); // range is calculated where 1 = 16 block radius
+                            level.scheduleTick(pos, this, GetCoolDownTime());
                         } else {
                             hornBlockEntity.play(level, pos, GetSoundEvent(), (14*rpm/256), GetCoolDownTime(),0, state);
+                            level.scheduleTick(pos, this, GetCoolDownTime());
                         }
-                        level.scheduleTick(pos, this, GetCoolDownTime());
+
                     }
                 }
             }
