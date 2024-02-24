@@ -19,7 +19,7 @@ public class AllBlockEntities {
 
     public static final BlockEntityEntry<HornBlockEntity> HORN_BLOCK = REGISTRATE
             .blockEntity("horn_block", HornBlockEntity::new)
-            .validBlocks((NonNullSupplier<? extends Block>) AllBlocks.TITAN_HORN_BLOCK, (NonNullSupplier<? extends Block>) AllBlocks.REAPER_HORN_BLOCK, (NonNullSupplier<? extends Block>) AllBlocks.GJALLAR_HORN_BLOCK, (NonNullSupplier<? extends Block>) AllBlocks.GRAND_HORN_BLOCK,(NonNullSupplier<? extends Block>) AllBlocks.OMINOUS_HORN_BLOCK)
+            .validBlocks(AllBlocks.TITAN_HORN_BLOCK, AllBlocks.REAPER_HORN_BLOCK, AllBlocks.GJALLAR_HORN_BLOCK, AllBlocks.GRAND_HORN_BLOCK, AllBlocks.OMINOUS_HORN_BLOCK)
             .register();
 
     //public static final BlockEntityEntry<SteelFluidTankBlockEntity> STEEL_FLUID_TANK = Create.REGISTRATE
