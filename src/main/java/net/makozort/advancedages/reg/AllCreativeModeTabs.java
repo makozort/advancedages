@@ -8,7 +8,6 @@ import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import it.unimi.dsi.fastutil.objects.*;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.ModRegistrate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
@@ -40,7 +39,7 @@ public class AllCreativeModeTabs {
             () -> CreativeModeTab.builder()
                     .title(Components.translatable("itemGroup.advancedages.base"))
                     .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
-                    .icon(() -> Allitems.HEAVY_OIL_BUCKET.asStack())
+                    .icon(() -> AllFluids.HEAVY_OIL.getBucket().get().asItem().getDefaultInstance())
                     .displayItems(new net.makozort.advancedages.reg.AllCreativeModeTabs.RegistrateDisplayItemsGenerator(true, net.makozort.advancedages.reg.AllCreativeModeTabs.BASE_CREATIVE_TAB))
                     .build());
 

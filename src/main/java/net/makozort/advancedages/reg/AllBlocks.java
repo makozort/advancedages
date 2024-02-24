@@ -165,16 +165,7 @@ public class AllBlocks {
                 });
             })
             .register();
-        public static final BlockEntry<LiquidBlock> CRUDE_OIL_BLOCK = REGISTRATE
-                .block("crude_oil_block", b ->
-                        new LiquidBlock(AllFluids.SOURCE_CRUDE_OIL, BlockBehaviour.Properties.copy(Blocks.LAVA)))
-                .lang("Crude Oil")
-                .register();
-        public static final BlockEntry<LiquidBlock> HEAVY_OIL_BLOCK = REGISTRATE
-                .block("heavy_oil_block", b ->
-                        new LiquidBlock(AllFluids.SOURCE_HEAVY_OIL, BlockBehaviour.Properties.copy(Blocks.WATER)))
-                .lang("Heavy Oil")
-                .register();
+
 
     //public static final BlockEntry<LiquidBlock> LIQUID_MEAT_BLOCK = REGISTRATE
     //        .block("liquid_meat_block", b ->

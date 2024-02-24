@@ -26,9 +26,7 @@ public class Allitems {
         AdvancedAges.REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
     }
 
-    public static final ItemEntry<BucketItem> CRUDE_OIL_BUCKET = REGISTRATE.item("crude_oil_bucket",
-                    p -> new BucketItem(AllFluids.SOURCE_CRUDE_OIL, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)))
-            .register();
+
     //public static final ItemEntry<BucketItem> LIQUID_MEAT_BUCKET = REGISTRATE.item("liquid_meat_bucket",
     //                p -> new BucketItem(AllFluids.SOURCE_LIQUID_MEAT, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)))
     //        .register();
@@ -55,10 +53,6 @@ public class Allitems {
                     p -> new EmptyIVBagItem(new Item.Properties().stacksTo(64)))
             .register();
 
-    public static final ItemEntry<OilBucketItem> HEAVY_OIL_BUCKET = REGISTRATE.item("heavy_oil_bucket",
-                    p -> new OilBucketItem(AllFluids.SOURCE_HEAVY_OIL, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)))
-            .tag(AllTags.AllItemTags.BLAZE_BURNER_FUEL_SPECIAL.tag)
-            .register();
 
     public static final ItemEntry<? extends PollutionMaskItem> POLLUTION_MASK = REGISTRATE.item("pollution_mask",
                     p -> new PollutionMaskItem(AllArmorMaterials.COPPER, p, AdvancedAges.asResource("pollution_mask")))

@@ -1,57 +1,84 @@
 package net.makozort.advancedages.reg;
 
+import com.tterrag.registrate.util.entry.FluidEntry;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.fluid.ModFluidTypes;
-import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+
+
+import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
+
 
 public class AllFluids {
-    public static final DeferredRegister<Fluid> FLUIDS =
-            DeferredRegister.create(ForgeRegistries.FLUIDS, AdvancedAges.MOD_ID);
+    static String id = AdvancedAges.MOD_ID;
+    static String fd = "fluid/";
+    static String st = "_still";
+    static String fl = "_flow";
+
+    // you now have to add the fluids to the atlas for some stupid fucking reason im so mad oh my fucking god
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> HEAVY_OIL =
+            REGISTRATE.fluid("heavy_oil",
+                            new ResourceLocation(id,fd + "heavy_oil" + st),
+                            new ResourceLocation(id,fd + "heavy_oil" + fl),
+                            AllFluids.NoColorFluidAttributes::new)
+                    .lang("Heavy Oil")
+                    .properties(b -> b.viscosity(1500)
+                            .density(1400))
+                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket()
+                    .build()
+                    .register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> CRUDE_OIL =
+            REGISTRATE.fluid("crude_oil",
+                            new ResourceLocation(id,fd + "crude_oil" + st),
+                            new ResourceLocation(id,fd + "crude_oil" + fl),
+                            AllFluids.NoColorFluidAttributes::new)
+                    .lang("Crude Oil")
+                    .properties(b -> b.viscosity(1500)
+                            .density(1400))
+                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket()
+                    .build()
+                    .register();
 
 
-    public static final RegistryObject<ForgeFlowingFluid.Source> SOURCE_CRUDE_OIL = FLUIDS.register("crude_oil_fluid",
-            () -> new ForgeFlowingFluid.Source(AllFluids.CRUDE_OIL_FLUID_PROPERTIES));
-    public static final RegistryObject<FlowingFluid> FLOWING_CRUDE_OIL = FLUIDS.register("flowing_crude_oil",
-            () -> new ForgeFlowingFluid.Flowing(AllFluids.CRUDE_OIL_FLUID_PROPERTIES));
 
-    public static final ForgeFlowingFluid.Properties CRUDE_OIL_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
-            ModFluidTypes.CRUDE_OIL_FLUID_TYPE, SOURCE_CRUDE_OIL, FLOWING_CRUDE_OIL)
-            .slopeFindDistance(3).levelDecreasePerBlock(2).block(AllBlocks.CRUDE_OIL_BLOCK)
-            .bucket(Allitems.CRUDE_OIL_BUCKET)
-            .tickRate(30);
+    public static void register() {}
 
+    private static class NoColorFluidAttributes extends com.simibubi.create.AllFluids.TintedFluidType {
 
-    public static final RegistryObject<FlowingFluid> SOURCE_HEAVY_OIL = FLUIDS.register("heavy_oil_fluid",
-            () -> new ForgeFlowingFluid.Source(AllFluids.HEAVY_OIL_FLUID_PROPERTIES));
-    public static final RegistryObject<FlowingFluid> FLOWING_HEAVY_OIL = FLUIDS.register("flowing_heavy_oil",
-            () -> new ForgeFlowingFluid.Flowing(AllFluids.HEAVY_OIL_FLUID_PROPERTIES));
+        public NoColorFluidAttributes(Properties properties, ResourceLocation stillTexture,
+                                      ResourceLocation flowingTexture) {
+            super(properties, stillTexture, flowingTexture);
+        }
 
-    public static final ForgeFlowingFluid.Properties HEAVY_OIL_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
-            ModFluidTypes.HEAVY_OIL_TYPE, SOURCE_HEAVY_OIL, FLOWING_HEAVY_OIL)
-            .slopeFindDistance(3).levelDecreasePerBlock(2).block(AllBlocks.HEAVY_OIL_BLOCK)
-            .bucket(Allitems.HEAVY_OIL_BUCKET)
-            .tickRate(30);
+        @Override
+        protected int getTintColor(FluidStack stack) {
+            return NO_TINT;
+        }
 
+        @Override
+        public int getTintColor(FluidState state, BlockAndTintGetter world, BlockPos pos) {
+            return 0x00ffffff;
+        }
 
-
-    //public static final RegistryObject<FlowingFluid> SOURCE_LIQUID_MEAT = FLUIDS.register("liquid_meat_fluid",
-    //        () -> new ForgeFlowingFluid.Source(AllFluids.LIQUID_MEAT_FLUID_PROPERTIES));
-    //public static final RegistryObject<FlowingFluid> FLOWING_LIQUID_MEAT = FLUIDS.register("flowing_liquid_meat",
-    //        () -> new ForgeFlowingFluid.Flowing(AllFluids.LIQUID_MEAT_FLUID_PROPERTIES));
-
-    //public static final ForgeFlowingFluid.Properties LIQUID_MEAT_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
-    //        ModFluidTypes.LIQUID_MEAT_TYPE, SOURCE_LIQUID_MEAT, FLOWING_LIQUID_MEAT)
-    //        .slopeFindDistance(3).levelDecreasePerBlock(2).block(AllBlocks.LIQUID_MEAT_BLOCK)
-    //        .bucket(Allitems.LIQUID_MEAT_BUCKET)
-    //        .tickRate(30);
-
-    public static void register(IEventBus eventBus) {
-        FLUIDS.register(eventBus);
     }
+
+
+    // look at createDD for fluid interaction stuff if needed
+
 }
