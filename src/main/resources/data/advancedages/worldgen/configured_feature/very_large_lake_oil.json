@@ -1,0 +1,18 @@
+{
+  "type": "advancedages:very_large_lake",
+  "config": {
+    "fluid": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "advancedages:crude_oil",
+        "Properties": {
+          "level": "0"
+        }
+      }
+    },
+    "min_width": 16,
+    "max_width": 24,
+    "min_depth": 16,
+    "max_depth": 24
+  }
+}

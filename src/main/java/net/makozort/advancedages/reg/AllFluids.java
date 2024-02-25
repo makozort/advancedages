@@ -16,6 +16,8 @@ import static net.makozort.advancedages.AdvancedAges.asFluid;
 
 public class AllFluids {
 
+    // fluids among other things uses the texture atlas now
+
     public static final FluidEntry<ForgeFlowingFluid.Flowing> HEAVY_OIL =
             REGISTRATE.fluid("heavy_oil",
                             asFluid("heavy_oil", false),
