@@ -11,12 +11,15 @@ import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 
 import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
+import static net.makozort.advancedages.AdvancedAges.asFluid;
 
 
 public class AllFluids {
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> HEAVY_OIL =
             REGISTRATE.fluid("heavy_oil",
+                            asFluid("heavy_oil", false),
+                            asFluid("heavy_oil", true),
                             AllFluids.NoColorFluidAttributes::new)
                     .lang("Heavy Oil")
                     .properties(b -> b.viscosity(1500)
@@ -30,6 +33,8 @@ public class AllFluids {
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> CRUDE_OIL =
             REGISTRATE.fluid("crude_oil",
+                            asFluid("crude_oil", false),
+                            asFluid("crude_oil", true),
                             AllFluids.NoColorFluidAttributes::new)
                     .lang("Crude Oil")
                     .properties(b -> b.viscosity(1500)
@@ -44,7 +49,10 @@ public class AllFluids {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> LIQUID_MEAT =
-            REGISTRATE.fluid("liquid_meat")
+            REGISTRATE.fluid("liquid_meat",
+                            asFluid("liquid_meat", false),
+                            asFluid("liquid_meat", true),
+                            AllFluids.NoColorFluidAttributes::new)
                     .lang("Liquid Meat")
                     .properties(b -> b.viscosity(1500)
                             .density(1400))

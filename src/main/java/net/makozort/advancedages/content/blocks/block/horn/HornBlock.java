@@ -1,9 +1,8 @@
-package net.makozort.advancedages.content.blocks.block;
+package net.makozort.advancedages.content.blocks.block.horn;
 
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.foundation.block.IBE;
-import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.Entity.HornBlockEntity;
 import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -33,17 +32,13 @@ import static com.simibubi.create.content.kinetics.base.IRotate.StressImpact.HIG
 
 
 public class HornBlock extends DirectionalKineticBlock implements IBE<HornBlockEntity> {
-    private SoundEvent sound;
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public static final IntegerProperty SCREENSHAKE_DURATION = IntegerProperty.create("screenshakeDuration", 1, 100000000);
-
-    public HornBlock(Properties p_49795_, int screenShakeDuration, RegistryObject<SoundEvent> sound) {
+    public HornBlock(Properties p_49795_) {
         super(p_49795_.destroyTime(1));
-        this.sound = sound.get();
-        this.registerDefaultState(this.getStateDefinition().any().setValue(LIT, false).setValue(SCREENSHAKE_DURATION, screenShakeDuration));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(LIT, false));
     }
 
     @Override
@@ -54,10 +49,10 @@ public class HornBlock extends DirectionalKineticBlock implements IBE<HornBlockE
                     float rpm = (Math.abs(hornBlockEntity.getSpeed()));
                     if (rpm > 0.0F) {
                         if (rpm >= 256.0F) {
-                            hornBlockEntity.play(level, pos, GetSoundEvent(), (14*rpm/256), GetCoolDownTime(),state.getValue(SCREENSHAKE_DURATION), state); // range is calculated where 1 = 16 block radius
+                            hornBlockEntity.play(level, pos, getSoundEvent(), (14 * rpm / 256), GetCoolDownTime(), getScreenShakeDuration(), state); // range is calculated where 1 = 16 block radius
                             level.scheduleTick(pos, this, GetCoolDownTime());
                         } else {
-                            hornBlockEntity.play(level, pos, GetSoundEvent(), (14*rpm/256), GetCoolDownTime(),0, state);
+                            hornBlockEntity.play(level, pos, getSoundEvent(), (14 * rpm / 256), GetCoolDownTime(), 0, state);
                             level.scheduleTick(pos, this, GetCoolDownTime());
                         }
 
@@ -67,8 +62,10 @@ public class HornBlock extends DirectionalKineticBlock implements IBE<HornBlockE
         }
     }
 
-    public SoundEvent GetSoundEvent() {
-        return sound;
+    public int getScreenShakeDuration() {return 0;}
+
+    public SoundEvent getSoundEvent() {
+        return null;
     }
 
 
@@ -93,12 +90,14 @@ public class HornBlock extends DirectionalKineticBlock implements IBE<HornBlockE
     }
 
     @Override
-    public Class<HornBlockEntity> getBlockEntityClass() {return HornBlockEntity.class;}
+    public Class<HornBlockEntity> getBlockEntityClass() {
+        return HornBlockEntity.class;
+    }
 
     @Override
-    public BlockEntityType<? extends HornBlockEntity> getBlockEntityType() {return AllBlockEntities.HORN_BLOCK.get();}
-
-
+    public BlockEntityType<? extends HornBlockEntity> getBlockEntityType() {
+        return AllBlockEntities.HORN_BLOCK.get();
+    }
 
 
     /* kinetics */
@@ -106,6 +105,7 @@ public class HornBlock extends DirectionalKineticBlock implements IBE<HornBlockE
     public Direction.Axis getRotationAxis(BlockState state) {
         return state.getValue(FACING).getAxis();
     }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -139,30 +139,5 @@ public class HornBlock extends DirectionalKineticBlock implements IBE<HornBlockE
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(LIT);
         pBuilder.add(FACING);
-        pBuilder.add(SCREENSHAKE_DURATION);
     }
-
-    //                .blockstate((ctx, prov) -> {
-//        // Define the models for lit and unlit states
-//        ModelFile.ExistingModelFile modelLit = prov.models().getExistingFile(prov.modLoc("block/gjallar_horn_block_on"));
-//
-//        ModelFile.ExistingModelFile modelOff = prov.models().getExistingFile(prov.modLoc("block/gjallar_horn_block_off"));
-//
-//        // Define the blockstate variants
-//        prov.getVariantBuilder(ctx.get()).forAllStates(state -> {
-//            boolean lit = state.getValue(GjallarHornBlock.LIT);
-//            Direction facing = state.getValue(GjallarHornBlock.FACING);
-//            int yRotation = 0;
-//            if (facing == Direction.EAST) yRotation = 90;
-//            else if (facing == Direction.SOUTH) yRotation = 180;
-//            else if (facing == Direction.WEST) yRotation = 270;
-//
-//            return ConfiguredModel.builder()
-//                    .modelFile(lit ? modelLit : modelOff)
-//                    .rotationY(yRotation)
-//                    .build();
-//        });
-//    })
-
-
 }

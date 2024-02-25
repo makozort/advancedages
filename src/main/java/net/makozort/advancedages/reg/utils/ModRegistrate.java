@@ -16,7 +16,7 @@ import java.util.Map;
 
 import static net.makozort.advancedages.AdvancedAges.asFluid;
 
-public class ModRegistrate extends CreateRegistrate{
+public class ModRegistrate extends CreateRegistrate {
     private static final Map<RegistryEntry<?>, RegistryObject<CreativeModeTab>> TAB_LOOKUP = new IdentityHashMap<>();
 
     protected ModRegistrate(String modid) {
@@ -27,16 +27,11 @@ public class ModRegistrate extends CreateRegistrate{
         return new ModRegistrate(modid);
     }
 
-
-    protected final ModRegistrate self2() {
-        return this;
-    }
-
     public static boolean isInCreativeTab(RegistryEntry<?> entry, RegistryObject<CreativeModeTab> tab) {
         return TAB_LOOKUP.get(entry) == tab;
     }
     public FluidBuilder<ForgeFlowingFluid.Flowing, CreateRegistrate> fluid(String name, FluidBuilder.FluidTypeFactory typeFactory) {
-        return this.entry(name, (callback) -> FluidBuilder.create(this, this.self2(), name, callback, asFluid(name, false), asFluid(name, false), typeFactory));
+        return this.entry(name, (callback) -> FluidBuilder.create(this, this, name, callback, asFluid(name, false), asFluid(name, false), typeFactory));
     }
 
     public FluidBuilder<ForgeFlowingFluid.Flowing, CreateRegistrate> fluid(String name) {

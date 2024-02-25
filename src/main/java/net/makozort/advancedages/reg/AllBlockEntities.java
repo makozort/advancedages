@@ -5,10 +5,12 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.Entity.HornBlockEntity;
 
+import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
+
 public class AllBlockEntities {
 
     static {
-        AdvancedAges.REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
+        REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
     }
 
     public static final BlockEntityEntry<HornBlockEntity> HORN_BLOCK = REGISTRATE
