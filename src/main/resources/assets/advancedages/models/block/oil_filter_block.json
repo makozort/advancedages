@@ -3,11 +3,11 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"0": "advancedages/block/outside",
-		"1": "advancedages/block/pipes",
-		"2": "advancedages/block/pump",
-		"3": "advancedages/block/millstone",
-		"particle": "advancedages/block/outside"
+		"0": "advancedages:block/outside",
+		"1": "advancedages:block/pipes",
+		"2": "advancedages:block/pump",
+		"3": "advancedages:block/millstone",
+		"particle": "advancedages:block/outside"
 	},
 	"elements": [
 		{

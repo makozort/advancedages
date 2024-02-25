@@ -1,33 +1,35 @@
 package net.makozort.advancedages.content.blocks.block.oil;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
+import com.simibubi.create.content.fluids.PipeConnection;
+import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.block.IBE;
+import com.simibubi.create.foundation.utility.Couple;
 import net.makozort.advancedages.content.blocks.Entity.OilFilterBlockEntity;
+
+import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.AttachFace;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 
 import javax.annotation.Nullable;
 
-public class OilFilterBlock extends FaceAttachedHorizontalDirectionalBlock implements IWrenchable, IBE<OilFilterBlockEntity> {
 
-    public static final EnumProperty<AttachFace> FACE = BlockStateProperties.ATTACH_FACE;
 
-    public OilFilterBlock(BlockBehaviour.Properties pProperties) {
+public class OilFilterBlock extends FaceAttachedHorizontalDirectionalBlock implements IWrenchable, IBE<OilFilterBlockEntity>, ICogWheel {
+
+
+    public OilFilterBlock(Properties pProperties) {
         super(pProperties);
     }
+
 
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         return canAttach(pLevel, pPos, getConnectedDirection(pState).getOpposite());
@@ -56,34 +58,29 @@ public class OilFilterBlock extends FaceAttachedHorizontalDirectionalBlock imple
         return null;
     }
 
-    /**
-     * Update the provided state given the provided neighbor direction and neighbor state, returning a new state.
-     * For example, fences make their connections to the passed in state if possible, and wet concrete powder immediately
-     * returns its solidified counterpart.
-     * Note that this method should ideally consider only the specific direction passed in.
-     */
-    public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        return getConnectedDirection(pState).getOpposite() == pFacing && !pState.canSurvive(pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
-    }
-
-    protected static Direction getConnectedDirection(BlockState pState) {
-        switch ((AttachFace)pState.getValue(FACE)) {
-            case CEILING:
-                return Direction.DOWN;
-            case FLOOR:
-                return Direction.UP;
-            default:
-                return pState.getValue(FACING);
-        }
-    }
 
     @Override
     public Class<OilFilterBlockEntity> getBlockEntityClass() {
-        return null;
+        return OilFilterBlockEntity.class;
     }
 
     @Override
     public BlockEntityType<? extends OilFilterBlockEntity> getBlockEntityType() {
-        return null;
+        return AllBlockEntities.OIL_FILTER.get();
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACE,FACING);
+    }
+
+    @Override
+    public boolean hasShaftTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
+        return face == Direction.DOWN;
+    }
+
+    @Override
+    public Direction.Axis getRotationAxis(BlockState state) {
+        return Direction.Axis.Y;
     }
 }

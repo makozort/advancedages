@@ -53,7 +53,7 @@ public class AllCreativeModeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, AdvancedAges.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> BASE_TAB = CREATIVE_MODE_TABS.register("base_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(Allitems.HEAVY_OIL_BUCKET.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(AllBlocks.OIL_FILTER.get().asItem()))
                     .title(Component.translatable("creativetab.base_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(Allitems.HEAVY_OIL_BUCKET.get());
@@ -68,11 +68,15 @@ public class AllCreativeModeTabs {
                         pOutput.accept(Allitems.POLLUTION_SPONGE.get());
 
                         pOutput.accept(AllBlocks.STEEL_FLUID_TANK.asItem());
+
+                        pOutput.accept(AllBlocks.OIL_FILTER.get().asItem());
                         pOutput.accept(AllBlocks.TITAN_HORN_BLOCK.get().asItem());
                         pOutput.accept(AllBlocks.GJALLAR_HORN_BLOCK.get().asItem());
                         pOutput.accept(AllBlocks.GRAND_HORN_BLOCK.get().asItem());
                         pOutput.accept(AllBlocks.OMINOUS_HORN_BLOCK.get().asItem());
                         pOutput.accept(AllBlocks.REAPER_HORN_BLOCK.get().asItem());
+
+
 
 
 
