@@ -4,6 +4,7 @@ package net.makozort.advancedages.reg;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.Entity.HornBlockEntity;
+import net.makozort.advancedages.content.blocks.Entity.OilFilterBlockEntity;
 import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
 import net.makozort.advancedages.content.fluid.tank.SteelFluidTankRenderer;
 
@@ -12,7 +13,7 @@ import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
 public class AllBlockEntities {
 
     static {
-        REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
+        REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_TAB);
     }
 
     public static final BlockEntityEntry<HornBlockEntity> HORN_BLOCK = REGISTRATE
@@ -25,11 +26,10 @@ public class AllBlockEntities {
             .validBlocks(AllBlocks.STEEL_FLUID_TANK)
             .renderer(() -> SteelFluidTankRenderer::new)
             .register();
-
-    //public static final BlockEntityEntry<OilFilterBlockEntity> OIL_FILTER = Create.REGISTRATE
-    //        .blockEntity("oil_filter", OilFilterBlockEntity::new)
-    //        .validBlocks(AllBlocks.OIL_FILTER)
-    //        .register();
+    public static final BlockEntityEntry<OilFilterBlockEntity> OIL_FILTER = REGISTRATE
+            .blockEntity("oil_filter", OilFilterBlockEntity::new)
+            .validBlocks(AllBlocks.OIL_FILTER)
+            .register();
     public static void register() {
     }
 }

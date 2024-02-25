@@ -8,11 +8,13 @@ import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import net.makozort.advancedages.reg.AllEffects;
 import net.makozort.advancedages.reg.*;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.makozort.advancedages.reg.utils.ModRegistrate;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraft.core.Registry;
@@ -54,6 +56,8 @@ public class AdvancedAges {
         modEventBus.addListener((this::register));
         MinecraftForge.EVENT_BUS.register(this);
     }
+
+
 
     private void register(RegisterEvent event) {
         event.register(Registries.FEATURE, new ResourceLocation(MOD_ID, "very_large_lake"), () -> AllFeatures.VERY_LARGE_LAKE);

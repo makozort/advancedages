@@ -5,6 +5,11 @@
     {"type": "single", "resource": "advancedages:fluid/heavy_oil_flow"},
     {"type": "single", "resource": "advancedages:fluid/heavy_oil_still"},
     {"type": "single", "resource": "advancedages:fluid/liquid_meat_still"},
-    {"type": "single", "resource": "advancedages:fluid/liquid_meat_flow"}
+    {"type": "single", "resource": "advancedages:fluid/liquid_meat_flow"},
+
+    {"type": "single", "resource": "advancedages:block/millstone"},
+    {"type": "single", "resource": "advancedages:block/outside"},
+    {"type": "single", "resource": "advancedages:block/pipes"},
+    {"type": "single", "resource": "advancedages:block/pump"}
   ]
 }

@@ -10,6 +10,7 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.makozort.advancedages.content.blocks.block.horn.*;
+import net.makozort.advancedages.content.blocks.block.oil.OilFilterBlock;
 import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
 import net.makozort.advancedages.content.fluid.tank.SteelFluidTankGenerator;
 import net.makozort.advancedages.content.fluid.tank.SteelFluidTankModel;
@@ -177,13 +178,21 @@ public class AllBlocks {
             .build()
             .register();
 
-    //public static final BlockEntry<OilFilterBlock> OIL_FILTER = REGISTRATE
-    //        .block("oil_filter", OilFilterBlock::new)
-    //        .initialProperties(SharedProperties::copperMetal)
-    //        .transform(pickaxeOnly())
-    //        .lang("Oil Filter")
-    //        .simpleItem()
-    //        .register();
+
+    public static final RegistryEntry<OilFilterBlock> OIL_FILTER = REGISTRATE
+            .block("oil_filter", OilFilterBlock::new)
+            .simpleItem()
+            .transform(BlockStressDefaults.setImpact(.5))
+            .blockstate((ctx, prov) -> {
+                // Define the models for lit and unlit states
+                ModelFile.ExistingModelFile model = prov.models().getExistingFile(prov.modLoc("block/oil_filter_block"));
+                // Define the blockstate variants
+                prov.getVariantBuilder(ctx.get()).forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(model)
+                        .build());
+            })
+            .register();
+
     public static void register() {
     }
 }

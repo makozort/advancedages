@@ -46,7 +46,7 @@ public class AllFluids {
                             .slopeFindDistance(3)
                             .explosionResistance(100f))
                     .source(ForgeFlowingFluid.Source::new)
-                    .bucket().tab(AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey())
+                    .bucket().tab(AllCreativeModeTabs.BASE_TAB.getKey())
                     .build()
                     .register();
 

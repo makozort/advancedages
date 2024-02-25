@@ -285,8 +285,8 @@ public class RefineryData {
                     for (Direction d : Iterate.directions) {
                         BlockPos attachedPos = pos.relative(d);
                         BlockState attachedState = level.getBlockState(attachedPos);
-                        if (AllBlocks.STEAM_ENGINE.has(attachedState) && OilFilterBlock.getFacing(attachedState) == d)
-                            attachedFilters++;
+                        //if (AllBlocks.STEAM_ENGINE.has(attachedState) && OilFilterBlock.(attachedState) == d)
+                        //    attachedFilters++;
                     }
                 }
             }

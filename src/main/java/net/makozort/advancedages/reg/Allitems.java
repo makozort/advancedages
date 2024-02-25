@@ -19,7 +19,7 @@ import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
 public class Allitems {
 
     static {
-        REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
+        REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_TAB);
     }
 
     public static final ItemEntry<BucketItem> HEAVY_OIL_BUCKET = REGISTRATE.item("heavy_oil_bucket",
