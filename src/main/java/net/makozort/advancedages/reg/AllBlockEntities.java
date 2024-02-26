@@ -1,13 +1,11 @@
 package net.makozort.advancedages.reg;
 
 
-import com.simibubi.create.Create;
-import com.simibubi.create.content.kinetics.millstone.MillstoneBlockEntity;
-import com.simibubi.create.content.kinetics.millstone.MillstoneCogInstance;
-import com.simibubi.create.content.kinetics.millstone.MillstoneRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.Entity.*;
+import net.makozort.advancedages.content.blocks.Entity.OilFilterBlockEntity;
+import net.makozort.advancedages.content.blocks.Entity.RefineLogic.OilFilterCogInstance;
+import net.makozort.advancedages.content.blocks.Entity.RefineLogic.OilFilterRenderer;
 import net.makozort.advancedages.content.fluid.tank.SteelFluidTankRenderer;
 
 import static net.makozort.advancedages.AdvancedAges.REGISTRATE;

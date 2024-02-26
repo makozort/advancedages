@@ -1,10 +1,8 @@
 package net.makozort.advancedages.content.blocks.block.oil;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
-import com.simibubi.create.content.fluids.PipeConnection;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.block.IBE;
-import com.simibubi.create.foundation.utility.Couple;
 import net.makozort.advancedages.content.blocks.Entity.OilFilterBlockEntity;
 
 import net.makozort.advancedages.reg.AllBlockEntities;

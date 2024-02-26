@@ -182,7 +182,7 @@ public class AllBlocks {
 
     public static final RegistryEntry<OilFilterBlock> OIL_FILTER = REGISTRATE
             .block("oil_filter", OilFilterBlock::new)
-            .addLayer(() -> RenderType::cutout)
+            .addLayer(() -> RenderType::translucent)
             .properties(BlockBehaviour.Properties::noOcclusion)
             .simpleItem()
             .transform(BlockStressDefaults.setImpact(30))

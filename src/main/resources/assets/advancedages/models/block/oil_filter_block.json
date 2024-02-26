@@ -3,11 +3,11 @@
 	"render_type": "minecraft:cutout",
 	"parent": "block/block",
 	"textures": {
-		"0": "advancedages:block/outside",
-		"1": "advancedages:block/pipes",
-		"2": "advancedages:block/pump",
-		"3": "advancedages:block/millstone",
-		"particle": "advancedages:block/outside"
+		"0": "advancedages:block/filter/outside",
+		"1": "advancedages:block/filter/pipes",
+		"2": "advancedages:block/filter/pump",
+		"3": "advancedages:block/filter/millstone",
+		"particle": "advancedages:block/filter/outside"
 	},
 	"elements": [
 		{
