@@ -1,5 +1,6 @@
 package net.makozort.advancedages.content.blocks.Entity;
 
+import static java.lang.Math.PI;
 import static java.lang.Math.abs;
 
 import java.util.List;
@@ -7,6 +8,8 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
+import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
 import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock.Shape;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
@@ -21,10 +24,12 @@ import com.simibubi.create.foundation.utility.animation.LerpedFloat.Chaser;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 
 import net.makozort.advancedages.content.data.RefineryData;
+import net.makozort.advancedages.reg.AllBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -51,6 +56,10 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     protected FluidTank tankInventory2;
     protected BlockPos controller;
     protected BlockPos lastKnownPos;
+
+    protected boolean heated;
+
+    public boolean hasHeated;
     protected boolean updateConnectivity;
     protected boolean window;
     protected int luminosity;
@@ -65,6 +74,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
 
     // For rendering purposes only
     private LerpedFloat fluidLevel;
+
 
     public SteelFluidTankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -84,6 +94,10 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     protected SmartFluidTank createInventory() {
         return new SmartFluidTank(getCapacityMultiplier(), this::onFluidStackChanged);
     }
+
+
+
+
 
     public void updateConnectivity() {
         updateConnectivity = false;
@@ -374,11 +388,6 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         return null;
     }
 
-    //@Override
-    //public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) { need to fix
-    //
-    //}
-
     @Override
     protected void read(CompoundTag compound, boolean clientPacket) {
         super.read(compound, clientPacket);
@@ -631,5 +640,9 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     public FluidStack getFluid(int tank) {
         return tankInventory1.getFluid()
                 .copy();
+    }
+
+    public boolean getheated() {
+        return this.heated;
     }
 }

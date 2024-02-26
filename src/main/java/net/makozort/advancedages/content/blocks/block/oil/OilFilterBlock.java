@@ -54,7 +54,6 @@ public class OilFilterBlock extends FaceAttachedHorizontalDirectionalBlock imple
                 return blockstate;
             }
         }
-
         return null;
     }
 

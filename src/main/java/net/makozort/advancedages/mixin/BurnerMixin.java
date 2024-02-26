@@ -32,7 +32,7 @@ public class BurnerMixin extends BlockEntity {
             this.remainingBurnTime = 72000;
             BlockPos pos = this.getBlockPos();
             if (this.level instanceof ServerLevel) {
-                PollutionData.get(this.level).changePollution(pos, .25, this.level);
+                PollutionData.get(this.level).changePollution(pos, .10, this.level);
             }
         }
     }

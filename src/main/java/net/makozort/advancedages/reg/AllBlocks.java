@@ -18,6 +18,7 @@ import net.makozort.advancedages.content.items.SteelFluidTankItem;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 
@@ -181,12 +182,12 @@ public class AllBlocks {
 
     public static final RegistryEntry<OilFilterBlock> OIL_FILTER = REGISTRATE
             .block("oil_filter", OilFilterBlock::new)
+            .addLayer(() -> RenderType::cutout)
+            .properties(BlockBehaviour.Properties::noOcclusion)
             .simpleItem()
-            .transform(BlockStressDefaults.setImpact(.5))
+            .transform(BlockStressDefaults.setImpact(30))
             .blockstate((ctx, prov) -> {
-                // Define the models for lit and unlit states
                 ModelFile.ExistingModelFile model = prov.models().getExistingFile(prov.modLoc("block/oil_filter_block"));
-                // Define the blockstate variants
                 prov.getVariantBuilder(ctx.get()).forAllStates(state -> ConfiguredModel.builder()
                         .modelFile(model)
                         .build());

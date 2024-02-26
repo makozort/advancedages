@@ -36,7 +36,7 @@ public abstract class FurnaceMixin extends BlockEntity {
     private void getBurnDuration(CallbackInfoReturnable<Map<Item, Integer>> cir) {
         if (this.getItem(1).is(Allitems.HEAVY_OIL_BUCKET.get().asItem())) {
             if (this.level instanceof ServerLevel) {
-                PollutionData.get(this.level).changePollution(this.getBlockPos(), .25, this.level);
+                PollutionData.get(this.level).changePollution(this.getBlockPos(), .10, this.level);
             }
         }
     }

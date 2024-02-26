@@ -1,6 +1,39 @@
 {
   "variants": {
-    "": {
+    "face=ceiling,facing=east": {
+      "model": "advancedages:block/oil_filter_block"
+    },
+    "face=ceiling,facing=north": {
+      "model": "advancedages:block/oil_filter_block"
+    },
+    "face=ceiling,facing=south": {
+      "model": "advancedages:block/oil_filter_block"
+    },
+    "face=ceiling,facing=west": {
+      "model": "advancedages:block/oil_filter_block"
+    },
+    "face=floor,facing=east": {
+      "model": "advancedages:block/oil_filter_block"
+    },
+    "face=floor,facing=north": {
+      "model": "advancedages:block/oil_filter_block"
+    },
+    "face=floor,facing=south": {
+      "model": "advancedages:block/oil_filter_block"
+    },
+    "face=floor,facing=west": {
+      "model": "advancedages:block/oil_filter_block"
+    },
+    "face=wall,facing=east": {
+      "model": "advancedages:block/oil_filter_block"
+    },
+    "face=wall,facing=north": {
+      "model": "advancedages:block/oil_filter_block"
+    },
+    "face=wall,facing=south": {
+      "model": "advancedages:block/oil_filter_block"
+    },
+    "face=wall,facing=west": {
       "model": "advancedages:block/oil_filter_block"
     }
   }

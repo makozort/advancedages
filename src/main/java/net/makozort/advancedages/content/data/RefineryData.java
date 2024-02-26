@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
 import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
 import net.makozort.advancedages.content.fluid.tank.RefineryHeaters;
@@ -66,6 +67,12 @@ public class RefineryData {
 
     public LerpedFloat gauge = LerpedFloat.linear();
 
+
+
+
+
+
+
     public void tick(SteelFluidTankBlockEntity controller) {
         if (!isActive())
             return;
@@ -102,6 +109,8 @@ public class RefineryData {
 
         controller.notifyUpdate();
     }
+
+
 
     public int getTheoreticalHeatLevel() {
         return activeHeat;
