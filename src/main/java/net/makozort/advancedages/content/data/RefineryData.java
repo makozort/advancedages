@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
-import net.makozort.advancedages.content.blocks.block.oil.OilFilterBlock;
 import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
 import net.makozort.advancedages.content.fluid.tank.RefineryHeaters;
 import org.jetbrains.annotations.NotNull;
@@ -82,7 +81,7 @@ public class RefineryData {
         ticksUntilNextSample--;
         if (ticksUntilNextSample > 0)
             return;
-        int capacity = controller.getTankInventory().getCapacity();
+        int capacity = controller.getTankInventory1().getCapacity();
         if (capacity == 0)
             return;
 

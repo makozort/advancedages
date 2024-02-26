@@ -7,7 +7,6 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
 import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
 import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock.Shape;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
@@ -26,7 +25,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -46,9 +44,11 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
 
     private static final int MAX_SIZE = 3;
 
-    protected LazyOptional<IFluidHandler> fluidCapability;
+    protected LazyOptional<IFluidHandler> fluidCapability1;
+    protected LazyOptional<IFluidHandler> fluidCapability2;
     protected boolean forceFluidLevelUpdate;
-    protected FluidTank tankInventory;
+    protected FluidTank tankInventory1;
+    protected FluidTank tankInventory2;
     protected BlockPos controller;
     protected BlockPos lastKnownPos;
     protected boolean updateConnectivity;
@@ -68,8 +68,10 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
 
     public SteelFluidTankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        tankInventory = createInventory();
-        fluidCapability = LazyOptional.of(() -> tankInventory);
+        tankInventory1 = createInventory();
+        tankInventory2 = createInventory();
+        fluidCapability1 = LazyOptional.of(() -> tankInventory1);
+        fluidCapability2 = LazyOptional.of(() -> tankInventory2);
         forceFluidLevelUpdate = true;
         updateConnectivity = false;
         window = true;
@@ -203,10 +205,10 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     }
 
     public void applyFluidTankSize(int blocks) {
-        tankInventory.setCapacity(blocks * getCapacityMultiplier());
-        int overflow = tankInventory.getFluidAmount() - tankInventory.getCapacity();
+        tankInventory1.setCapacity(blocks * getCapacityMultiplier());
+        int overflow = tankInventory1.getFluidAmount() - tankInventory1.getCapacity();
         if (overflow > 0)
-            tankInventory.drain(overflow, FluidAction.EXECUTE);
+            tankInventory1.drain(overflow, FluidAction.EXECUTE);
         forceFluidLevelUpdate = true;
     }
 
@@ -220,7 +222,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         width = 1;
         height = 1;
         refinery.clear();
-        onFluidStackChanged(tankInventory.getFluid());
+        onFluidStackChanged(tankInventory1.getFluid());
 
         BlockState state = getBlockState();
         if (SteelFluidTankBlock.isTank(state)) {
@@ -341,13 +343,13 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     }
 
     private void refreshCapability() {
-        LazyOptional<IFluidHandler> oldCap = fluidCapability;
-        fluidCapability = LazyOptional.of(() -> handlerForCapability());
+        LazyOptional<IFluidHandler> oldCap = fluidCapability1;
+        fluidCapability1 = LazyOptional.of(() -> handlerForCapability());
         oldCap.invalidate();
     }
 
     private IFluidHandler handlerForCapability() {
-        return isController() ? refinery.isActive() ? refinery.createHandler() : tankInventory
+        return isController() ? refinery.isActive() ? refinery.createHandler() : tankInventory1
                 : getControllerBE() != null ? getControllerBE().handlerForCapability() : new FluidTank(0);
     }
 
@@ -400,10 +402,10 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
             window = compound.getBoolean("Window");
             width = compound.getInt("Size");
             height = compound.getInt("Height");
-            tankInventory.setCapacity(getTotalTankSize() * getCapacityMultiplier());
-            tankInventory.readFromNBT(compound.getCompound("TankContent"));
-            if (tankInventory.getSpace() < 0)
-                tankInventory.drain(-tankInventory.getSpace(), FluidAction.EXECUTE);
+            tankInventory1.setCapacity(getTotalTankSize() * getCapacityMultiplier());
+            tankInventory1.readFromNBT(compound.getCompound("TankContent"));
+            if (tankInventory1.getSpace() < 0)
+                tankInventory1.drain(-tankInventory1.getSpace(), FluidAction.EXECUTE);
         }
 
         refinery.read(compound.getCompound("Refinery"), width * width * height);
@@ -421,7 +423,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
             if (hasLevel())
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 16);
             if (isController())
-                tankInventory.setCapacity(getCapacityMultiplier() * getTotalTankSize());
+                tankInventory1.setCapacity(getCapacityMultiplier() * getTotalTankSize());
             invalidateRenderBoundingBox();
         }
         if (isController()) {
@@ -441,7 +443,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     }
 
     public float getFillState() {
-        return (float) tankInventory.getFluidAmount() / tankInventory.getCapacity();
+        return (float) tankInventory1.getFluidAmount() / tankInventory1.getCapacity();
     }
 
     @Override
@@ -455,7 +457,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
             compound.put("Controller", NbtUtils.writeBlockPos(controller));
         if (isController()) {
             compound.putBoolean("Window", window);
-            compound.put("TankContent", tankInventory.writeToNBT(new CompoundTag()));
+            compound.put("TankContent", tankInventory1.writeToNBT(new CompoundTag()));
             compound.putInt("Size", width);
             compound.putInt("Height", height);
         }
@@ -482,10 +484,10 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        if (!fluidCapability.isPresent())
+        if (!fluidCapability1.isPresent())
             refreshCapability();
         if (cap == ForgeCapabilities.FLUID_HANDLER)
-            return fluidCapability.cast();
+            return fluidCapability1.cast();
         return super.getCapability(cap, side);
     }
 
@@ -499,8 +501,8 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         registerAwardables(behaviours, AllAdvancements.STEAM_ENGINE_MAXED, AllAdvancements.PIPE_ORGAN);
     }
 
-    public IFluidTank getTankInventory() {
-        return tankInventory;
+    public IFluidTank getTankInventory1() {
+        return tankInventory1;
     }
 
     public int getTotalTankSize() {
@@ -542,7 +544,7 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         }
         if (isController())
             setWindows(window);
-        onFluidStackChanged(tankInventory.getFluid());
+        onFluidStackChanged(tankInventory1.getFluid());
         updateBoilerState();
         setChanged();
     }
@@ -622,12 +624,12 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
 
     @Override
     public IFluidTank getTank(int tank) {
-        return tankInventory;
+        return tankInventory1;
     }
 
     @Override
     public FluidStack getFluid(int tank) {
-        return tankInventory.getFluid()
+        return tankInventory1.getFluid()
                 .copy();
     }
 }

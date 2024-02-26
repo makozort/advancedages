@@ -50,7 +50,7 @@ public class SteelFluidTankRenderer extends SafeBlockEntityRenderer<SteelFluidTa
             return;
         float clampedLevel = Mth.clamp(level * totalHeight, 0, totalHeight);
 
-        FluidTank tank = (FluidTank) be.getTankInventory();
+        FluidTank tank = (FluidTank) be.getTankInventory1();
         FluidStack fluidStack = tank.getFluid();
 
         if (fluidStack.isEmpty())
