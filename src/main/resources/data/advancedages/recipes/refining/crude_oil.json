@@ -1,0 +1,13 @@
+{
+  "type": "advancedages:refining",
+  "ingredients": [
+    {
+      "fluid": "advancedages:crude_oil"
+    }
+  ],
+  "results": [
+    {
+      "fluid": "advancedages:heavy_oil"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 package net.makozort.advancedages.content.items;
 
-import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.data.PollutionData;
+import net.makozort.advancedages.foundation.gas.pollution.Pollution;
+import net.makozort.advancedages.foundation.gas.pollution.GasData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -25,7 +25,7 @@ public class PollutionDetectorItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (player.level() instanceof ServerLevel) {
-            Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(player.level()).getMap();
+            Map<BlockPos, Pollution> map = GasData.get(player.level()).getMap();
             map.forEach((BlockPos, pollution) -> {
                 int distance = (player.getOnPos().distManhattan(BlockPos));
                 if (distance <= 500) {

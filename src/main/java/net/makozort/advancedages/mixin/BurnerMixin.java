@@ -1,9 +1,7 @@
 package net.makozort.advancedages.mixin;
 
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
-import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.data.PollutionData;
-import net.makozort.advancedages.reg.AllFluids;
+import net.makozort.advancedages.foundation.gas.pollution.GasData;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -32,7 +30,7 @@ public class BurnerMixin extends BlockEntity {
             this.remainingBurnTime = 72000;
             BlockPos pos = this.getBlockPos();
             if (this.level instanceof ServerLevel) {
-                PollutionData.get(this.level).changePollution(pos, .10, this.level);
+                GasData.get(this.level).changePollution(pos, .10, this.level);
             }
         }
     }

@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.data;
+package net.makozort.advancedages.foundation.gas.pollution;
 
 import net.makozort.advancedages.AdvancedAges;
 import net.minecraft.core.BlockPos;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PollutionData extends SavedData {
+public class GasData extends SavedData {
 
     public final Map<BlockPos, Pollution> PollutionMap = new HashMap<>();
     List<BlockPos> clearList = new ArrayList<BlockPos>();
@@ -27,12 +27,12 @@ public class PollutionData extends SavedData {
         AdvancedAges.LOGGER.info(PollutionMap.toString());
     }
     @Nonnull
-    public static PollutionData get(Level level) {
+    public static GasData get(Level level) {
         if (level.isClientSide) {
             throw new RuntimeException("Don't access this client-side!");
         }
         DimensionDataStorage storage = ((ServerLevel) level).getDataStorage();
-        return storage.computeIfAbsent(PollutionData::new, PollutionData::new, "pollutionmanager");
+        return storage.computeIfAbsent(GasData::new, GasData::new, "pollutionmanager");
     }
 
     @NotNull
@@ -83,12 +83,12 @@ public class PollutionData extends SavedData {
     }
 
     // idk figure it out
-    public PollutionData() {
+    public GasData() {
     }
 
 
     // loaded when game boots essentially
-    public PollutionData(CompoundTag tag) {
+    public GasData(CompoundTag tag) {
         ListTag list = tag.getList("pollution", Tag.TAG_COMPOUND);
         for (Tag t : list) {
             CompoundTag pollTag = (CompoundTag) t;
@@ -112,23 +112,4 @@ public class PollutionData extends SavedData {
         tag.put("pollution", list);
         return tag;
     }
-
-    public class Pollution {
-        private double pollution;
-
-        public Pollution(double pollution) {
-            this.pollution = pollution;
-        }
-
-        public double getPollution() {
-            return pollution;
-        }
-
-        public void setPollution(double pollution) {
-            this.pollution = pollution;
-        }
-
-
-    }
-
 }

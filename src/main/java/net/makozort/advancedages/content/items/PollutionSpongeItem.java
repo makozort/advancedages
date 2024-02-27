@@ -1,6 +1,7 @@
 package net.makozort.advancedages.content.items;
 
-import net.makozort.advancedages.content.data.PollutionData;
+import net.makozort.advancedages.foundation.gas.pollution.Pollution;
+import net.makozort.advancedages.foundation.gas.pollution.GasData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -20,11 +21,11 @@ public class PollutionSpongeItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (player.level() instanceof ServerLevel) {
-            Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(player.level()).getMap();
+            Map<BlockPos, Pollution> map = GasData.get(player.level()).getMap();
             map.forEach((BlockPos, pollution) -> {
                 int distance = (player.getOnPos().distManhattan(BlockPos));
                 if (distance <= 30) {
-                    PollutionData.get(level).changePollution(BlockPos, -12, level);
+                    GasData.get(level).changePollution(BlockPos, -12, level);
                 }
             });
         }

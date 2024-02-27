@@ -1,10 +1,10 @@
-package net.makozort.advancedages.reg.utils;
+package net.makozort.advancedages.foundation.registrate;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.VirtualFluidBuilder;
 import com.tterrag.registrate.builders.FluidBuilder;
 import com.tterrag.registrate.util.entry.RegistryEntry;
-import net.makozort.advancedages.content.fluid.VirtualGas;
+import net.makozort.advancedages.foundation.gas.VirtualGas;
 import net.makozort.advancedages.reg.AllFluids;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;

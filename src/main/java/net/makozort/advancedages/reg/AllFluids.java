@@ -1,7 +1,7 @@
 package net.makozort.advancedages.reg;
 
 import com.tterrag.registrate.util.entry.FluidEntry;
-import net.makozort.advancedages.content.fluid.VirtualGas;
+import net.makozort.advancedages.foundation.gas.VirtualGas;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;

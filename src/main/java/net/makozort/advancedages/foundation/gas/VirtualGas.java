@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.fluid;
+package net.makozort.advancedages.foundation.gas;
 
 import com.simibubi.create.content.fluids.VirtualFluid;
 

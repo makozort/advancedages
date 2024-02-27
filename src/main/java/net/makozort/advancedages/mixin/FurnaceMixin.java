@@ -1,8 +1,7 @@
 package net.makozort.advancedages.mixin;
 
 
-import net.makozort.advancedages.content.data.PollutionData;
-import net.makozort.advancedages.reg.AllFluids;
+import net.makozort.advancedages.foundation.gas.pollution.GasData;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -36,7 +35,7 @@ public abstract class FurnaceMixin extends BlockEntity {
     private void getBurnDuration(CallbackInfoReturnable<Map<Item, Integer>> cir) {
         if (this.getItem(1).is(Allitems.HEAVY_OIL_BUCKET.get().asItem())) {
             if (this.level instanceof ServerLevel) {
-                PollutionData.get(this.level).changePollution(this.getBlockPos(), .10, this.level);
+                GasData.get(this.level).changePollution(this.getBlockPos(), .10, this.level);
             }
         }
     }

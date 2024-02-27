@@ -3,7 +3,8 @@ package net.makozort.advancedages.content.commands;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.data.PollutionData;
+import net.makozort.advancedages.foundation.gas.pollution.Pollution;
+import net.makozort.advancedages.foundation.gas.pollution.GasData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -25,9 +26,9 @@ public class ClearPollutionCommand {
         Player player = source.getPlayer();
         if (player.hasPermissions(4)) {
             if (source.getLevel() instanceof ServerLevel) {
-                Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(source.getLevel()).getMap();
+                Map<BlockPos, Pollution> map = GasData.get(source.getLevel()).getMap();
                 map.forEach((BlockPos, pollution) -> {
-                    PollutionData.get(source.getLevel()).changePollution(BlockPos, -12, source.getLevel());
+                    GasData.get(source.getLevel()).changePollution(BlockPos, -12, source.getLevel());
                     player.sendSystemMessage(Component.literal("pollution clear at " + BlockPos).withStyle(ChatFormatting.GREEN));
                     AdvancedAges.LOGGER.info("pollution clear at " + BlockPos);
                 });

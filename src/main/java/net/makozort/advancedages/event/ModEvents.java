@@ -2,7 +2,8 @@ package net.makozort.advancedages.event;
 
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
-import net.makozort.advancedages.content.data.PollutionData;
+import net.makozort.advancedages.foundation.gas.pollution.Pollution;
+import net.makozort.advancedages.foundation.gas.pollution.GasData;
 import net.makozort.advancedages.reg.AllEffects;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;
@@ -43,7 +44,7 @@ public class ModEvents extends BlockEntity {
         public static void onLiving(LivingEvent.LivingTickEvent event) {
             Entity entity = event.getEntity();
             if (entity.level() instanceof ServerLevel) {
-                Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(entity.level()).getMap();
+                Map<BlockPos, Pollution> map = GasData.get(entity.level()).getMap();
                 List<Double> list = new ArrayList<>();
                 map.forEach((BlockPos, pollution) -> { // this loops through every entry in the pollution and checks if is close enough, applying effects based on the level
                     int distance = (entity.getOnPos().distManhattan(BlockPos));
@@ -109,14 +110,14 @@ public class ModEvents extends BlockEntity {
         public static void levelTick(TickEvent.LevelTickEvent event) {
             if (event.level instanceof ServerLevel) {
                 tick = tick + 1;
-                Map<BlockPos, PollutionData.Pollution> map = PollutionData.get(event.level).getMap();
+                Map<BlockPos, Pollution> map = GasData.get(event.level).getMap();
                 map.forEach((BlockPos, pollution) -> {
                     if (tick >= 72000) {
-                        PollutionData.get(event.level).changePollution(BlockPos, -1, event.level);
+                        GasData.get(event.level).changePollution(BlockPos, -1, event.level);
                         tick = 0;
                     }
                 });
-                PollutionData.get(event.level).clearOldPollution();
+                GasData.get(event.level).clearOldPollution();
             }
         }
 
