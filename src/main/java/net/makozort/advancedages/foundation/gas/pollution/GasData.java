@@ -1,6 +1,10 @@
 package net.makozort.advancedages.foundation.gas.pollution;
 
 import net.makozort.advancedages.AdvancedAges;
+import net.makozort.advancedages.foundation.gas.GasStack;
+import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
+import net.makozort.advancedages.foundation.gas.VirtualGas;
+import net.makozort.advancedages.reg.AllFluids;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -19,12 +23,16 @@ import java.util.Map;
 
 public class GasData extends SavedData {
 
-    public final Map<BlockPos, Pollution> PollutionMap = new HashMap<>();
+    public final Map<BlockPos, MixedVirtualGas> GasMap = new HashMap<>();
     List<BlockPos> clearList = new ArrayList<BlockPos>();
+
+    GasData() {
+        super();
+    }
 
     public void writemap() {
         AdvancedAges.LOGGER.info("john");
-        AdvancedAges.LOGGER.info(PollutionMap.toString());
+        AdvancedAges.LOGGER.info(GasMap.toString());
     }
     @Nonnull
     public static GasData get(Level level) {
@@ -36,54 +44,55 @@ public class GasData extends SavedData {
     }
 
     @NotNull
-    private Pollution getPollutionInternal(BlockPos pos) {
-        BlockPos BlockPos = new BlockPos(pos);
-        return PollutionMap.computeIfAbsent(BlockPos, cp -> new Pollution(0));
+    private MixedVirtualGas getGasInternal(BlockPos pPos) {
+        BlockPos pos = new BlockPos(pPos);
+        return GasMap.computeIfAbsent(pos, cp -> new Pollution(0));
     }
 
-    public Map<BlockPos, Pollution> getMap() {
-        return PollutionMap;
+    public Map<BlockPos, MixedVirtualGas> getGasMap() {
+        return GasMap;
     }
 
+
+    public MixedVirtualGas getGas(BlockPos pos) {
+        return GasMap.get(pos);
+    }
 
     public double getPollution(BlockPos pos) {
-        Pollution pollution = getPollutionInternal(pos);
-        return pollution.getPollution();
+        return GasMap.get(pos).getGas(AllFluids.CARBON_DIOXIDE.get()) + GasMap.get(pos).getGas(AllFluids.NATURAL_GAS.get()) *2;
     }
 
-    public int changePollution(BlockPos pos, double i, Level level) {
-        if (i >= 0) {
-            if (!level.isClientSide) {
-                ServerLevel serverLevel = (ServerLevel) level;
-                //serverLevel.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 5000, 0.3, 100, 0.3, 0);
-            }
-        }
-        Pollution pollution = getPollutionInternal(pos);
-        double present = pollution.getPollution();
-        double result = (present + i);
-        if (result > 20) {
-            pollution.setPollution(20);
-        } else if (result <= 0) {
-            pollution.setPollution(0);
+    public int changeGas(BlockPos pos, VirtualGas gas, int i, Level level) {
+        MixedVirtualGas gasses = getGasInternal(pos);
+        int present = gasses.getGas(gas);
+        int r = (present + i);
+        if (r > 1000) {
+            changeGas(pos.above(), gas, r / 6, level);
+            changeGas(pos.below(), gas, r / 6, level);
+            changeGas(pos.south(), gas, r / 6, level);
+            changeGas(pos.north(), gas, r / 6, level);
+            changeGas(pos.west(), gas, r / 6, level);
+            changeGas(pos.east(), gas, r / 6, level);
+        } else if (r <= 0) {
             clearList.add(pos);
         } else {
-            pollution.setPollution(result);
+            gasses.addGas(gas, r);
         }
         setDirty();
         return 1;
+    }
+
+    public int changeGas(BlockPos pos, GasStack<?> stack, Level level) {
+       return changeGas(pos, stack.getGas(), stack.getAmount(), level);
     }
 
     public int clearOldPollution() {
         clearList.forEach((BlockPos) -> {
-            PollutionMap.remove(BlockPos);
+            GasMap.remove(BlockPos);
         });
         clearList.removeAll(clearList);
         setDirty();
         return 1;
-    }
-
-    // idk figure it out
-    public GasData() {
     }
 
 
@@ -92,18 +101,18 @@ public class GasData extends SavedData {
         ListTag list = tag.getList("pollution", Tag.TAG_COMPOUND);
         for (Tag t : list) {
             CompoundTag pollTag = (CompoundTag) t;
-            Pollution pollution = new Pollution(pollTag.getDouble("pollution"));
+            //MixedVirtualGas pollution = new Pollution(pollTag.getDouble("co2"));
             BlockPos pos = new BlockPos(pollTag.getInt("x"), pollTag.getInt("y"), pollTag.getInt("z"));
-            PollutionMap.put(pos, pollution);
+            //GasMap.put(pos, pollution);
         }
     }
 
     @Override
     public CompoundTag save(CompoundTag tag) {
         ListTag list = new ListTag();
-        PollutionMap.forEach((BlockPos, pollution) -> {
+        GasMap.forEach((BlockPos, gasses) -> {
             CompoundTag pollTag = new CompoundTag();
-            pollTag.putDouble("pollution", pollution.getPollution());
+            pollTag.putInt("co2", gasses.getGas(AllFluids.CARBON_DIOXIDE.get()));
             pollTag.putInt("x", BlockPos.getX());
             pollTag.putInt("y", BlockPos.getY());
             pollTag.putInt("z", BlockPos.getZ());

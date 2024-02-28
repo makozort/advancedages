@@ -25,15 +25,15 @@ public class Allitems {
     public static final ItemEntry<BucketItem> HEAVY_OIL_BUCKET = REGISTRATE.item("heavy_oil_bucket",
                     p -> new BucketItem(AllFluids.HEAVY_OIL, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)))
             .register();
-    public static final ItemEntry<PollutionDetectorItem> POLLUTION_DETECTOR_ITEM = REGISTRATE.item("pollution_detector",
-                    p -> new PollutionDetectorItem(new Item.Properties().stacksTo(1).durability(6)))
+    public static final ItemEntry<Co2DetectorItem> POLLUTION_DETECTOR_ITEM = REGISTRATE.item("pollution_detector",
+                    p -> new Co2DetectorItem(new Item.Properties().stacksTo(1).durability(6)))
             .register();
 
     public static final ItemEntry<OilScannerItem> OIL_SCANNER_ITEM = REGISTRATE.item("oil_scanner",
                     p -> new OilScannerItem(new Item.Properties().stacksTo(1).durability(6)))
             .register();
-    public static final ItemEntry<PollutionSpongeItem> POLLUTION_SPONGE = REGISTRATE.item("pollution_sponge",
-                    p -> new PollutionSpongeItem(new Item.Properties().stacksTo(1).durability(1)))
+    public static final ItemEntry<NaturalGasSpongeItem> POLLUTION_SPONGE = REGISTRATE.item("pollution_sponge",
+                    p -> new NaturalGasSpongeItem(new Item.Properties().stacksTo(1).durability(1)))
             .register();
     public static final ItemEntry<IVBagItem> IV_BAG = REGISTRATE.item("iv_bag",
                     p -> new IVBagItem(new Item.Properties().stacksTo(1).durability(600)))
