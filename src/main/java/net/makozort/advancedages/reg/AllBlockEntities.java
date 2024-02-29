@@ -38,6 +38,11 @@ public class AllBlockEntities {
             .validBlocks(AllBlocks.COMBUSTION_ENGINE)
             .renderer(() -> CombustionEngineRenderer::new)
             .register();
+
+    public static final BlockEntityEntry<ThumperBlockEntity> THUMPER_BLOCK = REGISTRATE
+            .blockEntity("thumper_block", ThumperBlockEntity::new)
+            .validBlocks(AllBlocks.THUMPER_BLOCK)
+            .register();
     public static void register() {
     }
 }

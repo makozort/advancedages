@@ -59,7 +59,6 @@ public class combustionEngineBlockEntity extends GeneratingKineticBlockEntity im
         }
     }
 
-
     @Override
     public float getGeneratedSpeed() {
         if (this.checkFuel()) {
@@ -87,7 +86,6 @@ public class combustionEngineBlockEntity extends GeneratingKineticBlockEntity im
         this.updateGeneratedRotation();
     }
 
-
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
         boolean added = containedFluidTooltip(tooltip, isPlayerSneaking, tank.getCapability().cast());
@@ -99,14 +97,13 @@ public class combustionEngineBlockEntity extends GeneratingKineticBlockEntity im
     @Override
     protected void write(CompoundTag compound, boolean clientPacket) {
         super.write(compound, clientPacket);
-        compound.putInt(AdvancedAges.MOD_ID + "_Data_FuelTime", this.fuelRemaining);
+        compound.putInt(AdvancedAges.MOD_ID + "_Data_KICKSTART_FUELTIME", this.fuelRemaining);
     }
 
     @Override
     protected void read(CompoundTag compound, boolean clientPacket) {
         super.read(compound, clientPacket);
-        this.fuelRemaining = compound.getInt(AdvancedAges.MOD_ID + "_Data_FuelTime");
+        this.fuelRemaining = compound.getInt(AdvancedAges.MOD_ID + "_Data_KICKSTART_FUELTIME");
     }
-
 }
 

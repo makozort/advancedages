@@ -11,6 +11,7 @@ import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.makozort.advancedages.content.blocks.block.CombustionEngineBlock;
+import net.makozort.advancedages.content.blocks.block.ThumperBlock;
 import net.makozort.advancedages.content.blocks.block.horn.*;
 import net.makozort.advancedages.content.blocks.block.oil.OilFilterBlock;
 import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
@@ -215,6 +216,28 @@ public class AllBlocks {
                         });
                     })
                     .register();
+
+    public static final RegistryEntry<ThumperBlock> THUMPER_BLOCK = REGISTRATE
+            .block("thumper_block", ThumperBlock::new)
+            .simpleItem()
+            .transform(BlockStressDefaults.setImpact(.5))
+            .blockstate((ctx, prov) -> {
+                ModelFile.ExistingModelFile model = prov.models().getExistingFile(prov.modLoc("block/thumper_block"));
+                prov.getVariantBuilder(ctx.get()).forAllStates(state -> {
+                    boolean lit = state.getValue(TitanHornBlock.LIT);
+                    Direction facing = state.getValue(TitanHornBlock.FACING);
+                    int yRotation = 0;
+                    if (facing == Direction.EAST) yRotation = 90;
+                    else if (facing == Direction.SOUTH) yRotation = 180;
+                    else if (facing == Direction.WEST) yRotation = 270;
+
+                    return ConfiguredModel.builder()
+                            .modelFile(model)
+                            .rotationY(yRotation)
+                            .build();
+                });
+            })
+            .register();
 
     public static void register() {
     }

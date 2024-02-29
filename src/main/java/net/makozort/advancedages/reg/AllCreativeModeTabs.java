@@ -75,11 +75,8 @@ public class AllCreativeModeTabs {
                         pOutput.accept(AllBlocks.GRAND_HORN_BLOCK.get().asItem());
                         pOutput.accept(AllBlocks.OMINOUS_HORN_BLOCK.get().asItem());
                         pOutput.accept(AllBlocks.REAPER_HORN_BLOCK.get().asItem());
-
-
-
-
-
+                        pOutput.accept(AllBlocks.COMBUSTION_ENGINE.get().asItem());
+                        pOutput.accept(AllBlocks.THUMPER_BLOCK.get().asItem());
                     })
                     .build());
 

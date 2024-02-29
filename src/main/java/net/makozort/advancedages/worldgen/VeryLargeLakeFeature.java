@@ -2,6 +2,7 @@ package net.makozort.advancedages.worldgen;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.makozort.advancedages.content.data.DepositData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
@@ -113,8 +114,7 @@ public class VeryLargeLakeFeature extends Feature<VeryLargeLakeFeature.Configura
                     }
                 }
             }
-
-            System.out.println("Placed Very Large Lake at:" + origin);
+            DepositData.get(worldgenlevel.getLevel()).addDeposit(origin);
             return true;
         }
     }
