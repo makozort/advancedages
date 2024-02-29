@@ -1,12 +1,8 @@
 package net.makozort.advancedages.reg;
 
 import com.tterrag.registrate.util.entry.FluidEntry;
+import net.makozort.advancedages.foundation.fluid.NoColorFluidAttributes;
 import net.makozort.advancedages.foundation.gas.VirtualGas;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 
@@ -19,10 +15,7 @@ public class AllFluids {
     // fluids among other things uses the texture atlas now
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> HEAVY_OIL =
-            REGISTRATE.fluid("heavy_oil",
-                            asFluid("heavy_oil", false),
-                            asFluid("heavy_oil", true),
-                            AllFluids.NoColorFluidAttributes::new)
+            REGISTRATE.fluid("heavy_oil")
                     .lang("Heavy Oil")
                     .properties(b -> b.viscosity(1500)
                             .density(1400))
@@ -34,10 +27,7 @@ public class AllFluids {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> CRUDE_OIL =
-            REGISTRATE.fluid("crude_oil",
-                            asFluid("crude_oil", false),
-                            asFluid("crude_oil", true),
-                            AllFluids.NoColorFluidAttributes::new)
+            REGISTRATE.fluid("crude_oil")
                     .lang("Crude Oil")
                     .properties(b -> b.viscosity(1500)
                             .density(1400))
@@ -51,10 +41,7 @@ public class AllFluids {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> LIQUID_MEAT =
-            REGISTRATE.fluid("liquid_meat",
-                            asFluid("liquid_meat", false),
-                            asFluid("liquid_meat", true),
-                            AllFluids.NoColorFluidAttributes::new)
+            REGISTRATE.fluid("liquid_meat")
                     .lang("Liquid Meat")
                     .properties(b -> b.viscosity(1500)
                             .density(1400))
@@ -67,37 +54,15 @@ public class AllFluids {
 
     //Gasses
     public static final FluidEntry<VirtualGas> CARBON_DIOXIDE = REGISTRATE
-            .virtualGas("preheated_air").lang("Preheated Air").register();
-    public static final FluidEntry<VirtualGas> AIR = REGISTRATE
-            .virtualGas("preheated_air").lang("Preheated Air").register();
+            .virtualGas("carbon_dioxide", VirtualGas::new).lang("Carbon Dioxide").register();
+
     public static final FluidEntry<VirtualGas> NATURAL_GAS = REGISTRATE
-            .virtualGas("preheated_air").lang("Preheated Air").register();
+            .virtualGas("natural_gas", VirtualGas::new).lang("Natural Gas").register();
 
-
+    public static final FluidEntry<VirtualGas> OXYGEN = REGISTRATE
+            .virtualGas("natural_gas", VirtualGas::new).lang("Natural Gas").register();
 
 
     public static void register() {}
-
-    public static class NoColorFluidAttributes extends com.simibubi.create.AllFluids.TintedFluidType {
-
-        public NoColorFluidAttributes(Properties properties, ResourceLocation stillTexture,
-                                      ResourceLocation flowingTexture) {
-            super(properties, stillTexture, flowingTexture);
-        }
-
-        @Override
-        protected int getTintColor(FluidStack stack) {
-            return NO_TINT;
-        }
-
-        @Override
-        public int getTintColor(FluidState state, BlockAndTintGetter world, BlockPos pos) {
-            return 0x00ffffff;
-        }
-
-    }
-
-
-    // look at createDD for fluid interaction stuff if needed
 
 }

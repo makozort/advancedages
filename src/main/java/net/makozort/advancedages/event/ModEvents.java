@@ -3,7 +3,7 @@ package net.makozort.advancedages.event;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
-import net.makozort.advancedages.foundation.gas.pollution.GasData;
+import net.makozort.advancedages.foundation.gas.GasData;
 import net.makozort.advancedages.reg.AllEffects;
 import net.makozort.advancedages.reg.AllFluids;
 import net.makozort.advancedages.reg.Allitems;

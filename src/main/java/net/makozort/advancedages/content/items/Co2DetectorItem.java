@@ -1,7 +1,7 @@
 package net.makozort.advancedages.content.items;
 
 import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
-import net.makozort.advancedages.foundation.gas.pollution.GasData;
+import net.makozort.advancedages.foundation.gas.GasData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

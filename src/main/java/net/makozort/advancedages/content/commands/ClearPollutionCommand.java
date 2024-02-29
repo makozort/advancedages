@@ -4,7 +4,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
-import net.makozort.advancedages.foundation.gas.pollution.GasData;
+import net.makozort.advancedages.foundation.gas.GasData;
 import net.makozort.advancedages.reg.AllFluids;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;

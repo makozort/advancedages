@@ -1,7 +1,7 @@
 package net.makozort.advancedages.mixin;
 
 
-import net.makozort.advancedages.foundation.gas.pollution.GasData;
+import net.makozort.advancedages.foundation.gas.GasData;
 import net.makozort.advancedages.reg.AllFluids;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;

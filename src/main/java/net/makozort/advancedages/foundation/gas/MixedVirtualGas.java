@@ -1,13 +1,10 @@
 package net.makozort.advancedages.foundation.gas;
 
-import com.ibm.icu.impl.Pair;
-
 import java.util.List;
-import java.util.Map;
 
 public class MixedVirtualGas {
     public List<GasStack<?>> virtualGasses;
-    MixedVirtualGas(List<GasStack<?>> virtualGasses) {
+    public MixedVirtualGas(List<GasStack<?>> virtualGasses) {
         super();
     }
 
