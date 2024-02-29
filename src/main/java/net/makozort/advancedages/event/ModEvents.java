@@ -2,9 +2,10 @@ package net.makozort.advancedages.event;
 
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
-import net.makozort.advancedages.foundation.gas.pollution.Pollution;
+import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
 import net.makozort.advancedages.foundation.gas.pollution.GasData;
 import net.makozort.advancedages.reg.AllEffects;
+import net.makozort.advancedages.reg.AllFluids;
 import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -44,12 +45,13 @@ public class ModEvents extends BlockEntity {
         public static void onLiving(LivingEvent.LivingTickEvent event) {
             Entity entity = event.getEntity();
             if (entity.level() instanceof ServerLevel) {
-                Map<BlockPos, Pollution> map = GasData.get(entity.level()).getMap();
-                List<Double> list = new ArrayList<>();
+                Map<BlockPos, MixedVirtualGas> map = GasData.get(entity.level()).getGasMap();
+                List<Integer> list = new ArrayList<>();
                 map.forEach((BlockPos, pollution) -> { // this loops through every entry in the pollution and checks if is close enough, applying effects based on the level
                     int distance = (entity.getOnPos().distManhattan(BlockPos));
                     if (distance <= 500) {
-                        list.add(pollution.getPollution()); // this part makes it cumulative
+                        list.add(pollution.getGas(AllFluids.CARBON_DIOXIDE.get()));
+                        list.add(pollution.getGas(AllFluids.NATURAL_GAS.get()) * 2);
                     }
                 });
                 double total = list.stream().mapToDouble(f -> f.doubleValue()).sum();
@@ -110,10 +112,10 @@ public class ModEvents extends BlockEntity {
         public static void levelTick(TickEvent.LevelTickEvent event) {
             if (event.level instanceof ServerLevel) {
                 tick = tick + 1;
-                Map<BlockPos, Pollution> map = GasData.get(event.level).getMap();
-                map.forEach((BlockPos, pollution) -> {
+                Map<BlockPos, MixedVirtualGas> map = GasData.get(event.level).getGasMap();
+                map.forEach((BlockPos, gas) -> {
                     if (tick >= 72000) {
-                        GasData.get(event.level).changePollution(BlockPos, -1, event.level);
+                        GasData.get(event.level).changeGas(BlockPos, AllFluids.CARBON_DIOXIDE.get(), -1, event.level);
                         tick = 0;
                     }
                 });

@@ -22,6 +22,10 @@ public class GasData extends SavedData {
     public final Map<BlockPos, Pollution> PollutionMap = new HashMap<>();
     List<BlockPos> clearList = new ArrayList<BlockPos>();
 
+    public void writemap() {
+        AdvancedAges.LOGGER.info("john");
+        AdvancedAges.LOGGER.info(PollutionMap.toString());
+    }
     @Nonnull
     public static GasData get(Level level) {
         if (level.isClientSide) {

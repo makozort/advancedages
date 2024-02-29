@@ -1,6 +1,6 @@
 package net.makozort.advancedages.content.items;
 
-import net.makozort.advancedages.foundation.gas.pollution.Pollution;
+import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
 import net.makozort.advancedages.foundation.gas.pollution.GasData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -15,8 +15,10 @@ import net.minecraft.world.level.Level;
 
 import java.util.Map;
 
-public class PollutionDetectorItem extends Item {
-    public PollutionDetectorItem(Properties p_41383_) {
+import static net.makozort.advancedages.reg.AllFluids.CARBON_DIOXIDE;
+
+public class Co2DetectorItem extends Item {
+    public Co2DetectorItem(Properties p_41383_) {
         super(p_41383_);
     }
 
@@ -25,13 +27,13 @@ public class PollutionDetectorItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (player.level() instanceof ServerLevel) {
-            Map<BlockPos, Pollution> map = GasData.get(player.level()).getMap();
-            map.forEach((BlockPos, pollution) -> {
+            Map<BlockPos, MixedVirtualGas> map = GasData.get(player.level()).getGasMap();
+            map.forEach((BlockPos, gasses) -> {
                 int distance = (player.getOnPos().distManhattan(BlockPos));
                 if (distance <= 500) {
-                    if (pollution.getPollution() > 0) {
-                        player.sendSystemMessage(Component.literal("pollution level " + pollution.getPollution() + " found at " + BlockPos).withStyle(ChatFormatting.RED));
-                        localPollution = (localPollution + pollution.getPollution());
+                    if (gasses.getGas(CARBON_DIOXIDE.get()) > 0) {
+                        player.sendSystemMessage(Component.literal("pollution level " + gasses.getGas(CARBON_DIOXIDE.get()) + " found at " + BlockPos).withStyle(ChatFormatting.RED));
+                        localPollution = (localPollution + gasses.getGas(CARBON_DIOXIDE.get()));
                     }
                 }
             });
