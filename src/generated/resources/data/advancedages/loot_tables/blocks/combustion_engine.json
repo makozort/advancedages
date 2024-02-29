@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "advancedages:oil_filter"
+          "name": "advancedages:combustion_engine"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "advancedages:blocks/oil_filter"
+  "random_sequence": "advancedages:blocks/combustion_engine"
 }

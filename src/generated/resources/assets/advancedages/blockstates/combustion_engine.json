@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "advancedages:block/combustion_engine",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "advancedages:block/combustion_engine"
+    },
+    "facing=south": {
+      "model": "advancedages:block/combustion_engine",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "advancedages:block/combustion_engine",
+      "y": 270
+    }
+  }
+}

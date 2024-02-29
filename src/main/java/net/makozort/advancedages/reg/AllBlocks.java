@@ -7,8 +7,10 @@ import com.simibubi.create.content.redstone.displayLink.source.BoilerDisplaySour
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
+import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import net.makozort.advancedages.content.blocks.block.CombustionEngineBlock;
 import net.makozort.advancedages.content.blocks.block.horn.*;
 import net.makozort.advancedages.content.blocks.block.oil.OilFilterBlock;
 import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
@@ -17,12 +19,13 @@ import net.makozort.advancedages.content.fluid.tank.SteelFluidTankModel;
 import net.makozort.advancedages.content.items.SteelFluidTankItem;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 
 import static com.simibubi.create.content.redstone.displayLink.AllDisplayBehaviours.assignDataBehaviour;
+import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
 public class AllBlocks {
@@ -158,12 +161,6 @@ public class AllBlocks {
             })
             .register();
 
-    //public static final BlockEntry<LiquidBlock> LIQUID_MEAT_BLOCK = REGISTRATE
-    //        .block("liquid_meat_block", b ->
-    //                new LiquidBlock(AllFluids.SOURCE_LIQUID_MEAT, BlockBehaviour.Properties.copy(Blocks.WATER)))
-    //        .lang("Liquid Meat")
-    //        .register();
-
     public static final BlockEntry<SteelFluidTankBlock> STEEL_FLUID_TANK = REGISTRATE
             .block("steel_fluid_tank", SteelFluidTankBlock::regular)
             .initialProperties(SharedProperties::copperMetal)
@@ -181,7 +178,7 @@ public class AllBlocks {
 
 
     public static final RegistryEntry<OilFilterBlock> OIL_FILTER = REGISTRATE
-            .block("oil_filter", OilFilterBlock::new)
+            .block("oil_filter_block", OilFilterBlock::new)
             .addLayer(() -> RenderType::translucent)
             .properties(BlockBehaviour.Properties::noOcclusion)
             .simpleItem()
@@ -193,6 +190,31 @@ public class AllBlocks {
                         .build());
             })
             .register();
+
+    public static final BlockEntry<CombustionEngineBlock> COMBUSTION_ENGINE =
+            REGISTRATE.block("combustion_engine", CombustionEngineBlock::new)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .initialProperties(SharedProperties::stone)
+                    .transform(pickaxeOnly())
+                    .transform(BlockStressDefaults.setCapacity(20))
+                    .transform(BlockStressDefaults.setGeneratorSpeed(() -> Couple.create(0, 256)))
+                    .simpleItem()
+                    .blockstate((ctx, prov) -> {
+                        ModelFile.ExistingModelFile modelFile = prov.models().getExistingFile(prov.modLoc("block/combustion_engine"));
+                        prov.getVariantBuilder(ctx.get()).forAllStates(state -> {
+                            Direction facing = state.getValue(CombustionEngineBlock.HORIZONTAL_FACING);
+                            int yRotation = 0;
+                            if (facing == Direction.EAST) yRotation = 90;
+                            else if (facing == Direction.SOUTH) yRotation = 180;
+                            else if (facing == Direction.WEST) yRotation = 270;
+
+                            return ConfiguredModel.builder()
+                                    .modelFile(modelFile)
+                                    .rotationY(yRotation)
+                                    .build();
+                        });
+                    })
+                    .register();
 
     public static void register() {
     }

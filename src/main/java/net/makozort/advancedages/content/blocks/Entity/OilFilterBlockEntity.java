@@ -11,7 +11,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 
-public class    OilFilterBlockEntity extends KineticBlockEntity implements IHaveGoggleInformation {
+public class OilFilterBlockEntity extends KineticBlockEntity implements IHaveGoggleInformation {
     public OilFilterBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
     }

@@ -10,6 +10,7 @@
     {"type": "single", "resource": "advancedages:block/filter/millstone"},
     {"type": "single", "resource": "advancedages:block/filter/outside"},
     {"type": "single", "resource": "advancedages:block/filter/pipes"},
-    {"type": "single", "resource": "advancedages:block/filter/pump"}
+    {"type": "single", "resource": "advancedages:block/filter/pump"},
+    {"type": "single", "resource": "advancedages:block/combustion_engine"}
   ]
 }

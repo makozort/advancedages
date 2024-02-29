@@ -1,10 +1,11 @@
 {
+  "block.advancedages.combustion_engine": "Combustion Engine",
   "block.advancedages.crude_oil": "Crude Oil",
   "block.advancedages.gjallar_horn_block": "Gjallar Horn Block",
   "block.advancedages.grand_horn_block": "Grand Horn Block",
   "block.advancedages.heavy_oil": "Heavy Oil",
   "block.advancedages.liquid_meat": "Liquid Meat",
-  "block.advancedages.oil_filter": "Oil Filter",
+  "block.advancedages.oil_filter_block": "Oil Filter Block",
   "block.advancedages.ominous_horn_block": "Ominous Horn Block",
   "block.advancedages.reaper_horn_block": "Reaper Horn Block",
   "block.advancedages.steel_fluid_tank": "Steel Fluid Tank",

@@ -3,6 +3,8 @@ package net.makozort.advancedages.reg;
 
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.makozort.advancedages.content.blocks.Entity.*;
+import net.makozort.advancedages.content.blocks.Entity.CombustionEngine.CombustionEngineRenderer;
+import net.makozort.advancedages.content.blocks.Entity.CombustionEngine.combustionEngineBlockEntity;
 import net.makozort.advancedages.content.blocks.Entity.OilFilterBlockEntity;
 import net.makozort.advancedages.content.blocks.Entity.RefineLogic.OilFilterCogInstance;
 import net.makozort.advancedages.content.blocks.Entity.RefineLogic.OilFilterRenderer;
@@ -29,6 +31,12 @@ public class AllBlockEntities {
             .instance(() -> OilFilterCogInstance::new, false)
             .validBlocks(AllBlocks.OIL_FILTER)
             .renderer(() -> OilFilterRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<combustionEngineBlockEntity> combustion_engine = REGISTRATE
+            .blockEntity("combustion_engine", combustionEngineBlockEntity::new)
+            .validBlocks(AllBlocks.COMBUSTION_ENGINE)
+            .renderer(() -> CombustionEngineRenderer::new)
             .register();
     public static void register() {
     }
