@@ -10,7 +10,9 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import net.makozort.advancedages.content.blocks.block.AntennaBlock;
 import net.makozort.advancedages.content.blocks.block.CombustionEngineBlock;
+import net.makozort.advancedages.content.blocks.block.RadioBlock;
 import net.makozort.advancedages.content.blocks.block.ThumperBlock;
 import net.makozort.advancedages.content.blocks.block.horn.*;
 import net.makozort.advancedages.content.blocks.block.oil.OilFilterBlock;
@@ -224,8 +226,7 @@ public class AllBlocks {
             .blockstate((ctx, prov) -> {
                 ModelFile.ExistingModelFile model = prov.models().getExistingFile(prov.modLoc("block/thumper_block"));
                 prov.getVariantBuilder(ctx.get()).forAllStates(state -> {
-                    boolean lit = state.getValue(TitanHornBlock.LIT);
-                    Direction facing = state.getValue(TitanHornBlock.FACING);
+                    Direction facing = state.getValue(ThumperBlock.FACING);
                     int yRotation = 0;
                     if (facing == Direction.EAST) yRotation = 90;
                     else if (facing == Direction.SOUTH) yRotation = 180;
@@ -238,6 +239,44 @@ public class AllBlocks {
                 });
             })
             .register();
+
+    public static final RegistryEntry<RadioBlock> RADIO_BLOCK = REGISTRATE
+            .block("radio_block", RadioBlock::new)
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .simpleItem()
+            .transform(BlockStressDefaults.setImpact(30))
+            .blockstate((ctx, prov) -> {
+                ModelFile.ExistingModelFile modelFile = prov.models().getExistingFile(prov.modLoc("block/radio_block"));
+                prov.getVariantBuilder(ctx.get()).forAllStates(state -> {
+                    Direction facing = state.getValue(RadioBlock.FACING);
+                    int yRotation = 0;
+                    if (facing == Direction.EAST) yRotation = 90;
+                    else if (facing == Direction.SOUTH) yRotation = 180;
+                    else if (facing == Direction.WEST) yRotation = 270;
+
+                    return ConfiguredModel.builder()
+                            .modelFile(modelFile)
+                            .rotationY(yRotation)
+                            .build();
+                });
+            })
+            .register();
+
+    public static final RegistryEntry<AntennaBlock> ANTENNA_BLOCK = REGISTRATE
+            .block("antenna_block", AntennaBlock::new)
+            .simpleItem()
+            .blockstate((ctx, prov) -> {
+                ModelFile.ExistingModelFile modelConnected = prov.models().getExistingFile(prov.modLoc("block/antenna_block_on"));
+                ModelFile.ExistingModelFile modelUnconnected = prov.models().getExistingFile(prov.modLoc("block/antenna_block_off"));
+                prov.getVariantBuilder(ctx.get()).forAllStates(state -> {
+                    boolean connected = state.getValue(AntennaBlock.CONNECTED);
+                    return ConfiguredModel.builder()
+                            .modelFile(connected ? modelConnected : modelUnconnected)
+                            .build();
+                });
+            })
+            .register();
+
 
     public static void register() {
     }

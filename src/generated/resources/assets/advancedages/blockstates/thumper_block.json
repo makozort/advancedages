@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "vertical_direction=down": {
+      "model": "advancedages:block/thumper_block"
+    },
+    "vertical_direction=up": {
+      "model": "advancedages:block/thumper_block"
+    }
+  }
+}

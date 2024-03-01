@@ -43,6 +43,16 @@ public class AllBlockEntities {
             .blockEntity("thumper_block", ThumperBlockEntity::new)
             .validBlocks(AllBlocks.THUMPER_BLOCK)
             .register();
+
+    public static final BlockEntityEntry<RadioBlockEntity> RADIO = REGISTRATE
+            .blockEntity("radio", RadioBlockEntity::new)
+            .validBlocks(AllBlocks.RADIO_BLOCK)
+            .register();
+
+    public static final BlockEntityEntry<AntennaBlockEntity> ANTENNA = REGISTRATE
+            .blockEntity("antenna", AntennaBlockEntity::new)
+            .validBlocks(AllBlocks.ANTENNA_BLOCK)
+            .register();
     public static void register() {
     }
 }

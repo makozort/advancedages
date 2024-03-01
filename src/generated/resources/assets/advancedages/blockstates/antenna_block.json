@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "connected=false": {
+      "model": "advancedages:block/antenna_block_off"
+    },
+    "connected=true": {
+      "model": "advancedages:block/antenna_block_on"
+    }
+  }
+}

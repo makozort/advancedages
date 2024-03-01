@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "advancedages:block/radio_block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "advancedages:block/radio_block"
+    },
+    "facing=south": {
+      "model": "advancedages:block/radio_block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "advancedages:block/radio_block",
+      "y": 270
+    }
+  }
+}

@@ -45,9 +45,10 @@ public class RadioTowerData extends SavedData {
             this.hasAntenna = hasAntenna;
         }
 
-        public boolean getAntenna() {return hasAntenna;}
 
         public void setHasAntenna(boolean hasAntenna) {this.hasAntenna = hasAntenna;}
+
+        public boolean getAntenna() {return hasAntenna;}
 
         public int getHeight() {
             return height;
