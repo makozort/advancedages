@@ -56,6 +56,7 @@ public class ThumperBlockEntity extends KineticBlockEntity implements IHaveGoggl
                         foundDeposits.add(pos);
                     }
                 }
+                this.level.sendBlockUpdated(this.getBlockPos(),this.getBlockState(),this.getBlockState(),2);
                 if (range < (int) (MAX_RANGE * ((double) 1 / MAX_LEVEL))) {
                     int newRange= (int) (MAX_RANGE * ((double) 1 / MAX_LEVEL));
                     slamEffect(this.worldPosition,newRange);
@@ -78,7 +79,6 @@ public class ThumperBlockEntity extends KineticBlockEntity implements IHaveGoggl
     @Override
     public void tick() {
         super.tick();
-
         if (this.cooldown == 0) {
             slam();
         } else {
@@ -92,8 +92,10 @@ public class ThumperBlockEntity extends KineticBlockEntity implements IHaveGoggl
             boolean added = super.addToGoggleTooltip(tooltip, isPlayerSneaking);
             Component cooldownComponent = Component.literal("Slam cooldown: ").append(Component.literal(String.valueOf(this.cooldown / 20)).withStyle(ChatFormatting.AQUA));
             Component rangeComponent = Component.literal("Current Scan radius: " ).append(Component.literal(String.valueOf((int) (MAX_RANGE * ((double) this.currentLevel / MAX_LEVEL)))).withStyle(ChatFormatting.AQUA));
+            Component foundComponent = Component.literal("Deposits found: " ).append(Component.literal(String.valueOf(this.foundDeposits.size())).withStyle(ChatFormatting.AQUA));
             tooltip.add(cooldownComponent);
             tooltip.add(rangeComponent);
+        tooltip.add(foundComponent);
         return added;
     }
 

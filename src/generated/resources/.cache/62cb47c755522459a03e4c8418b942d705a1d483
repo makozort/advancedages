@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-01T17:38:20.7096171	Registrate Provider for advancedages [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2024-03-03T22:26:55.3422651	Registrate Provider for advancedages [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 ad3d298e41ddcbde748e87c353754f2892a4d1b4 assets/advancedages/blockstates/antenna_block.json
 05f7f0019149ebb3a14711c301531ee831c1754f assets/advancedages/blockstates/combustion_engine.json
 fa856b3f794eea75d17bd397307ec1460a78133b assets/advancedages/blockstates/crude_oil.json
@@ -6,6 +6,7 @@ fa856b3f794eea75d17bd397307ec1460a78133b assets/advancedages/blockstates/crude_o
 cd3b367ae63456ce61f5dd01370bb5e97d310e7f assets/advancedages/blockstates/grand_horn_block.json
 139b5fdeedaf0472e88f18a3875e0f7f3692058c assets/advancedages/blockstates/heavy_oil.json
 1844baadcb557d7a3c1ce449d752b33775a29196 assets/advancedages/blockstates/liquid_meat.json
+901650e0bd2885249dc0103f203324668d1a0b93 assets/advancedages/blockstates/lush_netherwart.json
 194ee9a455dfbe846f546144a6c8bc63e0cdedf1 assets/advancedages/blockstates/oil_filter_block.json
 189f9dd85e6abcf6fab3b58f7940f2b0de2a5401 assets/advancedages/blockstates/ominous_horn_block.json
 ce31f8762406a965b5ca5b3a425b7c973e460ba3 assets/advancedages/blockstates/radio_block.json
@@ -13,12 +14,13 @@ ce31f8762406a965b5ca5b3a425b7c973e460ba3 assets/advancedages/blockstates/radio_b
 e015f63c223dc4b3a85b4ce5a13695d0d0387d24 assets/advancedages/blockstates/steel_fluid_tank.json
 6252ff1e5dfbebb01a22bf905835dd6eef0ff0ee assets/advancedages/blockstates/thumper_block.json
 85c4f3d1522f35d5e3a5f78739d651fee655adc2 assets/advancedages/blockstates/titan_horn_block.json
-94e9803509dc53d5c3e42a6141e82357e45a2d7e assets/advancedages/lang/en_ud.json
-f3e128d4887c88bc4d15ecc2bbd7fb48aef4a516 assets/advancedages/lang/en_us.json
+d68676f85ff512b036169ab897fa8bb879e5d5c9 assets/advancedages/lang/en_ud.json
+5b6c277c5190b07f1748e2a75b84f9a90618c3c9 assets/advancedages/lang/en_us.json
 d5f3f4d5a46259e7cad3cea46460682589c45439 assets/advancedages/models/block/crude_oil.json
 f5a60543db3aa3ef2b3bcb89f1ad1d67d55abfc0 assets/advancedages/models/block/heavy_oil.json
 f659c619c6bb67c12eb206942b106d463be2dfb2 assets/advancedages/models/block/liquid_meat.json
 d830b5e809cf1f681ab0d06c767c6723abc0cd9d assets/advancedages/models/item/antenna_block.json
+5869f6c20422447d22f6b4caab99a03c74904ad4 assets/advancedages/models/item/catalyzed_netherwart.json
 6111a62be583b43d94e2d98fe11d98093c6cea4a assets/advancedages/models/item/combustion_engine.json
 366581dc227b7c6bc117535ea05270b231be11bc assets/advancedages/models/item/crude_oil_bucket.json
 3fd42de37a2486e3b88e0fdf7cb4b0cae68f22b3 assets/advancedages/models/item/empty_iv_bag.json
@@ -27,6 +29,7 @@ d830b5e809cf1f681ab0d06c767c6723abc0cd9d assets/advancedages/models/item/antenna
 8cb06a6633dacbc66107fd10f742e791247ed922 assets/advancedages/models/item/heavy_oil_bucket.json
 c831c1fb9a0bee01bc24e75e3f28511100779008 assets/advancedages/models/item/iv_bag.json
 cbe29912f3402b18a04e6d65192a928f86d4fa55 assets/advancedages/models/item/liquid_meat_bucket.json
+dab014fbafb9852331e581b68d3615b544e68c54 assets/advancedages/models/item/lush_netherwart.json
 5baa61083ba88df1f6eab4e3eee874d66644d8b0 assets/advancedages/models/item/meat.json
 62c56a2c39545700baf163f4eb1e8cd0c1bfc88c assets/advancedages/models/item/meat_sandwich.json
 e9ad8b6b2d904da78096b24d0720e3bcda9ef0f4 assets/advancedages/models/item/nutritious_iv_bag.json
@@ -45,6 +48,7 @@ d8c0baa172b286234f3903c879bcb16677b17639 data/advancedages/loot_tables/blocks/an
 e7ee9131eeb9fd96741748a512317b3d6dbcaeef data/advancedages/loot_tables/blocks/combustion_engine.json
 9530017c777b2373d3e20564ecdb5822352468a2 data/advancedages/loot_tables/blocks/gjallar_horn_block.json
 f3a96f399eb56522e3dabadc320506e3c7985e5e data/advancedages/loot_tables/blocks/grand_horn_block.json
+2a1f5ba15fe1ce4c51a793513cbdfbf265addfae data/advancedages/loot_tables/blocks/lush_netherwart.json
 7dc9c6d50d9e3811f40e4ad19e5754f7165ee072 data/advancedages/loot_tables/blocks/oil_filter_block.json
 13d01b1898c0ea0c7c1a7d55a0e45393c71162c5 data/advancedages/loot_tables/blocks/ominous_horn_block.json
 0697cc47e123cd3359ce5b370e26115688be2acb data/advancedages/loot_tables/blocks/radio_block.json

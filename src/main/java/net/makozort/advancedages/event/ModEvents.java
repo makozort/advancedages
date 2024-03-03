@@ -1,15 +1,17 @@
 package net.makozort.advancedages.event;
 
+import com.mojang.datafixers.TypeRewriteRule;
+import com.simibubi.create.AllItems;
+import com.simibubi.create.content.trains.schedule.Schedule;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.Entity.ThumperBlockEntity;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.content.commands.DepositsCommand;
+import net.makozort.advancedages.content.items.Co2DetectorItem;
+import net.makozort.advancedages.content.items.OilScannerItem;
 import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
 import net.makozort.advancedages.foundation.gas.GasData;
-import net.makozort.advancedages.reg.AllBlockEntities;
-import net.makozort.advancedages.reg.AllEffects;
-import net.makozort.advancedages.reg.AllFluids;
-import net.makozort.advancedages.reg.Allitems;
+import net.makozort.advancedages.reg.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -22,6 +24,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -99,9 +102,12 @@ public class ModEvents extends BlockEntity {
                 BlockPos pos = event.getPos();
                 ServerLevel level = (ServerLevel) event.getLevel();
                 BlockEntity blockEntity = level.getBlockEntity(pos);
-                if (blockEntity instanceof ThumperBlockEntity thumperBlock && event.getEntity().isShiftKeyDown()) {
-                    event.getEntity().sendSystemMessage(Component.literal(thumperBlock.getFoundDeposits().size() + " deposits found, use clipboard to save them").withStyle(ChatFormatting.YELLOW));
+                Item item = event.getEntity().getItemInHand(InteractionHand.MAIN_HAND).getItem();
+                if (blockEntity instanceof ThumperBlockEntity thumperBlock && item == Allitems.OIL_SCANNER_ITEM.asItem()) {
+                    event.getEntity().setItemInHand(InteractionHand.MAIN_HAND, Allitems.EMPTY_IV_BAG.asStack());
+                    event.getEntity().sendSystemMessage(Component.literal(String.valueOf(thumperBlock.getFoundDeposits())).withStyle(ChatFormatting.YELLOW));
                     level.playSound(null, pos, SoundEvents.LAVA_POP, SoundSource.MASTER, 1, 1);
+
                 }
             }
         }

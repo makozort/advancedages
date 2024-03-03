@@ -48,17 +48,18 @@ public class GasData extends SavedData {
     }
 
     public MixedVirtualGas addGas(BlockPos pos, GasStack<?> stack) {
-        GasMap.put(pos, new MixedVirtualGas(List.of(stack.getGas(), stack.getAmount())))
-        return new MixedVirtualGas(List.of(stack.getGas(), stack.getAmount()))
+        GasStack gasStack = new  GasStack<>(stack.getGas(), stack.getAmount());
+        GasMap.put(pos, new MixedVirtualGas((List<GasStack<?>>) gasStack));
+        return new MixedVirtualGas((List<GasStack<?>>) gasStack);
     }
 
     public MixedVirtualGas getGas(BlockPos pos) {
-        return GasMap.get(pos) == null ? addGas(pos, new GasStack<?>(AllFluids.OXYGEN.get(), 200) : GasMap.get(pos);
+        return GasMap.get(pos) == null ? addGas(pos, new GasStack<>(AllFluids.OXYGEN.get(), 200)) : GasMap.get(pos);
     }
 
 
     public int changeGas(BlockPos pos, VirtualGas gas, int i, Level level) {
-        MixedVirtualGas gasses = getGas(pos, level);
+        MixedVirtualGas gasses = getGas(pos);
         int present = gasses.getGas(gas);
         int r = (present + i);
         if (r > 1000) {
@@ -78,7 +79,7 @@ public class GasData extends SavedData {
     }
 
     public int changeGas(BlockPos pos, GasStack<?> stack, Level level) {
-       return changeGas(pos, stack.getGas(), stack.getAmount(), level);
+        return changeGas(pos, stack.getGas(), stack.getAmount(), level);
     }
 
     public int clearOldPollution() {

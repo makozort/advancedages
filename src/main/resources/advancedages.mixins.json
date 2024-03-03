@@ -6,7 +6,8 @@
   "refmap": "advancedages.refmap.json",
   "mixins": [
     "BurnerMixin",
-    "FurnaceMixin"
+    "FurnaceMixin",
+    "WartMixin"
   ],
   "minVersion": "0.8.5"
 }

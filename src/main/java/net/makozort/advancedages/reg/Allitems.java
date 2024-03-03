@@ -12,6 +12,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SimpleFoiledItem;
 
 import static com.simibubi.create.AllTags.forgeItemTag;
 import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
@@ -65,6 +66,11 @@ public class Allitems {
                     .meat()
                     .saturationMod(5)
                     .build()))
+            .register();
+
+
+    public static final ItemEntry<SimpleFoiledItem> CATALYZED_NETHERWART = REGISTRATE.item("catalyzed_netherwart",
+                    p -> new SimpleFoiledItem(new Item.Properties().stacksTo(64)))
             .register();
 
     public static void register() {

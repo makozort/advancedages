@@ -10,10 +10,8 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
-import net.makozort.advancedages.content.blocks.block.AntennaBlock;
-import net.makozort.advancedages.content.blocks.block.CombustionEngineBlock;
-import net.makozort.advancedages.content.blocks.block.RadioBlock;
-import net.makozort.advancedages.content.blocks.block.ThumperBlock;
+import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
+import net.makozort.advancedages.content.blocks.block.*;
 import net.makozort.advancedages.content.blocks.block.horn.*;
 import net.makozort.advancedages.content.blocks.block.oil.OilFilterBlock;
 import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
@@ -23,6 +21,7 @@ import net.makozort.advancedages.content.items.SteelFluidTankItem;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -242,7 +241,6 @@ public class AllBlocks {
 
     public static final RegistryEntry<RadioBlock> RADIO_BLOCK = REGISTRATE
             .block("radio_block", RadioBlock::new)
-            .properties(BlockBehaviour.Properties::noOcclusion)
             .simpleItem()
             .transform(BlockStressDefaults.setImpact(30))
             .blockstate((ctx, prov) -> {
@@ -272,6 +270,24 @@ public class AllBlocks {
                     boolean connected = state.getValue(AntennaBlock.CONNECTED);
                     return ConfiguredModel.builder()
                             .modelFile(connected ? modelConnected : modelUnconnected)
+                            .build();
+                });
+            })
+            .register();
+
+
+    public static final RegistryEntry<LushNetherWartBlock> LUSH_NETHERWART_BLOCK = REGISTRATE
+            .block("lush_netherwart", LushNetherWartBlock::new)
+            .simpleItem()
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .properties(BlockBehaviour.Properties::noCollission)
+            .properties(BlockBehaviour.Properties::instabreak)
+            .initialProperties(() -> Blocks.NETHER_WART_BLOCK)
+            .blockstate((ctx, prov) -> {
+                ModelFile.ExistingModelFile model = prov.models().getExistingFile(prov.modLoc("block/lush_netherwart"));
+                prov.getVariantBuilder(ctx.get()).forAllStates(state -> {
+                    return ConfiguredModel.builder()
+                            .modelFile(model)
                             .build();
                 });
             })
