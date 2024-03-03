@@ -13,7 +13,10 @@ import net.minecraft.world.level.storage.DimensionDataStorage;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GasData extends SavedData {
 
@@ -24,10 +27,17 @@ public class GasData extends SavedData {
         super();
     }
 
-    public void writemap() {
-        AdvancedAges.LOGGER.info("john");
-        AdvancedAges.LOGGER.info(GasMap.toString());
+    // loaded when game boots essentially
+    public GasData(CompoundTag tag) {
+        ListTag list = tag.getList("pollution", Tag.TAG_COMPOUND);
+        for (Tag t : list) {
+            CompoundTag pollTag = (CompoundTag) t;
+            //MixedVirtualGas pollution = new Pollution(pollTag.getDouble("co2"));
+            BlockPos pos = new BlockPos(pollTag.getInt("x"), pollTag.getInt("y"), pollTag.getInt("z"));
+            //GasMap.put(pos, pollution);
+        }
     }
+
     @Nonnull
     public static GasData get(Level level) {
         if (level.isClientSide) {
@@ -35,6 +45,11 @@ public class GasData extends SavedData {
         }
         DimensionDataStorage storage = ((ServerLevel) level).getDataStorage();
         return storage.computeIfAbsent(GasData::new, GasData::new, "pollutionmanager");
+    }
+
+    public void writemap() {
+        AdvancedAges.LOGGER.info("john");
+        AdvancedAges.LOGGER.info(GasMap.toString());
     }
 
     @NotNull
@@ -48,7 +63,7 @@ public class GasData extends SavedData {
     }
 
     public MixedVirtualGas addGas(BlockPos pos, GasStack<?> stack) {
-        GasStack gasStack = new  GasStack<>(stack.getGas(), stack.getAmount());
+        GasStack gasStack = new GasStack<>(stack.getGas(), stack.getAmount());
         GasMap.put(pos, new MixedVirtualGas((List<GasStack<?>>) gasStack));
         return new MixedVirtualGas((List<GasStack<?>>) gasStack);
     }
@@ -56,7 +71,6 @@ public class GasData extends SavedData {
     public MixedVirtualGas getGas(BlockPos pos) {
         return GasMap.get(pos) == null ? addGas(pos, new GasStack<>(AllFluids.OXYGEN.get(), 200)) : GasMap.get(pos);
     }
-
 
     public int changeGas(BlockPos pos, VirtualGas gas, int i, Level level) {
         MixedVirtualGas gasses = getGas(pos);
@@ -89,17 +103,6 @@ public class GasData extends SavedData {
         clearList.removeAll(clearList);
         setDirty();
         return 1;
-    }
-
-    // loaded when game boots essentially
-    public GasData(CompoundTag tag) {
-        ListTag list = tag.getList("pollution", Tag.TAG_COMPOUND);
-        for (Tag t : list) {
-            CompoundTag pollTag = (CompoundTag) t;
-            //MixedVirtualGas pollution = new Pollution(pollTag.getDouble("co2"));
-            BlockPos pos = new BlockPos(pollTag.getInt("x"), pollTag.getInt("y"), pollTag.getInt("z"));
-            //GasMap.put(pos, pollution);
-        }
     }
 
     @Override

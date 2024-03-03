@@ -1,6 +1,5 @@
 package net.makozort.advancedages.foundation.gas;
 
-import net.minecraft.core.Holder;
 import net.minecraftforge.fluids.FluidStack;
 
 public class GasStack<T extends VirtualGas> extends FluidStack {

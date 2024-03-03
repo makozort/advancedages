@@ -2,7 +2,6 @@ package net.makozort.advancedages.content.blocks.block.oil;
 
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
-import com.simibubi.create.content.fluids.tank.CreativeFluidTankBlockEntity.CreativeSmartFluidTank;
 import com.simibubi.create.content.fluids.transfer.GenericItemEmptying;
 import com.simibubi.create.content.fluids.transfer.GenericItemFilling;
 import com.simibubi.create.foundation.advancement.AdvancementBehaviour;
@@ -11,7 +10,6 @@ import com.simibubi.create.foundation.blockEntity.ComparatorUtil;
 import com.simibubi.create.foundation.fluid.FluidHelper;
 import com.simibubi.create.foundation.fluid.FluidHelper.FluidExchange;
 import com.simibubi.create.foundation.utility.Lang;
-
 import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
 import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -57,22 +55,16 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 
-
 public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<SteelFluidTankBlockEntity> {
 
     public static final BooleanProperty TOP = BooleanProperty.create("top");
     public static final BooleanProperty BOTTOM = BooleanProperty.create("bottom");
     public static final EnumProperty<Shape> SHAPE = EnumProperty.create("shape", Shape.class);
-
-    public static SteelFluidTankBlock regular(Properties p_i48440_1_) {
-        return new SteelFluidTankBlock(p_i48440_1_, false);
-    }
-
-    @Override
-    public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, LivingEntity pPlacer, ItemStack pStack) {
-        super.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
-        AdvancementBehaviour.setPlacedBy(pLevel, pPos, pPlacer);
-    }
+    // Tanks are less noisy when placed in batch
+    public static final SoundType SILENCED_METAL =
+            new ForgeSoundType(0.1F, 1.5F, () -> SoundEvents.METAL_BREAK, () -> SoundEvents.METAL_STEP,
+                    () -> SoundEvents.METAL_PLACE, () -> SoundEvents.METAL_HIT, () -> SoundEvents.METAL_FALL);
+    static final VoxelShape CAMPFIRE_SMOKE_CLIP = Block.box(0, 4, 0, 16, 16, 16);
 
     protected SteelFluidTankBlock(Properties p_i48440_1_, boolean creative) {
         super(p_i48440_1_);
@@ -81,8 +73,31 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
                 .setValue(SHAPE, Shape.WINDOW));
     }
 
+    public static SteelFluidTankBlock regular(Properties p_i48440_1_) {
+        return new SteelFluidTankBlock(p_i48440_1_, false);
+    }
+
     public static boolean isTank(BlockState state) {
         return state.getBlock() instanceof SteelFluidTankBlock;
+    }
+
+    public static void updateBoilerState(BlockState pState, Level pLevel, BlockPos tankPos) {
+        BlockState tankState = pLevel.getBlockState(tankPos);
+        if (!(tankState.getBlock() instanceof SteelFluidTankBlock tank))
+            return;
+        SteelFluidTankBlockEntity tankBE = tank.getBlockEntity(pLevel, tankPos);
+        if (tankBE == null)
+            return;
+        SteelFluidTankBlockEntity controllerBE = tankBE.getControllerBE();
+        if (controllerBE == null)
+            return;
+        controllerBE.updateBoilerState();
+    }
+
+    @Override
+    public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, LivingEntity pPlacer, ItemStack pStack) {
+        super.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
+        AdvancementBehaviour.setPlacedBy(pLevel, pPos, pPlacer);
     }
 
     @Override
@@ -115,8 +130,6 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
         withBlockEntityDo(context.getLevel(), context.getClickedPos(), SteelFluidTankBlockEntity::toggleWindows);
         return InteractionResult.SUCCESS;
     }
-
-    static final VoxelShape CAMPFIRE_SMOKE_CLIP = Block.box(0, 4, 0, 16, 16, 16);
 
     @Override
     public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos,
@@ -300,20 +313,6 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
         }
     }
 
-    public enum Shape implements StringRepresentable {
-        PLAIN, WINDOW, WINDOW_NW, WINDOW_SW, WINDOW_NE, WINDOW_SE;
-
-        @Override
-        public String getSerializedName() {
-            return Lang.asId(name());
-        }
-    }
-
-    // Tanks are less noisy when placed in batch
-    public static final SoundType SILENCED_METAL =
-            new ForgeSoundType(0.1F, 1.5F, () -> SoundEvents.METAL_BREAK, () -> SoundEvents.METAL_STEP,
-                    () -> SoundEvents.METAL_PLACE, () -> SoundEvents.METAL_HIT, () -> SoundEvents.METAL_FALL);
-
     @Override
     public SoundType getSoundType(BlockState state, LevelReader world, BlockPos pos, Entity entity) {
         SoundType soundType = super.getSoundType(state, world, pos, entity);
@@ -335,17 +334,13 @@ public class SteelFluidTankBlock extends Block implements IWrenchable, IBE<Steel
                 .orElse(0);
     }
 
-    public static void updateBoilerState(BlockState pState, Level pLevel, BlockPos tankPos) {
-        BlockState tankState = pLevel.getBlockState(tankPos);
-        if (!(tankState.getBlock()instanceof SteelFluidTankBlock tank))
-            return;
-        SteelFluidTankBlockEntity tankBE = tank.getBlockEntity(pLevel, tankPos);
-        if (tankBE == null)
-            return;
-        SteelFluidTankBlockEntity controllerBE = tankBE.getControllerBE();
-        if (controllerBE == null)
-            return;
-        controllerBE.updateBoilerState();
+    public enum Shape implements StringRepresentable {
+        PLAIN, WINDOW, WINDOW_NW, WINDOW_SW, WINDOW_NE, WINDOW_SE;
+
+        @Override
+        public String getSerializedName() {
+            return Lang.asId(name());
+        }
     }
 
 }

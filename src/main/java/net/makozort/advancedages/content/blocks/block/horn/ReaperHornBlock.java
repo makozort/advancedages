@@ -15,5 +15,7 @@ public class ReaperHornBlock extends HornBlock {
 
 
     @Override
-    public int getScreenShakeDuration() {return 300;}
+    public int getScreenShakeDuration() {
+        return 300;
+    }
 }

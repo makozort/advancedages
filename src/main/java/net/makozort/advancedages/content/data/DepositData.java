@@ -9,18 +9,28 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.storage.DimensionDataStorage;
-import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DepositData extends SavedData {
 
     List<BlockPos> OilList = new ArrayList<BlockPos>();
     List<BlockPos> clearList = new ArrayList<BlockPos>();
+
+    public DepositData() {
+    }
+
+    // loaded when game boots essentially
+    public DepositData(CompoundTag tag) {
+        ListTag list = tag.getList(AdvancedAges.MOD_ID + "_Data_Oil_Deposits", Tag.TAG_COMPOUND);
+        for (Tag t : list) {
+            CompoundTag pollTag = (CompoundTag) t;
+            BlockPos pos = new BlockPos(pollTag.getInt("x"), pollTag.getInt("y"), pollTag.getInt("z"));
+            this.OilList.add(pos);
+        }
+    }
 
     @Nonnull
     public static DepositData get(Level level) {
@@ -28,7 +38,7 @@ public class DepositData extends SavedData {
             throw new RuntimeException("Don't access this client-side!");
         }
         DimensionDataStorage storage = ((ServerLevel) level).getDataStorage();
-        return storage.computeIfAbsent(DepositData::new, DepositData::new, AdvancedAges.MOD_ID+"_DepositManager");
+        return storage.computeIfAbsent(DepositData::new, DepositData::new, AdvancedAges.MOD_ID + "_DepositManager");
     }
 
     public void addDeposit(BlockPos pos) {
@@ -40,13 +50,9 @@ public class DepositData extends SavedData {
         this.OilList.remove(pos);
     }
 
-    public List<BlockPos> getlist(){
+    public List<BlockPos> getlist() {
         return this.OilList;
     }
-
-    public DepositData() {
-    }
-
 
     public List<BlockPos> oilSearch(BlockPos centerPos, int radius) {
         List<BlockPos> blocksInRadius = new ArrayList<>();
@@ -56,17 +62,6 @@ public class DepositData extends SavedData {
             }
         }
         return blocksInRadius;
-    }
-
-
-    // loaded when game boots essentially
-    public DepositData(CompoundTag tag) {
-        ListTag list = tag.getList(AdvancedAges.MOD_ID+"_Data_Oil_Deposits", Tag.TAG_COMPOUND);
-        for (Tag t : list) {
-            CompoundTag pollTag = (CompoundTag) t;
-            BlockPos pos = new BlockPos(pollTag.getInt("x"), pollTag.getInt("y"), pollTag.getInt("z"));
-            this.OilList.add(pos);
-        }
     }
 
     @Override
@@ -79,7 +74,7 @@ public class DepositData extends SavedData {
             pollTag.putInt("z", BlockPos.getZ());
             list.add(pollTag);
         });
-        tag.put(AdvancedAges.MOD_ID+"_Data_Oil_Deposits", list);
+        tag.put(AdvancedAges.MOD_ID + "_Data_Oil_Deposits", list);
         return tag;
     }
 }

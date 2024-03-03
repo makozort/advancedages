@@ -1,7 +1,6 @@
 package net.makozort.advancedages.reg;
 
 import net.makozort.advancedages.worldgen.VeryLargeLakeFeature;
-import net.minecraft.core.Registry;
 import net.minecraft.world.level.levelgen.feature.Feature;
 
 public class AllFeatures {

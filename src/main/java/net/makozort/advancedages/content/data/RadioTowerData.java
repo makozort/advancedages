@@ -11,16 +11,7 @@ import javax.annotation.Nonnull;
 
 public class RadioTowerData extends SavedData {
 
-    @Nonnull
-    public static RadioTowerData get(Level level) {
-        return null;
-    }
     public RadioTowerData() {
-    }
-
-    @Override
-    public CompoundTag save(CompoundTag compoundTag) {
-        return null;
     }
 
     public RadioTowerData(CompoundTag tag) {
@@ -30,6 +21,16 @@ public class RadioTowerData extends SavedData {
             Tower tower = new Tower(pollTag.getInt("pollution"));
             BlockPos pos = new BlockPos(pollTag.getInt("x"), pollTag.getInt("y"), pollTag.getInt("z"));
         }
+    }
+
+    @Nonnull
+    public static RadioTowerData get(Level level) {
+        return null;
+    }
+
+    @Override
+    public CompoundTag save(CompoundTag compoundTag) {
+        return null;
     }
 
     public class Tower {
@@ -46,9 +47,13 @@ public class RadioTowerData extends SavedData {
         }
 
 
-        public void setHasAntenna(boolean hasAntenna) {this.hasAntenna = hasAntenna;}
+        public void setHasAntenna(boolean hasAntenna) {
+            this.hasAntenna = hasAntenna;
+        }
 
-        public boolean getAntenna() {return hasAntenna;}
+        public boolean getAntenna() {
+            return hasAntenna;
+        }
 
         public int getHeight() {
             return height;

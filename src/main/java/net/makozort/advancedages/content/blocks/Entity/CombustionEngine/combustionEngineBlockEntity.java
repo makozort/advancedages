@@ -23,16 +23,17 @@ import java.util.List;
 public class combustionEngineBlockEntity extends GeneratingKineticBlockEntity implements IHaveGoggleInformation {
 
     private static final int TANK_CAPACITY = 1000;
-
+    protected final int timeInTicks = 18000;
+    protected int fuelRemaining = 0;
     SmarterFluidTankBehaviour tank;
 
-    protected int fuelRemaining = 0;
-
-    protected final int timeInTicks = 18000;
+    public combustionEngineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
+    }
 
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
-        behaviours.add(tank  = SmarterFluidTankBehaviour.single(this, TANK_CAPACITY)
+        behaviours.add(tank = SmarterFluidTankBehaviour.single(this, TANK_CAPACITY)
                 .forbidExtraction()
                 .allowInsertion()
                 .fluidType(AllFluids.CRUDE_OIL.getType()));
@@ -42,20 +43,14 @@ public class combustionEngineBlockEntity extends GeneratingKineticBlockEntity im
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         return (side == Direction.UP) && isFluidHandlerCap(cap)
                 ? tank.getCapability().cast()
-                : super.getCapability(cap,side);
+                : super.getCapability(cap, side);
     }
-
-    public combustionEngineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
-        super(type, pos, state);
-    }
-
-
 
     public boolean checkFuel() {
         if (this.fuelRemaining >= 1) {
             return true;
         } else {
-            return  false;
+            return false;
         }
     }
 
@@ -71,11 +66,11 @@ public class combustionEngineBlockEntity extends GeneratingKineticBlockEntity im
     @Override
     public void tick() {
         super.tick();
-        if(this.fuelRemaining <= timeInTicks){
-            if (this.tank.getPrimaryHandler().getFluidAmount() >= (TANK_CAPACITY/4)) {
-                if (!((this.fuelRemaining + (timeInTicks/4)) > timeInTicks)) {
-                    this.tank.getPrimaryHandler().drain((TANK_CAPACITY/4), IFluidHandler.FluidAction.EXECUTE);
-                    this.fuelRemaining = this.fuelRemaining + (timeInTicks/4);
+        if (this.fuelRemaining <= timeInTicks) {
+            if (this.tank.getPrimaryHandler().getFluidAmount() >= (TANK_CAPACITY / 4)) {
+                if (!((this.fuelRemaining + (timeInTicks / 4)) > timeInTicks)) {
+                    this.tank.getPrimaryHandler().drain((TANK_CAPACITY / 4), IFluidHandler.FluidAction.EXECUTE);
+                    this.fuelRemaining = this.fuelRemaining + (timeInTicks / 4);
                 }
             }
         }
@@ -89,10 +84,10 @@ public class combustionEngineBlockEntity extends GeneratingKineticBlockEntity im
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
         boolean added = containedFluidTooltip(tooltip, isPlayerSneaking, tank.getCapability().cast());
-        Component burnTimeComponent = Component.literal("Remaining Burn Time: " + this.fuelRemaining/20 + " seconds");
+        Component burnTimeComponent = Component.literal("Remaining Burn Time: " + this.fuelRemaining / 20 + " seconds");
         tooltip.add(burnTimeComponent);
         return added;
-}
+    }
 
     @Override
     protected void write(CompoundTag compound, boolean clientPacket) {

@@ -1,17 +1,10 @@
 package net.makozort.advancedages.content.fluid.tank;
 
 
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 import com.simibubi.create.foundation.block.connected.CTModel;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.utility.Iterate;
-
 import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankCTBehaviour;
 import net.makozort.advancedages.reg.AllSpriteShifts;
 import net.minecraft.client.renderer.RenderType;
@@ -26,18 +19,23 @@ import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.client.model.data.ModelData.Builder;
 import net.minecraftforge.client.model.data.ModelProperty;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class SteelFluidTankModel extends CTModel {
 
     protected static final ModelProperty<CullData> CULL_PROPERTY = new ModelProperty<>();
 
-    public static SteelFluidTankModel standard(BakedModel originalModel) {
-        return new SteelFluidTankModel(originalModel, AllSpriteShifts.STEEL_FLUID_TANK, AllSpriteShifts.STEEL_FLUID_TANK_TOP,
-                AllSpriteShifts.STEEL_FLUID_TANK_INNER);
-    }
-
     private SteelFluidTankModel(BakedModel originalModel, CTSpriteShiftEntry side, CTSpriteShiftEntry top,
                                 CTSpriteShiftEntry inner) {
         super(originalModel, new SteelFluidTankCTBehaviour(side, top, inner));
+    }
+
+    public static SteelFluidTankModel standard(BakedModel originalModel) {
+        return new SteelFluidTankModel(originalModel, AllSpriteShifts.STEEL_FLUID_TANK, AllSpriteShifts.STEEL_FLUID_TANK_TOP,
+                AllSpriteShifts.STEEL_FLUID_TANK_INNER);
     }
 
     @Override

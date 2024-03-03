@@ -1,17 +1,5 @@
 package net.makozort.advancedages.content.blocks.Entity;
 
-import static java.lang.Math.PI;
-import static java.lang.Math.abs;
-
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
-import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
-import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock.Shape;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
@@ -22,14 +10,13 @@ import com.simibubi.create.foundation.fluid.SmartFluidTank;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat.Chaser;
 import com.simibubi.create.infrastructure.config.AllConfigs;
-
+import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
+import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock.Shape;
 import net.makozort.advancedages.content.data.RefineryData;
-import net.makozort.advancedages.reg.AllBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -43,12 +30,21 @@ import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
+
+import static java.lang.Math.abs;
+
 @SuppressWarnings("removal")
 
 public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHaveGoggleInformation, IMultiBlockEntityContainer.Fluid {
 
     private static final int MAX_SIZE = 3;
-
+    private static final int SYNC_RATE = 8;
+    public boolean hasHeated;
+    public RefineryData refinery;
     protected LazyOptional<IFluidHandler> fluidCapability1;
     protected LazyOptional<IFluidHandler> fluidCapability2;
     protected boolean forceFluidLevelUpdate;
@@ -56,19 +52,12 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     protected FluidTank tankInventory2;
     protected BlockPos controller;
     protected BlockPos lastKnownPos;
-
     protected boolean heated;
-
-    public boolean hasHeated;
     protected boolean updateConnectivity;
     protected boolean window;
     protected int luminosity;
     protected int width;
     protected int height;
-
-    public RefineryData refinery;
-
-    private static final int SYNC_RATE = 8;
     protected int syncCooldown;
     protected boolean queuedSync;
 
@@ -91,13 +80,21 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         refreshCapability();
     }
 
+    public static int getMaxSize() {
+        return MAX_SIZE;
+    }
+
+    public static int getCapacityMultiplier() {
+        return AllConfigs.server().fluids.fluidTankCapacity.get() * 1000;
+    }
+
+    public static int getMaxHeight() {
+        return AllConfigs.server().fluids.fluidTankMaxHeight.get();
+    }
+
     protected SmartFluidTank createInventory() {
         return new SmartFluidTank(getCapacityMultiplier(), this::onFluidStackChanged);
     }
-
-
-
-
 
     public void updateConnectivity() {
         updateConnectivity = false;
@@ -196,15 +193,6 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
                         .startWithValue(getFillState());
             fluidLevel.chase(getFillState(), .5f, Chaser.EXP);
         }
-    }
-
-    protected void setLuminosity(int luminosity) {
-        if (level.isClientSide)
-            return;
-        if (this.luminosity == luminosity)
-            return;
-        this.luminosity = luminosity;
-        sendData();
     }
 
     @SuppressWarnings("unchecked")
@@ -344,18 +332,6 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         }
     }
 
-    @Override
-    public void setController(BlockPos controller) {
-        if (level.isClientSide && !isVirtual())
-            return;
-        if (controller.equals(this.controller))
-            return;
-        this.controller = controller;
-        refreshCapability();
-        setChanged();
-        sendData();
-    }
-
     private void refreshCapability() {
         LazyOptional<IFluidHandler> oldCap = fluidCapability1;
         fluidCapability1 = LazyOptional.of(() -> handlerForCapability());
@@ -370,6 +346,18 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     @Override
     public BlockPos getController() {
         return isController() ? worldPosition : controller;
+    }
+
+    @Override
+    public void setController(BlockPos controller) {
+        if (level.isClientSide && !isVirtual())
+            return;
+        if (controller.equals(this.controller))
+            return;
+        this.controller = controller;
+        refreshCapability();
+        setChanged();
+        sendData();
     }
 
     @Override
@@ -486,6 +474,15 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         return luminosity;
     }
 
+    protected void setLuminosity(int luminosity) {
+        if (level.isClientSide)
+            return;
+        if (this.luminosity == luminosity)
+            return;
+        this.luminosity = luminosity;
+        sendData();
+    }
+
     public boolean isWindow() {
         return window;
     }
@@ -518,18 +515,6 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
         return width * width * height;
     }
 
-    public static int getMaxSize() {
-        return MAX_SIZE;
-    }
-
-    public static int getCapacityMultiplier() {
-        return AllConfigs.server().fluids.fluidTankCapacity.get() * 1000;
-    }
-
-    public static int getMaxHeight() {
-        return AllConfigs.server().fluids.fluidTankMaxHeight.get();
-    }
-
     public LerpedFloat getFluidLevel() {
         return fluidLevel;
     }
@@ -559,15 +544,15 @@ public class SteelFluidTankBlockEntity extends SmartBlockEntity implements IHave
     }
 
     @Override
-    public void setExtraData(@Nullable Object data) {
-        if (data instanceof Boolean)
-            window = (boolean) data;
-    }
-
-    @Override
     @Nullable
     public Object getExtraData() {
         return window;
+    }
+
+    @Override
+    public void setExtraData(@Nullable Object data) {
+        if (data instanceof Boolean)
+            window = (boolean) data;
     }
 
     @Override

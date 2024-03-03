@@ -1,7 +1,6 @@
 package net.makozort.advancedages.foundation.gas;
 
 import com.simibubi.create.content.fluids.VirtualFluid;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 public class VirtualGas extends VirtualFluid {
 

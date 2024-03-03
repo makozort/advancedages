@@ -33,6 +33,6 @@ public class CombustionEngineBlock extends HorizontalKineticBlock implements IBE
 
     @Override
     public Direction.Axis getRotationAxis(BlockState state) {
-        return  state.getValue(HORIZONTAL_FACING).getAxis();
+        return state.getValue(HORIZONTAL_FACING).getAxis();
     }
 }

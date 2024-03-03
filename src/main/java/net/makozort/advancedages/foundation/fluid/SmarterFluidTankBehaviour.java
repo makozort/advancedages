@@ -40,11 +40,6 @@ public class SmarterFluidTankBehaviour extends BlockEntityBehaviour {
     private BehaviourType<SmarterFluidTankBehaviour> behaviourType;
 
 
-
-    public static SmarterFluidTankBehaviour single(SmartBlockEntity be, int capacity) {
-        return new SmarterFluidTankBehaviour(TYPE, be, 1, capacity, false);
-    }
-
     public SmarterFluidTankBehaviour(BehaviourType<SmarterFluidTankBehaviour> type, SmartBlockEntity be, int tanks,
                                      int tankCapacity, boolean enforceVariety) {
         super(be);
@@ -61,6 +56,10 @@ public class SmarterFluidTankBehaviour extends BlockEntityBehaviour {
         capability = LazyOptional.of(() -> new InternalFluidHandler(handlers, enforceVariety));
         fluidUpdateCallback = () -> {
         };
+    }
+
+    public static SmarterFluidTankBehaviour single(SmartBlockEntity be, int capacity) {
+        return new SmarterFluidTankBehaviour(TYPE, be, 1, capacity, false);
     }
 
     public SmarterFluidTankBehaviour whenFluidUpdates(Runnable fluidUpdateCallback) {
@@ -199,6 +198,11 @@ public class SmarterFluidTankBehaviour extends BlockEntityBehaviour {
         });
     }
 
+    @Override
+    public BehaviourType<?> getType() {
+        return behaviourType;
+    }
+
     public class InternalFluidHandler extends CombinedTankWrapper {
 
         public InternalFluidHandler(IFluidHandler[] handlers, boolean enforceVariety) {
@@ -212,7 +216,7 @@ public class SmarterFluidTankBehaviour extends BlockEntityBehaviour {
             if (!insertionAllowed)
                 return 0;
             if (!(resource.getFluid().getFluidType() == allowedFluid))
-                return  0;
+                return 0;
             return super.fill(resource, action);
         }
 
@@ -298,10 +302,5 @@ public class SmarterFluidTankBehaviour extends BlockEntityBehaviour {
             return false;
         }
 
-    }
-
-    @Override
-    public BehaviourType<?> getType() {
-        return behaviourType;
     }
 }

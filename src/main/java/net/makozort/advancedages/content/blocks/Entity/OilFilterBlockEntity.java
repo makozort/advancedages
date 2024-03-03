@@ -18,7 +18,7 @@ public class OilFilterBlockEntity extends KineticBlockEntity implements IHaveGog
 
     public int getTransferRate() {
         float rpm = (Math.abs(this.getSpeed()));
-        return Math.round(400 * (rpm/256));
+        return Math.round(400 * (rpm / 256));
     }
 
 
@@ -33,12 +33,12 @@ public class OilFilterBlockEntity extends KineticBlockEntity implements IHaveGog
             //TODO: add heat and gasses
             if (RefiningRecipes.getRefiningRecipes().containsKey(belowInv.getFluid().getRawFluid().getFluidType())) {
                 Fluid result = RefiningRecipes.getRefiningRecipes().get(tankBelow.getControllerBE().tankInventory1.getFluid().getRawFluid().getFluidType());
-                    for (int i = this.getTransferRate(); i >= 0; i--) {
-                        if (aboveInv.getSpace() >= i && belowInv.getFluidAmount() >= i) {
-                            belowInv.drain(i, IFluidHandler.FluidAction.EXECUTE);
-                            FluidStack stack = new FluidStack(result,i);
-                            aboveInv.fill(stack, IFluidHandler.FluidAction.EXECUTE);
-                            break;
+                for (int i = this.getTransferRate(); i >= 0; i--) {
+                    if (aboveInv.getSpace() >= i && belowInv.getFluidAmount() >= i) {
+                        belowInv.drain(i, IFluidHandler.FluidAction.EXECUTE);
+                        FluidStack stack = new FluidStack(result, i);
+                        aboveInv.fill(stack, IFluidHandler.FluidAction.EXECUTE);
+                        break;
                     }
                 }
             }

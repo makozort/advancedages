@@ -8,8 +8,6 @@ import com.simibubi.create.foundation.render.SuperByteBuffer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
@@ -29,9 +27,6 @@ public class CombustionEngineRenderer extends KineticBlockEntityRenderer<combust
         if (type != null)
             renderRotatingBuffer(be, getRotatedModel(be, state), ms, buffer.getBuffer(type), light);
     }
-
-
-
 
 
     @Override

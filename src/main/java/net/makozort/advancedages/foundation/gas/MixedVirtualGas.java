@@ -4,6 +4,7 @@ import java.util.List;
 
 public class MixedVirtualGas {
     public List<GasStack<?>> virtualGasses;
+
     public MixedVirtualGas(List<GasStack<?>> virtualGasses) {
         super();
     }
@@ -12,17 +13,17 @@ public class MixedVirtualGas {
         return virtualGasses;
     }
 
+    public void setVirtualGasses(List<GasStack<?>> virtualGasses) {
+        this.virtualGasses = virtualGasses;
+    }
+
     public int getGas(VirtualGas gas) {
-        for(GasStack<?> gasStack : virtualGasses) {
-            if(gas == gasStack.getGas()) {
+        for (GasStack<?> gasStack : virtualGasses) {
+            if (gas == gasStack.getGas()) {
                 return gasStack.getAmount();
             }
         }
         return 0;
-    }
-
-    public void setVirtualGasses(List<GasStack<?>> virtualGasses) {
-        this.virtualGasses = virtualGasses;
     }
 
     public void setVirtualGas(GasStack<?> gas) {

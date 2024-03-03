@@ -25,6 +25,7 @@ public class BurnerMixin extends BlockEntity {
     public BurnerMixin(BlockEntityType<?> p_155228_, BlockPos p_155229_, BlockState p_155230_) {
         super(p_155228_, p_155229_, p_155230_);
     }
+
     @Inject(at = @At("TAIL"), method = "tryUpdateFuel", remap = false)
     private void durChange(ItemStack itemStack, boolean forceOverflow, boolean simulate, CallbackInfoReturnable<Boolean> cir) {
         if (itemStack.is(Allitems.HEAVY_OIL_BUCKET.get().asItem())) {

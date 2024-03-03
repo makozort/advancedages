@@ -1,14 +1,4 @@
 package net.makozort.advancedages.content.data;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
-import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
-import net.makozort.advancedages.content.fluid.tank.RefineryHeaters;
-import org.jetbrains.annotations.NotNull;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.Create;
@@ -24,8 +14,10 @@ import com.simibubi.create.foundation.utility.Iterate;
 import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat.Chaser;
-
 import joptsimple.internal.Strings;
+import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
+import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
+import net.makozort.advancedages.content.fluid.tank.RefineryHeaters;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -37,6 +29,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class RefineryData {
 
@@ -44,34 +42,23 @@ public class RefineryData {
 
     private static final int waterSupplyPerLevel = 10;
     private static final float passiveEngineEfficiency = 1 / 8f;
-
+    // heat score
+    public boolean needsHeatLevelUpdate;
+    public boolean passiveHeat;
+    public int activeHeat;
+    public float waterSupply;
+    public int attachedFilters;
+    public LerpedFloat gauge = LerpedFloat.linear();
     // pooled water supply
     int gatheredSupply;
     float[] supplyOverTime = new float[10];
     int ticksUntilNextSample;
     int currentIndex;
-
-    // heat score
-    public boolean needsHeatLevelUpdate;
-    public boolean passiveHeat;
-    public int activeHeat;
-
-    public float waterSupply;
-    public int attachedFilters;
-
     // display
     private int maxHeatForSize = 0;
     private int maxHeatForWater = 0;
     private int minValue = 0;
     private int maxValue = 0;
-
-    public LerpedFloat gauge = LerpedFloat.linear();
-
-
-
-
-
-
 
     public void tick(SteelFluidTankBlockEntity controller) {
         if (!isActive())
@@ -109,7 +96,6 @@ public class RefineryData {
 
         controller.notifyUpdate();
     }
-
 
 
     public int getTheoreticalHeatLevel() {

@@ -1,6 +1,5 @@
 package net.makozort.advancedages.reg;
 
-import com.google.common.collect.ImmutableSet;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
@@ -21,12 +20,10 @@ import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Supplier;
 
 public enum AllRecipeTypes implements IRecipeTypeInfo {
-    REFINING(RefiningRecipe::new)
-    ;
+    REFINING(RefiningRecipe::new);
 
     private final ResourceLocation id;
     private final RegistryObject serializerObject;
@@ -96,12 +93,12 @@ public enum AllRecipeTypes implements IRecipeTypeInfo {
         private static final DeferredRegister<RecipeSerializer<?>> SERIALIZER_REGISTER;
         private static final DeferredRegister<RecipeType<?>> TYPE_REGISTER;
 
-        private Registers() {
-        }
-
         static {
             SERIALIZER_REGISTER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, AdvancedAges.MOD_ID);
             TYPE_REGISTER = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, AdvancedAges.MOD_ID);
+        }
+
+        private Registers() {
         }
     }
 }

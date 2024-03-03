@@ -15,5 +15,7 @@ public class GrandHornBlock extends HornBlock {
 
 
     @Override
-    public int getScreenShakeDuration() {return 300;}
+    public int getScreenShakeDuration() {
+        return 300;
+    }
 }

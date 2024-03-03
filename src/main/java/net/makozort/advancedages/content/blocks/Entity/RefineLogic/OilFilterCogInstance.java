@@ -10,13 +10,13 @@ import net.makozort.advancedages.content.blocks.Entity.OilFilterBlockEntity;
 
 public class OilFilterCogInstance extends SingleRotatingInstance<OilFilterBlockEntity> {
 
-        public OilFilterCogInstance(MaterialManager materialManager, OilFilterBlockEntity blockEntity) {
-            super(materialManager, blockEntity);
-        }
+    public OilFilterCogInstance(MaterialManager materialManager, OilFilterBlockEntity blockEntity) {
+        super(materialManager, blockEntity);
+    }
 
-        @Override
-        protected Instancer<RotatingData> getModel() {
-            return getRotatingMaterial().getModel(AllPartialModels.MILLSTONE_COG, blockEntity.getBlockState());
-        }
+    @Override
+    protected Instancer<RotatingData> getModel() {
+        return getRotatingMaterial().getModel(AllPartialModels.MILLSTONE_COG, blockEntity.getBlockState());
+    }
 
 }

@@ -4,8 +4,6 @@ import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.blocks.block.AntennaBlock;
-import net.makozort.advancedages.content.blocks.block.RadioBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -40,12 +38,11 @@ public class AntennaBlockEntity extends SmartBlockEntity implements IHaveGoggleI
         for (int i = 0; i < RadioBlockEntity.getMaxTowerHeight(); i++) {
             testPos = testPos.below();
             BlockEntity beAtPos = level.getBlockEntity(testPos);
-            if(beAtPos instanceof RadioBlockEntity controller)
-            {
+            if (beAtPos instanceof RadioBlockEntity controller) {
                 controller.connectUnitsAbove();
                 break;
             }
-            if(!(beAtPos instanceof AntennaBlockEntity))
+            if (!(beAtPos instanceof AntennaBlockEntity))
                 break;
         }
     }
@@ -54,15 +51,15 @@ public class AntennaBlockEntity extends SmartBlockEntity implements IHaveGoggleI
     public void lazyTick() {
         super.lazyTick();
         if (this.level instanceof ServerLevel) {
-          if (this.controllerPos != null) {
-              if (!(this.level.getBlockEntity(controllerPos) instanceof RadioBlockEntity)) {
-                  this.controllerPos = null;
-              }
-          }
+            if (this.controllerPos != null) {
+                if (!(this.level.getBlockEntity(controllerPos) instanceof RadioBlockEntity)) {
+                    this.controllerPos = null;
+                }
+            }
             if (this.controllerPos == null) {
                 this.level.setBlock(this.getBlockPos(), this.getBlockState().setValue(CONNECTED, false), 3);
             }
-      }
+        }
     }
 
 
@@ -76,7 +73,7 @@ public class AntennaBlockEntity extends SmartBlockEntity implements IHaveGoggleI
             ControllerPosTag.putInt("y", this.controllerPos.getY());
             ControllerPosTag.putInt("z", this.controllerPos.getZ());
             list.add(ControllerPosTag);
-            compound.put(AdvancedAges.MOD_ID+"_Data_ANTENNA_CONTROLLER", list);
+            compound.put(AdvancedAges.MOD_ID + "_Data_ANTENNA_CONTROLLER", list);
         }
     }
 
@@ -84,7 +81,7 @@ public class AntennaBlockEntity extends SmartBlockEntity implements IHaveGoggleI
     @Override
     protected void read(CompoundTag compound, boolean clientPacket) {
         super.read(compound, clientPacket);
-        ListTag list = compound.getList(AdvancedAges.MOD_ID+"_Data_ANTENNA_CONTROLLER", Tag.TAG_COMPOUND);
+        ListTag list = compound.getList(AdvancedAges.MOD_ID + "_Data_ANTENNA_CONTROLLER", Tag.TAG_COMPOUND);
         if (!list.isEmpty()) {
             for (Tag t : list) {
                 CompoundTag pollTag = (CompoundTag) t;

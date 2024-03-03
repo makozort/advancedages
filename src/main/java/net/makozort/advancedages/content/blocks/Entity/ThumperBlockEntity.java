@@ -21,7 +21,6 @@ import team.lodestar.lodestone.network.screenshake.PositionedScreenshakePacket;
 import team.lodestar.lodestone.registry.common.LodestonePacketRegistry;
 import team.lodestar.lodestone.systems.easing.Easing;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,15 +50,15 @@ public class ThumperBlockEntity extends KineticBlockEntity implements IHaveGoggl
         if (bool && this.currentLevel < MAX_LEVEL) {
             this.cooldown = RESET_TIME;
             if (this.level instanceof ServerLevel) {
-                for (BlockPos pos : DepositData.get(this.level).oilSearch(this.getBlockPos(),range)) {
+                for (BlockPos pos : DepositData.get(this.level).oilSearch(this.getBlockPos(), range)) {
                     if (!foundDeposits.contains(pos)) {
                         foundDeposits.add(pos);
                     }
                 }
-                this.level.sendBlockUpdated(this.getBlockPos(),this.getBlockState(),this.getBlockState(),2);
+                this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 2);
                 if (range < (int) (MAX_RANGE * ((double) 1 / MAX_LEVEL))) {
-                    int newRange= (int) (MAX_RANGE * ((double) 1 / MAX_LEVEL));
-                    slamEffect(this.worldPosition,newRange);
+                    int newRange = (int) (MAX_RANGE * ((double) 1 / MAX_LEVEL));
+                    slamEffect(this.worldPosition, newRange);
                 } else {
                     slamEffect(this.worldPosition, range);
                 }
@@ -70,8 +69,8 @@ public class ThumperBlockEntity extends KineticBlockEntity implements IHaveGoggl
         }
     }
 
-    public void slamEffect(BlockPos pos,int range) {
-        level.playSound(null, pos, SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.MASTER, ((float) range /16), 1.0F);
+    public void slamEffect(BlockPos pos, int range) {
+        level.playSound(null, pos, SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.MASTER, ((float) range / 16), 1.0F);
         LodestonePacketRegistry.LODESTONE_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(this.worldPosition)),
                 new PositionedScreenshakePacket(6, BlockHelper.fromBlockPos(pos), range, 200f, Easing.EXPO_OUT).setIntensity(1.2f, .4f));
     }
@@ -89,12 +88,12 @@ public class ThumperBlockEntity extends KineticBlockEntity implements IHaveGoggl
 
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-            boolean added = super.addToGoggleTooltip(tooltip, isPlayerSneaking);
-            Component cooldownComponent = Component.literal("Slam cooldown: ").append(Component.literal(String.valueOf(this.cooldown / 20)).withStyle(ChatFormatting.AQUA));
-            Component rangeComponent = Component.literal("Current Scan radius: " ).append(Component.literal(String.valueOf((int) (MAX_RANGE * ((double) this.currentLevel / MAX_LEVEL)))).withStyle(ChatFormatting.AQUA));
-            Component foundComponent = Component.literal("Deposits found: " ).append(Component.literal(String.valueOf(this.foundDeposits.size())).withStyle(ChatFormatting.AQUA));
-            tooltip.add(cooldownComponent);
-            tooltip.add(rangeComponent);
+        boolean added = super.addToGoggleTooltip(tooltip, isPlayerSneaking);
+        Component cooldownComponent = Component.literal("Slam cooldown: ").append(Component.literal(String.valueOf(this.cooldown / 20)).withStyle(ChatFormatting.AQUA));
+        Component rangeComponent = Component.literal("Current Scan radius: ").append(Component.literal(String.valueOf((int) (MAX_RANGE * ((double) this.currentLevel / MAX_LEVEL)))).withStyle(ChatFormatting.AQUA));
+        Component foundComponent = Component.literal("Deposits found: ").append(Component.literal(String.valueOf(this.foundDeposits.size())).withStyle(ChatFormatting.AQUA));
+        tooltip.add(cooldownComponent);
+        tooltip.add(rangeComponent);
         tooltip.add(foundComponent);
         return added;
     }
@@ -111,7 +110,7 @@ public class ThumperBlockEntity extends KineticBlockEntity implements IHaveGoggl
             DepoTag.putInt("z", BlockPos.getZ());
             list.add(DepoTag);
         });
-        compound.put(AdvancedAges.MOD_ID+"_Data_THUMPER_DEPO_LIST", list);
+        compound.put(AdvancedAges.MOD_ID + "_Data_THUMPER_DEPO_LIST", list);
         compound.putInt(AdvancedAges.MOD_ID + "_Data_THUMPER_COOLDOWN", this.cooldown);
         compound.putInt(AdvancedAges.MOD_ID + "_Data_THUMPER_LEVEL", this.currentLevel);
     }
@@ -120,7 +119,7 @@ public class ThumperBlockEntity extends KineticBlockEntity implements IHaveGoggl
     @Override
     protected void read(CompoundTag compound, boolean clientPacket) {
         super.read(compound, clientPacket);
-        ListTag list = compound.getList(AdvancedAges.MOD_ID+"_Data_THUMPER_DEPO_LIST", Tag.TAG_COMPOUND);
+        ListTag list = compound.getList(AdvancedAges.MOD_ID + "_Data_THUMPER_DEPO_LIST", Tag.TAG_COMPOUND);
         for (Tag t : list) {
             CompoundTag pollTag = (CompoundTag) t;
             BlockPos pos = new BlockPos(pollTag.getInt("x"), pollTag.getInt("y"), pollTag.getInt("z"));

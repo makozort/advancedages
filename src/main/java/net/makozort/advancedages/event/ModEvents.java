@@ -1,17 +1,14 @@
 package net.makozort.advancedages.event;
 
-import com.mojang.datafixers.TypeRewriteRule;
-import com.simibubi.create.AllItems;
-import com.simibubi.create.content.trains.schedule.Schedule;
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.Entity.ThumperBlockEntity;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.content.commands.DepositsCommand;
-import net.makozort.advancedages.content.items.Co2DetectorItem;
-import net.makozort.advancedages.content.items.OilScannerItem;
-import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
 import net.makozort.advancedages.foundation.gas.GasData;
-import net.makozort.advancedages.reg.*;
+import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
+import net.makozort.advancedages.reg.AllEffects;
+import net.makozort.advancedages.reg.AllFluids;
+import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -26,7 +23,6 @@ import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -53,6 +49,9 @@ public class ModEvents extends BlockEntity {
 
     @Mod.EventBusSubscriber(modid = AdvancedAges.MOD_ID)
     public static class ForgeEvents {
+
+        // handles decaying pollution and clearing old pollution values of 0
+        static int tick;
 
         @SubscribeEvent
         public static void onLiving(LivingEvent.LivingTickEvent event) {
@@ -94,8 +93,6 @@ public class ModEvents extends BlockEntity {
             }
         }
 
-
-
         @SubscribeEvent
         public static void onPlayerInteract(PlayerInteractEvent.RightClickBlock event) {
             if (!event.getLevel().isClientSide() && event.getHand() == InteractionHand.MAIN_HAND) {
@@ -111,7 +108,6 @@ public class ModEvents extends BlockEntity {
                 }
             }
         }
-
 
         @SubscribeEvent
         public static void sawHurt(LivingHurtEvent event) { // villager meat
@@ -129,16 +125,12 @@ public class ModEvents extends BlockEntity {
             }
         }
 
-
         @SubscribeEvent
         public static void furnaceEvent(FurnaceFuelBurnTimeEvent event) {
             if (event.getItemStack().is(Allitems.HEAVY_OIL_BUCKET.get())) {
                 event.setBurnTime(32767);
             }
         }
-
-        // handles decaying pollution and clearing old pollution values of 0
-        static int tick;
 
         @SubscribeEvent
         public static void levelTick(TickEvent.LevelTickEvent event) {

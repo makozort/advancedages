@@ -1,13 +1,10 @@
 package net.makozort.advancedages.reg;
 
 import com.tterrag.registrate.util.entry.FluidEntry;
-import net.makozort.advancedages.foundation.fluid.NoColorFluidAttributes;
 import net.makozort.advancedages.foundation.gas.VirtualGas;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
-
 import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
-import static net.makozort.advancedages.AdvancedAges.asFluid;
 
 
 public class AllFluids {
@@ -63,6 +60,7 @@ public class AllFluids {
             .virtualGas("natural_gas", VirtualGas::new).lang("Natural Gas").register();
 
 
-    public static void register() {}
+    public static void register() {
+    }
 
 }

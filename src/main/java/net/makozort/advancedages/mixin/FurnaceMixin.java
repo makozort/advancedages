@@ -24,13 +24,12 @@ import java.util.Map;
 public abstract class FurnaceMixin extends BlockEntity {
 
 
-    @Shadow
-    public abstract ItemStack getItem(int p_58328_);
-
     public FurnaceMixin(BlockEntityType<?> p_155228_, BlockPos p_155229_, BlockState p_155230_) {
         super(p_155228_, p_155229_, p_155230_);
     }
 
+    @Shadow
+    public abstract ItemStack getItem(int p_58328_);
 
     @Inject(method = "getBurnDuration", at = @At("TAIL"), remap = false)
     private void getBurnDuration(CallbackInfoReturnable<Map<Item, Integer>> cir) {

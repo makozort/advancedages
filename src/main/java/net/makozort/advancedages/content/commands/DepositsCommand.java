@@ -1,27 +1,15 @@
 package net.makozort.advancedages.content.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.data.DepositData;
 import net.makozort.advancedages.foundation.gas.GasData;
-import net.makozort.advancedages.foundation.gas.GasStack;
-import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
-import net.makozort.advancedages.foundation.gas.VirtualGas;
 import net.makozort.advancedages.reg.AllFluids;
-import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-import java.util.Map;
 
 public class DepositsCommand {
     public DepositsCommand(CommandDispatcher<CommandSourceStack> dispatcher) {

@@ -1,7 +1,6 @@
 package net.makozort.advancedages.reg;
 
 
-
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.redstone.displayLink.source.BoilerDisplaySource;
 import com.simibubi.create.foundation.data.AssetLookup;
@@ -10,7 +9,6 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
-import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import net.makozort.advancedages.content.blocks.block.*;
 import net.makozort.advancedages.content.blocks.block.horn.*;
 import net.makozort.advancedages.content.blocks.block.oil.OilFilterBlock;
@@ -20,16 +18,15 @@ import net.makozort.advancedages.content.fluid.tank.SteelFluidTankModel;
 import net.makozort.advancedages.content.items.SteelFluidTankItem;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 
 import static com.simibubi.create.content.redstone.displayLink.AllDisplayBehaviours.assignDataBehaviour;
-import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 import static net.makozort.advancedages.AdvancedAges.REGISTRATE;
+
 public class AllBlocks {
 
     public static final RegistryEntry<TitanHornBlock> TITAN_HORN_BLOCK = REGISTRATE

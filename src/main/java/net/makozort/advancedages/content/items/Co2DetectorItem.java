@@ -1,7 +1,7 @@
 package net.makozort.advancedages.content.items;
 
-import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
 import net.makozort.advancedages.foundation.gas.GasData;
+import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -18,12 +18,13 @@ import java.util.Map;
 import static net.makozort.advancedages.reg.AllFluids.CARBON_DIOXIDE;
 
 public class Co2DetectorItem extends Item {
+    double localPollution = 0.0;
+
+
     public Co2DetectorItem(Properties p_41383_) {
         super(p_41383_);
     }
 
-
-    double localPollution = 0.0;
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (player.level() instanceof ServerLevel) {

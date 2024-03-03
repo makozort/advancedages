@@ -11,6 +11,7 @@ public class MaskModel extends BakedModelWrapper<BakedModel> {
     public MaskModel(BakedModel template) {
         super(template);
     }
+
     @Override
     public BakedModel applyTransform(ItemDisplayContext cameraItemDisplayContext, PoseStack mat, boolean leftHanded) {
         if (cameraItemDisplayContext == ItemDisplayContext.HEAD)

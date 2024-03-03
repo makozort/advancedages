@@ -4,7 +4,6 @@ import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.block.IBE;
 import net.makozort.advancedages.content.blocks.Entity.OilFilterBlockEntity;
-
 import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,7 +19,6 @@ import net.minecraft.world.level.block.state.properties.AttachFace;
 import javax.annotation.Nullable;
 
 
-
 public class OilFilterBlock extends FaceAttachedHorizontalDirectionalBlock implements IWrenchable, IBE<OilFilterBlockEntity>, ICogWheel {
 
 
@@ -28,19 +26,18 @@ public class OilFilterBlock extends FaceAttachedHorizontalDirectionalBlock imple
         super(pProperties);
     }
 
-
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        return canAttach(pLevel, pPos, getConnectedDirection(pState).getOpposite());
-    }
-
     public static boolean canAttach(LevelReader pReader, BlockPos pPos, Direction pDirection) {
         BlockPos blockpos = pPos.relative(pDirection);
         return pReader.getBlockState(blockpos).isFaceSturdy(pReader, blockpos, pDirection.getOpposite());
     }
 
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        return canAttach(pLevel, pPos, getConnectedDirection(pState).getOpposite());
+    }
+
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        for(Direction direction : pContext.getNearestLookingDirections()) {
+        for (Direction direction : pContext.getNearestLookingDirections()) {
             BlockState blockstate;
             if (direction.getAxis() == Direction.Axis.Y) {
                 blockstate = this.defaultBlockState().setValue(FACE, direction == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, pContext.getHorizontalDirection());
@@ -68,7 +65,7 @@ public class OilFilterBlock extends FaceAttachedHorizontalDirectionalBlock imple
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACE,FACING);
+        builder.add(FACE, FACING);
     }
 
     @Override

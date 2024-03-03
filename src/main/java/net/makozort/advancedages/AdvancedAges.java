@@ -5,9 +5,8 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import net.makozort.advancedages.reg.AllEffects;
-import net.makozort.advancedages.reg.*;
 import net.makozort.advancedages.foundation.registrate.ModRegistrate;
+import net.makozort.advancedages.reg.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -52,20 +51,19 @@ public class AdvancedAges {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
+    public static ResourceLocation asResource(String path) {
+        return new ResourceLocation(MOD_ID, path);
+    }
 
+    public static ResourceLocation asFluid(String fluid, boolean flowing) {
+        return new ResourceLocation(MOD_ID, "fluid/" + fluid + (flowing ? "_flow" : "_still"));
+    }
 
     private void register(RegisterEvent event) {
         event.register(Registries.FEATURE, new ResourceLocation(MOD_ID, "very_large_lake"), () -> AllFeatures.VERY_LARGE_LAKE);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-    }
-
-    public static ResourceLocation asResource(String path) {
-        return new ResourceLocation(MOD_ID, path);
-    }
-    public static ResourceLocation asFluid(String fluid, boolean flowing) {
-        return new ResourceLocation(MOD_ID,"fluid/" + fluid + (flowing ? "_flow" : "_still"));
     }
 
 

@@ -16,6 +16,25 @@ import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 public class MaskHudOverlay {
     protected static final ResourceLocation MASK_HUD = new ResourceLocation(AdvancedAges.MOD_ID,
             "textures/misc/mask_overlay.png");
+    public static final IGuiOverlay HUD_MASK = ((gui, poseStack, partialTick, width, height) -> {
+        int x = width;
+        int y = height;
+
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, MASK_HUD);
+
+
+        for (int i = 0; i < 10; i++) {
+            if (Minecraft.getInstance().options.getCameraType().isFirstPerson()) {
+                ItemStack itemstack = Minecraft.getInstance().player.getInventory().getArmor(3);
+                if (itemstack.is(Allitems.POLLUTION_MASK.get())) {
+                    renderTextureOverlay(MASK_HUD, 1.0F, x, y);
+                }
+            }
+        }
+
+    });
 
     protected static void renderTextureOverlay(ResourceLocation p_168709_, float p_168710_, int x, int y) {
         RenderSystem.disableDepthTest();
@@ -36,24 +55,4 @@ public class MaskHudOverlay {
         RenderSystem.enableDepthTest();
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
     }
-
-    public static final IGuiOverlay HUD_MASK = ((gui, poseStack, partialTick, width, height) -> {
-        int x = width;
-        int y = height;
-
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, MASK_HUD);
-
-
-        for (int i = 0; i < 10; i++) {
-            if (Minecraft.getInstance().options.getCameraType().isFirstPerson()) {
-                ItemStack itemstack = Minecraft.getInstance().player.getInventory().getArmor(3);
-                if (itemstack.is(Allitems.POLLUTION_MASK.get())) {
-                    renderTextureOverlay(MASK_HUD, 1.0F, x, y);
-                }
-            }
-        }
-
-    });
 }
