@@ -47,14 +47,18 @@ public class GasData extends SavedData {
         return GasMap;
     }
 
+    public MixedVirtualGas addGas(BlockPos pos, GasStack<?> stack) {
+        GasMap.put(pos, new MixedVirtualGas(List.of(stack.getGas(), stack.getAmount())))
+        return new MixedVirtualGas(List.of(stack.getGas(), stack.getAmount()))
+    }
 
     public MixedVirtualGas getGas(BlockPos pos) {
-        return GasMap.get(pos) == null ? GasMap.put(pos, new MixedVirtualGas(List.of(AllFluids.OXYGEN.get().toStack(200)))) : GasMap.get(pos);
+        return GasMap.get(pos) == null ? addGas(pos, new GasStack<?>(AllFluids.OXYGEN.get(), 200) : GasMap.get(pos);
     }
 
 
     public int changeGas(BlockPos pos, VirtualGas gas, int i, Level level) {
-        MixedVirtualGas gasses = getGasInternal(pos, level);
+        MixedVirtualGas gasses = getGas(pos, level);
         int present = gasses.getGas(gas);
         int r = (present + i);
         if (r > 1000) {
@@ -85,7 +89,6 @@ public class GasData extends SavedData {
         setDirty();
         return 1;
     }
-
 
     // loaded when game boots essentially
     public GasData(CompoundTag tag) {
