@@ -13,6 +13,11 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import team.lodestar.lodestone.registry.common.particle.LodestoneParticleRegistry;
+import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
+import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
+
+import java.util.Random;
 
 @Mixin(NetherWartBlock.class)
 public abstract class WartMixin extends Block {
@@ -24,18 +29,18 @@ public abstract class WartMixin extends Block {
 
     @Inject(method = "randomTick", at = @At("TAIL"), remap = false)
     private void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom, CallbackInfo ci) {
+
         if (pState.getValue(NetherWartBlock.AGE) == 3) {
             for (int i = 1; i <= 3; i++) {
                 BlockPos abovePos = pPos.above(i);
                 BlockState aboveState = pLevel.getBlockState(abovePos);
                 AdvancedAges.LOGGER.info(String.valueOf(aboveState.getBlock()));
                 if (aboveState.getBlock() == Blocks.SPORE_BLOSSOM) {
-                    AdvancedAges.LOGGER.info("john");
                     pLevel.setBlock(pPos, AllBlocks.LUSH_NETHERWART_BLOCK.get().defaultBlockState(), 4);
+
                     break;
                 }
             }
         }
     }
-
 }

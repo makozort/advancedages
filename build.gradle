@@ -54,7 +54,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-
+            args "--username", "mako"
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.
             // "SCAN": For mods scan.

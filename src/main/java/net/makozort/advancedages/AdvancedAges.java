@@ -6,6 +6,7 @@ import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import net.makozort.advancedages.foundation.registrate.ModRegistrate;
+import net.makozort.advancedages.networking.ModPackets;
 import net.makozort.advancedages.reg.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -41,8 +42,6 @@ public class AdvancedAges {
         AllBlockEntities.register();
         AllCreativeModeTabs.register(modEventBus);
         Allitems.register();
-
-
         AllFluids.register();
         AllEffects.register(modEventBus);
         AllSoundEvents.register(modEventBus);
@@ -64,6 +63,9 @@ public class AdvancedAges {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            ModPackets.register();
+        });
     }
 
 

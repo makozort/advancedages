@@ -4,12 +4,9 @@ package net.makozort.advancedages.reg;
 import com.simibubi.create.content.equipment.armor.AllArmorMaterials;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.items.Co2DetectorItem;
+import net.makozort.advancedages.content.items.*;
 import net.makozort.advancedages.content.items.IV.EmptyIVBagItem;
 import net.makozort.advancedages.content.items.IV.IVBagItem;
-import net.makozort.advancedages.content.items.NaturalGasSpongeItem;
-import net.makozort.advancedages.content.items.OilScannerItem;
-import net.makozort.advancedages.content.items.PollutionMaskItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
@@ -61,6 +58,10 @@ public class Allitems {
                     .register();
     public static final ItemEntry<SimpleFoiledItem> CATALYZED_NETHERWART = REGISTRATE.item("catalyzed_netherwart",
                     p -> new SimpleFoiledItem(new Item.Properties().stacksTo(64)))
+            .register();
+
+    public static final ItemEntry<BlazeItem> BLAZE = REGISTRATE.item("blaze",
+                    p -> new BlazeItem(new Item.Properties().stacksTo(64)))
             .register();
 
     static {

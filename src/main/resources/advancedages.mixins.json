@@ -7,7 +7,8 @@
   "mixins": [
     "BurnerMixin",
     "FurnaceMixin",
-    "WartMixin"
+    "WartMixin",
+    "LinkMixin"
   ],
   "minVersion": "0.8.5"
 }

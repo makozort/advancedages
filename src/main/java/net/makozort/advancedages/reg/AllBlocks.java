@@ -291,6 +291,12 @@ public class AllBlocks {
             .register();
 
 
+    public static final RegistryEntry<HellBomb> HATE_BOMB_BLOCK_REGISTRY = REGISTRATE
+            .block("hell_bomb", HellBomb::new)
+            .simpleItem()
+            .register();
+
+
     public static void register() {
     }
 }

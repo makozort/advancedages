@@ -1,6 +1,7 @@
 package net.makozort.advancedages.content.blocks.Entity;
 
 import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
+import com.simibubi.create.content.redstone.link.RedstoneLinkBlockEntity;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.makozort.advancedages.AdvancedAges;
@@ -9,6 +10,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -18,7 +22,7 @@ import java.util.List;
 public class RadioBlockEntity extends SmartBlockEntity implements IHaveGoggleInformation {
 
     private static int MAX_TOWER_HEIGHT = 10;
-    private static int MAX_RANGE = 250; // in blocks
+    private static int MAX_RANGE = 500; // in blocks
     private int stackHeight;
 
     private int range;
@@ -31,6 +35,8 @@ public class RadioBlockEntity extends SmartBlockEntity implements IHaveGoggleInf
     public static int getMaxTowerHeight() {
         return MAX_TOWER_HEIGHT;
     }
+
+    public int getRange() {return this.range;}
 
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
@@ -99,6 +105,16 @@ public class RadioBlockEntity extends SmartBlockEntity implements IHaveGoggleInf
         //set the stack height to the new height if the stack was cut short
         if (exitedStack)
             stackHeight = newStackHeight;
+
+        AdvancedAges.LOGGER.info(String.valueOf(level.getBlockEntity(this.getBlockPos().below())));
+        if (level.getBlockEntity(this.getBlockPos().below()) instanceof RedstoneLinkBlockEntity link) {
+            BlockPos pos = link.getBlockPos();
+            BlockState state = level.getBlockState(pos);
+            if (!level.isClientSide) {
+                Block.dropResources(state, level, pos, null, null, ItemStack.EMPTY);
+                level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+            }
+        }
     }
 
     @Override

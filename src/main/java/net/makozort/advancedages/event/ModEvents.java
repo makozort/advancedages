@@ -4,6 +4,8 @@ import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.Entity.ThumperBlockEntity;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.content.commands.DepositsCommand;
+import net.makozort.advancedages.content.capabilities.blaze.BlazeAddiction;
+import net.makozort.advancedages.content.capabilities.blaze.BlazeAddictionProvider;
 import net.makozort.advancedages.foundation.gas.GasData;
 import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
 import net.makozort.advancedages.reg.AllEffects;
@@ -12,6 +14,7 @@ import net.makozort.advancedages.reg.Allitems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -27,13 +30,17 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
 
@@ -152,6 +159,46 @@ public class ModEvents extends BlockEntity {
             new ClearPollutionCommand(event.getDispatcher());
             new DepositsCommand(event.getDispatcher());
             ConfigCommand.register(event.getDispatcher());
+        }
+
+        @SubscribeEvent
+        public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
+            if (event.getObject() instanceof Player) {
+                if (!event.getObject().getCapability(BlazeAddictionProvider.BLAZE_ADDICTION).isPresent()) {
+                    event.addCapability(new ResourceLocation(AdvancedAges.MOD_ID, "properties"), new BlazeAddictionProvider());
+                }
+            }
+        }
+
+        @SubscribeEvent
+        public static void onPlayerCloned(PlayerEvent.Clone event) {
+            if (event.isWasDeath()) {
+                event.getOriginal().getCapability(BlazeAddictionProvider.BLAZE_ADDICTION).ifPresent(oldStore -> {
+                    event.getEntity().getCapability(BlazeAddictionProvider.BLAZE_ADDICTION).ifPresent(newStore -> {
+                        newStore.copyFrom(oldStore);
+                    });
+                });
+            }
+        }
+
+        @SubscribeEvent
+        public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
+            event.register(BlazeAddiction.class);
+        }
+
+        @SubscribeEvent
+        public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+            if (event.side == LogicalSide.SERVER) {
+                event.player.getCapability(BlazeAddictionProvider.BLAZE_ADDICTION).ifPresent(addiction -> {
+                    if (addiction.getAddiction() > 0) {
+                        addiction.subAddiction(1);
+                        if (addiction.getAddiction() >= 72000 && !event.player.hasEffect(AllEffects.BLAZE.get()) && !event.player.hasEffect(AllEffects.BLAZE_WITHDRAWL.get())) {
+                            event.player.addEffect(new MobEffectInstance(AllEffects.BLAZE_WITHDRAWL.get(), 100, 0));
+                        }
+
+                    }
+                });
+            }
         }
     }
 }

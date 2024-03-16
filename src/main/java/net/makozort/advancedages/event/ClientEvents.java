@@ -17,7 +17,6 @@ public class ClientEvents {
                 event.registerAboveAll("mask", MaskHudOverlay.HUD_MASK);
             }
 
-
         }
     }
 }

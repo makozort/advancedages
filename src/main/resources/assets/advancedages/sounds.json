@@ -28,5 +28,10 @@
     "sounds": [
       "advancedages:reaper_horn"
     ]
+  },
+  "hellbomb": {
+    "sounds": [
+      "advancedages:hellbomb"
+    ]
   }
 }
