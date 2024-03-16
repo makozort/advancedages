@@ -2,7 +2,7 @@ package net.makozort.advancedages.content.blocks.block.horn;
 
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.foundation.block.IBE;
-import net.makozort.advancedages.content.blocks.Entity.HornBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.HornBlockEntity;
 import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

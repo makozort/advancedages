@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.blocks.Entity;
+package net.makozort.advancedages.content.blocks.entity;
 
 import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;

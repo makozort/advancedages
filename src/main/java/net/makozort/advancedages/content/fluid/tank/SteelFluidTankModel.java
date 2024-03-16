@@ -5,7 +5,7 @@ import com.simibubi.create.api.connectivity.ConnectivityHandler;
 import com.simibubi.create.foundation.block.connected.CTModel;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.utility.Iterate;
-import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankCTBehaviour;
+import net.makozort.advancedages.content.blocks.entity.SteelFluidTankCTBehaviour;
 import net.makozort.advancedages.reg.AllSpriteShifts;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;

@@ -19,10 +19,13 @@ import team.lodestar.lodestone.helpers.BlockHelper;
 import team.lodestar.lodestone.network.screenshake.PositionedScreenshakePacket;
 import team.lodestar.lodestone.registry.common.LodestonePacketRegistry;
 import team.lodestar.lodestone.systems.easing.Easing;
+import team.lodestar.lodestone.systems.particle.screen.ScreenParticleHolder;
+
 import java.util.List;
 import java.util.Random;
 
 public class HellBomb extends Block {
+
 
 
     public HellBomb(Properties pProperties) {

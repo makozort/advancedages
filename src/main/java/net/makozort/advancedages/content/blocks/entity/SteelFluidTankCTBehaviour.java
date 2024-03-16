@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.blocks.Entity;
+package net.makozort.advancedages.content.blocks.entity;
 
 
 import com.simibubi.create.api.connectivity.ConnectivityHandler;

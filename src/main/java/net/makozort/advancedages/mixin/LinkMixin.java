@@ -5,7 +5,7 @@ import com.simibubi.create.content.redstone.link.LinkBehaviour;
 import com.simibubi.create.content.redstone.link.RedstoneLinkBlockEntity;
 import com.simibubi.create.content.redstone.link.RedstoneLinkNetworkHandler;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.blocks.Entity.RadioBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.RadioBlockEntity;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

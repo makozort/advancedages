@@ -2,11 +2,11 @@ package net.makozort.advancedages.reg;
 
 
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import net.makozort.advancedages.content.blocks.Entity.*;
-import net.makozort.advancedages.content.blocks.Entity.CombustionEngine.CombustionEngineRenderer;
-import net.makozort.advancedages.content.blocks.Entity.CombustionEngine.combustionEngineBlockEntity;
-import net.makozort.advancedages.content.blocks.Entity.RefineLogic.OilFilterCogInstance;
-import net.makozort.advancedages.content.blocks.Entity.RefineLogic.OilFilterRenderer;
+import net.makozort.advancedages.content.blocks.entity.*;
+import net.makozort.advancedages.content.blocks.entity.CombustionEngine.CombustionEngineRenderer;
+import net.makozort.advancedages.content.blocks.entity.CombustionEngine.combustionEngineBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.RefineLogic.OilFilterCogInstance;
+import net.makozort.advancedages.content.blocks.entity.RefineLogic.OilFilterRenderer;
 import net.makozort.advancedages.content.fluid.tank.SteelFluidTankRenderer;
 
 import static net.makozort.advancedages.AdvancedAges.REGISTRATE;

@@ -5,7 +5,7 @@ import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import com.simibubi.create.foundation.utility.Lang;
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.blocks.Entity.RefineLogic.RefiningRecipe;
+import net.makozort.advancedages.content.blocks.entity.RefineLogic.RefiningRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Recipe;

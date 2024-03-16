@@ -1,10 +1,10 @@
-package net.makozort.advancedages.content.blocks.Entity.RefineLogic;
+package net.makozort.advancedages.content.blocks.entity.RefineLogic;
 
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
-import net.makozort.advancedages.content.blocks.Entity.OilFilterBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.OilFilterBlockEntity;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.block.state.BlockState;
 

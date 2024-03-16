@@ -1,11 +1,11 @@
-package net.makozort.advancedages.content.blocks.Entity.RefineLogic;
+package net.makozort.advancedages.content.blocks.entity.RefineLogic;
 
 import com.jozufozu.flywheel.api.Instancer;
 import com.jozufozu.flywheel.api.MaterialManager;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.SingleRotatingInstance;
 import com.simibubi.create.content.kinetics.base.flwdata.RotatingData;
-import net.makozort.advancedages.content.blocks.Entity.OilFilterBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.OilFilterBlockEntity;
 
 
 public class OilFilterCogInstance extends SingleRotatingInstance<OilFilterBlockEntity> {

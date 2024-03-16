@@ -1,8 +1,8 @@
 package net.makozort.advancedages.content.blocks.block;
 
 import com.simibubi.create.foundation.block.IBE;
-import net.makozort.advancedages.content.blocks.Entity.AntennaBlockEntity;
-import net.makozort.advancedages.content.blocks.Entity.RadioBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.AntennaBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.RadioBlockEntity;
 import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;

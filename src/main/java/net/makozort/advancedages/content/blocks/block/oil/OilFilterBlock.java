@@ -3,7 +3,7 @@ package net.makozort.advancedages.content.blocks.block.oil;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.block.IBE;
-import net.makozort.advancedages.content.blocks.Entity.OilFilterBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.OilFilterBlockEntity;
 import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

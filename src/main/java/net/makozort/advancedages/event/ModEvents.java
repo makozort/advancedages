@@ -1,7 +1,7 @@
 package net.makozort.advancedages.event;
 
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.content.blocks.Entity.ThumperBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.ThumperBlockEntity;
 import net.makozort.advancedages.content.commands.ClearPollutionCommand;
 import net.makozort.advancedages.content.commands.DepositsCommand;
 import net.makozort.advancedages.content.capabilities.blaze.BlazeAddiction;

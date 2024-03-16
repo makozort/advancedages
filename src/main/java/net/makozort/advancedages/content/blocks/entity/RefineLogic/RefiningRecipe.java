@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.blocks.Entity.RefineLogic;
+package net.makozort.advancedages.content.blocks.entity.RefineLogic;
 
 import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;

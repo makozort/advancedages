@@ -1,8 +1,8 @@
-package net.makozort.advancedages.content.blocks.Entity;
+package net.makozort.advancedages.content.blocks.entity;
 
 import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
-import net.makozort.advancedages.content.blocks.Entity.RefineLogic.RefiningRecipes;
+import net.makozort.advancedages.content.blocks.entity.RefineLogic.RefiningRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;

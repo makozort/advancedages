@@ -10,7 +10,7 @@ import com.simibubi.create.foundation.fluid.FluidRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.utility.Iterate;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat;
-import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.SteelFluidTankBlockEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;

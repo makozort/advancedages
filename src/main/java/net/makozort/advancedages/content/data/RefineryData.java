@@ -15,7 +15,7 @@ import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat.Chaser;
 import joptsimple.internal.Strings;
-import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.SteelFluidTankBlockEntity;
 import net.makozort.advancedages.content.blocks.block.oil.SteelFluidTankBlock;
 import net.makozort.advancedages.content.fluid.tank.RefineryHeaters;
 import net.minecraft.ChatFormatting;

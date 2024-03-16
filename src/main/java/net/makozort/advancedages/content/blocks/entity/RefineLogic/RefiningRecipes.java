@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.blocks.Entity.RefineLogic;
+package net.makozort.advancedages.content.blocks.entity.RefineLogic;
 
 import net.makozort.advancedages.reg.AllFluids;
 import net.minecraft.world.level.material.Fluid;

@@ -1,4 +1,4 @@
-package net.makozort.advancedages.content.blocks.Entity.CombustionEngine;
+package net.makozort.advancedages.content.blocks.entity.CombustionEngine;
 
 import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.content.kinetics.base.GeneratingKineticBlockEntity;

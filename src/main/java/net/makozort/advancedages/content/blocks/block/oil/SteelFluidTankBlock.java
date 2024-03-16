@@ -10,7 +10,7 @@ import com.simibubi.create.foundation.blockEntity.ComparatorUtil;
 import com.simibubi.create.foundation.fluid.FluidHelper;
 import com.simibubi.create.foundation.fluid.FluidHelper.FluidExchange;
 import com.simibubi.create.foundation.utility.Lang;
-import net.makozort.advancedages.content.blocks.Entity.SteelFluidTankBlockEntity;
+import net.makozort.advancedages.content.blocks.entity.SteelFluidTankBlockEntity;
 import net.makozort.advancedages.reg.AllBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
