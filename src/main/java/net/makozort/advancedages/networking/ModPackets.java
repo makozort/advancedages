@@ -1,7 +1,7 @@
 package net.makozort.advancedages.networking;
 
 import net.makozort.advancedages.AdvancedAges;
-import net.makozort.advancedages.networking.packet.HellbombPacket;
+import net.makozort.advancedages.networking.packet.BombPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -31,10 +31,10 @@ public class ModPackets {
 
         INSTANCE = net;
 
-        net.messageBuilder(HellbombPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(HellbombPacket::new)
-                .encoder(HellbombPacket::toBytes)
-                .consumerMainThread(HellbombPacket::handle)
+        net.messageBuilder(BombPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(BombPacket::new)
+                .encoder(BombPacket::toBytes)
+                .consumerMainThread(BombPacket::handle)
                 .add();
     }
 

@@ -8,7 +8,7 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class HellbombPacket {
+public class BombPacket {
 
 
     private BlockPos pos;
@@ -19,14 +19,14 @@ public class HellbombPacket {
 
     private boolean iFlash;
 
-    public HellbombPacket(BlockPos pos,float scalar,boolean iSpawnSmoke, boolean iFlash) {
+    public BombPacket(BlockPos pos, float scalar, boolean iSpawnSmoke, boolean iFlash) {
         this.pos = pos;
         this.scalar = scalar;
         this.iSpawnSmoke = iSpawnSmoke;
         this.iFlash = iFlash;
     }
 
-    public HellbombPacket(FriendlyByteBuf buf) {
+    public BombPacket(FriendlyByteBuf buf) {
         this.pos = buf.readBlockPos();
         this.scalar = buf.readFloat();
         this.iSpawnSmoke = buf.readBoolean();

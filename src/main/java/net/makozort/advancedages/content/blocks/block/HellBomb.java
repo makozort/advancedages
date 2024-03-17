@@ -1,7 +1,7 @@
 package net.makozort.advancedages.content.blocks.block;
 
 import net.makozort.advancedages.networking.ModPackets;
-import net.makozort.advancedages.networking.packet.HellbombPacket;
+import net.makozort.advancedages.networking.packet.BombPacket;
 import net.makozort.advancedages.reg.AllSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -19,7 +19,6 @@ import team.lodestar.lodestone.helpers.BlockHelper;
 import team.lodestar.lodestone.network.screenshake.PositionedScreenshakePacket;
 import team.lodestar.lodestone.registry.common.LodestonePacketRegistry;
 import team.lodestar.lodestone.systems.easing.Easing;
-import team.lodestar.lodestone.systems.particle.screen.ScreenParticleHolder;
 
 import java.util.List;
 import java.util.Random;
@@ -90,9 +89,9 @@ public class HellBomb extends Block {
                 for (ServerPlayer player : serverLevel.players()) {
                     if (player.blockPosition().distSqr(pos) <= (MAX_EXPLOSION_RANGE*getExplosionScale()) * (MAX_EXPLOSION_RANGE*getExplosionScale())) {
                         if (getExplosionScale() >= .6) {
-                            ModPackets.sendToPlayer(new HellbombPacket(pos,getExplosionScale(),true,true),player);
+                            ModPackets.sendToPlayer(new BombPacket(pos,getExplosionScale(),true,true),player);
                         } else {
-                            ModPackets.sendToPlayer(new HellbombPacket(pos,getExplosionScale(),false,false),player);
+                            ModPackets.sendToPlayer(new BombPacket(pos,getExplosionScale(),false,false),player);
                         }
                     }
                 }

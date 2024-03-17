@@ -1,13 +1,12 @@
 package net.makozort.advancedages.mixin;
 
 import net.makozort.advancedages.networking.ModPackets;
-import net.makozort.advancedages.networking.packet.HellbombPacket;
+import net.makozort.advancedages.networking.packet.BombPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,7 +28,7 @@ public class FireMixin {
                     ServerLevel serverLevel = (ServerLevel) pLevel;
                     for (ServerPlayer player : serverLevel.players()) {
                         if (player.blockPosition().distSqr(pPos) <= (40) * (40)) {
-                            ModPackets.sendToPlayer(new HellbombPacket(pPos,.01f,true,false),player);
+                            ModPackets.sendToPlayer(new BombPacket(pPos,.01f,true,false),player);
                         }
                     }
                 }
