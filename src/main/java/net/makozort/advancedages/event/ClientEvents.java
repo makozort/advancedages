@@ -10,21 +10,14 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import team.lodestar.lodestone.handlers.screenparticle.ScreenParticleHandler;
 import team.lodestar.lodestone.systems.particle.screen.ScreenParticleHolder;
-
+@Mod.EventBusSubscriber(modid = AdvancedAges.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientEvents {
-    @Mod.EventBusSubscriber(modid = AdvancedAges.MOD_ID, value = Dist.CLIENT)
-    public static class ClientForgeEvents {
-        @Mod.EventBusSubscriber(modid = AdvancedAges.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-        public static class ClientModBusEvents {
-            @SubscribeEvent
-            public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
-                event.registerAboveAll("mask", MaskHudOverlay.HUD_MASK);
-            }
 
 
-            private static final ScreenParticleHolder SCREEN_PARTICLES = new ScreenParticleHolder();
+            public static final ScreenParticleHolder SCREEN_PARTICLES = new ScreenParticleHolder();
             @SubscribeEvent
             public static void registerOverlays(RegisterGuiOverlaysEvent event) {
+                event.registerAboveAll("mask", MaskHudOverlay.HUD_MASK);
                 event.registerAbove(VanillaGuiOverlay.PLAYER_LIST.id(), "particles", (gui, poseStack, partialTick, width, height) ->
                         renderParticles(poseStack));
             }
@@ -35,7 +28,4 @@ public class ClientEvents {
                 }
                 ScreenParticleHandler.renderParticles(SCREEN_PARTICLES);
             }
-
-        }
-    }
 }
