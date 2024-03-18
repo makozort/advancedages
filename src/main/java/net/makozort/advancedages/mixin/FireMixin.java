@@ -28,7 +28,7 @@ public class FireMixin {
                     ServerLevel serverLevel = (ServerLevel) pLevel;
                     for (ServerPlayer player : serverLevel.players()) {
                         if (player.blockPosition().distSqr(pPos) <= (40) * (40)) {
-                            ModPackets.sendToPlayer(new BombPacket(pPos,.01f,true,false),player);
+                            ModPackets.sendToPlayer(new BombPacket(pPos,.01f,true,false,false),player);
                         }
                     }
                 }

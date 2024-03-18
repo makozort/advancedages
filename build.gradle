@@ -199,7 +199,7 @@ dependencies {
     // at runtime, use the full JEI jar for Forge
     runtimeOnly(fg.deobf("mezz.jei:jei-${jei_minecraft_version}-forge:${jei_version}"))
 
-    implementation fg.deobf("curse.maven:lodestone-616457:5078837")
+    implementation fg.deobf("curse.maven:lodestone-616457:5188002")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 

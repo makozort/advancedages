@@ -1,8 +1,13 @@
 package net.makozort.advancedages.content.vfx;
 
+import com.mojang.blaze3d.vertex.VertexFormat;
+import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.event.ClientEvents;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
+import team.lodestar.lodestone.registry.client.LodestoneRenderTypeRegistry;
 import team.lodestar.lodestone.registry.common.particle.LodestoneParticleRegistry;
 import team.lodestar.lodestone.registry.common.particle.LodestoneScreenParticleRegistry;
 import team.lodestar.lodestone.systems.easing.Easing;
@@ -34,7 +39,11 @@ public class BombEffectEngine {
     public static float FIRE_OFFSET = 20f;
 
     public static float SMOKE_OFFSET = 15;
-    public static void spawn(Level level, BlockPos pos,float scalar, boolean smoke, boolean flash) {
+
+    protected static final ResourceLocation SHOCK_WAVE = new ResourceLocation(AdvancedAges.MOD_ID,
+            "textures/vfx/shockwave.png");
+    private static final RenderType SHOCK_WAVE_TYPE = LodestoneRenderTypeRegistry.TRANSPARENT_TEXTURE.applyWithModifier(SHOCK_WAVE, b -> b.replaceVertexFormat(VertexFormat.Mode.TRIANGLES));
+    public static void spawn(Level level, BlockPos pos,float scalar, boolean smoke, boolean flash,boolean sphere) {
         centre(level,pos,scalar);
         if (smoke) {
             smoke(level, pos,scalar);
@@ -42,10 +51,13 @@ public class BombEffectEngine {
         if (flash){
             ScreenParticleBuilder.create(LodestoneScreenParticleRegistry.WISP, ClientEvents.SCREEN_PARTICLES)
                     .setScaleData(GenericParticleData.create(999999999).setEasing(Easing.EXPO_IN_OUT).build())
-                    .setTransparencyData(GenericParticleData.create(.8f).build())
+                    .setTransparencyData(GenericParticleData.create(.5f,0).setEasing(Easing.EXPO_OUT).build())
                     .setColorData(ColorParticleData.create(outer, outer).build())
                     .setLifetime(80)
                     .spawn(pos.getX(), (pos.getZ()));
+        }
+        if (sphere) {
+            SphereRenderer.addSphere(new SphereRenderer.TimerGrowingSphere(SHOCK_WAVE_TYPE,pos.getCenter(),0,10000,2000));
         }
     }
 
@@ -73,7 +85,7 @@ public class BombEffectEngine {
 
         }
         WorldParticleBuilder.create(LodestoneParticleRegistry.WISP_PARTICLE)
-                .setScaleData(GenericParticleData.create((MAX_EXPLOSION_SCALE*scalar)*2).setEasing(Easing.BOUNCE_IN).setEasing(Easing.BACK_OUT).build())
+                .setScaleData(GenericParticleData.create((MAX_EXPLOSION_SCALE*100)*scalar).setEasing(Easing.BOUNCE_IN).setEasing(Easing.BACK_OUT).build())
                 .setTransparencyData(GenericParticleData.create(.8f).build())
                 .setColorData(ColorParticleData.create(outer, outer).setCoefficient(1.4f).setEasing(Easing.BOUNCE_IN).build())
                 .setLifetime(20)

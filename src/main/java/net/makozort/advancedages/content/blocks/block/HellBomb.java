@@ -1,8 +1,10 @@
 package net.makozort.advancedages.content.blocks.block;
 
+import net.makozort.advancedages.content.vfx.SphereRenderer;
 import net.makozort.advancedages.networking.ModPackets;
 import net.makozort.advancedages.networking.packet.BombPacket;
 import net.makozort.advancedages.reg.AllSoundEvents;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,6 +21,7 @@ import team.lodestar.lodestone.helpers.BlockHelper;
 import team.lodestar.lodestone.network.screenshake.PositionedScreenshakePacket;
 import team.lodestar.lodestone.registry.common.LodestonePacketRegistry;
 import team.lodestar.lodestone.systems.easing.Easing;
+import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
 
 import java.util.List;
 import java.util.Random;
@@ -35,7 +38,7 @@ public class HellBomb extends Block {
         super(pProperties);
     }
     public float getExplosionScale() {
-        return .2f;
+        return 1f;
     }
     public static void explode(Level level, BlockPos pos, int diameter) {
         int radius = diameter / 2;
@@ -89,9 +92,10 @@ public class HellBomb extends Block {
                 for (ServerPlayer player : serverLevel.players()) {
                     if (player.blockPosition().distSqr(pos) <= (MAX_EXPLOSION_RANGE*getExplosionScale()) * (MAX_EXPLOSION_RANGE*getExplosionScale())) {
                         if (getExplosionScale() >= .6) {
-                            ModPackets.sendToPlayer(new BombPacket(pos,getExplosionScale(),true,true),player);
+                            ModPackets.sendToPlayer(new BombPacket(pos,getExplosionScale(),true,true,true),player);
                         } else {
-                            ModPackets.sendToPlayer(new BombPacket(pos,getExplosionScale(),false,false),player);
+                            ModPackets.sendToPlayer(new BombPacket(pos,getExplosionScale(),false,false,false),player);
+
                         }
                     }
                 }
