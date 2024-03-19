@@ -53,7 +53,7 @@ public class LushNetherWartBlock extends CropBlock {
                     .setTransparencyData(GenericParticleData.create(100f, 0.25f).build())
                     .setLifetime(40)
                     .enableNoClip()
-                    .spawn(level, pos.getX() + 0 + r.nextDouble() * (1 - 0), pos.getY()+ 0 + r.nextDouble() * (1 - 0), pos.getZ()+ 0 + r.nextDouble() * (1 - 0));
+                    .spawn(level, pos.getX() + 0 + r.nextDouble() * (1 - 0), pos.getY() + 0 + r.nextDouble() * (1 - 0), pos.getZ() + 0 + r.nextDouble() * (1 - 0));
         }
         level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.MASTER, 16, 1.0F);
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);

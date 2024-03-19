@@ -20,10 +20,10 @@ public class LinkMixin {
             Level level = behavior.blockEntity.getLevel();
             AdvancedAges.LOGGER.info(String.valueOf(level));
             if (level.getBlockEntity(from.getLocation()) instanceof RedstoneLinkBlockEntity link) {
-                 if (level.getBlockEntity(link.getBlockPos().above()) instanceof RadioBlockEntity radio) {
-                     boolean withinCustomRange = from.getLocation().distManhattan(to.getLocation()) <= radio.getRange();
-                     cir.setReturnValue(withinCustomRange);
-                 }
+                if (level.getBlockEntity(link.getBlockPos().above()) instanceof RadioBlockEntity radio) {
+                    boolean withinCustomRange = from.getLocation().distManhattan(to.getLocation()) <= radio.getRange();
+                    cir.setReturnValue(withinCustomRange);
+                }
             }
         }
     }

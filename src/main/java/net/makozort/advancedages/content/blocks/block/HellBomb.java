@@ -1,10 +1,8 @@
 package net.makozort.advancedages.content.blocks.block;
 
-import net.makozort.advancedages.content.vfx.SphereRenderer;
 import net.makozort.advancedages.networking.ModPackets;
 import net.makozort.advancedages.networking.packet.BombPacket;
 import net.makozort.advancedages.reg.AllSoundEvents;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,13 +19,11 @@ import team.lodestar.lodestone.helpers.BlockHelper;
 import team.lodestar.lodestone.network.screenshake.PositionedScreenshakePacket;
 import team.lodestar.lodestone.registry.common.LodestonePacketRegistry;
 import team.lodestar.lodestone.systems.easing.Easing;
-import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
 
 import java.util.List;
 import java.util.Random;
 
 public class HellBomb extends Block {
-
 
 
     public static int MAX_EXPLOSION_SIZE = 60;
@@ -37,9 +33,7 @@ public class HellBomb extends Block {
     public HellBomb(Properties pProperties) {
         super(pProperties);
     }
-    public float getExplosionScale() {
-        return 1f;
-    }
+
     public static void explode(Level level, BlockPos pos, int diameter) {
         int radius = diameter / 2;
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
@@ -49,7 +43,7 @@ public class HellBomb extends Block {
                 for (int z = -radius; z <= radius; z++) {
                     if (x * x + y * y + z * z <= radius * radius) {
                         mutableBlockPos.set(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
-                        if (level.getBlockState(mutableBlockPos).getDestroySpeed(level,pos) != -1.0F) {
+                        if (level.getBlockState(mutableBlockPos).getDestroySpeed(level, pos) != -1.0F) {
                             level.setBlock(mutableBlockPos, Blocks.AIR.defaultBlockState(), 3);
                         }
                     }
@@ -82,19 +76,20 @@ public class HellBomb extends Block {
         }
     }
 
-
-
+    public float getExplosionScale() {
+        return 1f;
+    }
 
     public void neighborChanged(BlockState pState, Level level, BlockPos pos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
         if (level.hasNeighborSignal(pos)) {
             if (!level.isClientSide && level instanceof ServerLevel) {
                 ServerLevel serverLevel = (ServerLevel) level;
                 for (ServerPlayer player : serverLevel.players()) {
-                    if (player.blockPosition().distSqr(pos) <= (MAX_EXPLOSION_RANGE*getExplosionScale()) * (MAX_EXPLOSION_RANGE*getExplosionScale())) {
+                    if (player.blockPosition().distSqr(pos) <= (MAX_EXPLOSION_RANGE * getExplosionScale()) * (MAX_EXPLOSION_RANGE * getExplosionScale())) {
                         if (getExplosionScale() >= .6) {
-                            ModPackets.sendToPlayer(new BombPacket(pos,getExplosionScale(),true,true,true),player);
+                            ModPackets.sendToPlayer(new BombPacket(pos, getExplosionScale(), true, true, true), player);
                         } else {
-                            ModPackets.sendToPlayer(new BombPacket(pos,getExplosionScale(),false,false,false),player);
+                            ModPackets.sendToPlayer(new BombPacket(pos, getExplosionScale(), false, false, false), player);
 
                         }
                     }
@@ -103,7 +98,7 @@ public class HellBomb extends Block {
             level.playSound(null, pos, AllSoundEvents.HELL_BOMB.get(), SoundSource.MASTER, 20 * getExplosionScale(), .5F);
             LodestonePacketRegistry.LODESTONE_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(pos)),
                     new PositionedScreenshakePacket(200, BlockHelper.fromBlockPos(pos), 16, 200f * getExplosionScale(), Easing.EXPO_OUT).setIntensity(50f, .4f)); //MAKE THIS SCALE WITH SIZE
-            explode(level,pos, (int) (MAX_EXPLOSION_SIZE*getExplosionScale()));
+            explode(level, pos, (int) (MAX_EXPLOSION_SIZE * getExplosionScale()));
             level.removeBlock(pos, false);
         }
     }

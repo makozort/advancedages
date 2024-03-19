@@ -36,7 +36,9 @@ public class RadioBlockEntity extends SmartBlockEntity implements IHaveGoggleInf
         return MAX_TOWER_HEIGHT;
     }
 
-    public int getRange() {return this.range;}
+    public int getRange() {
+        return this.range;
+    }
 
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {

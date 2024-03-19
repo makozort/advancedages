@@ -4,12 +4,11 @@ import net.minecraft.nbt.CompoundTag;
 
 public class BlazeAddiction {
 
-    private int addiction;
     private final int MAX_ADDICTION = 432000;
     private final int MIN_ADDICTION = 0;
+    private int addiction;
 
-
-    public int getAddiction(){
+    public int getAddiction() {
         return addiction;
     }
 
@@ -26,8 +25,9 @@ public class BlazeAddiction {
     public void copyFrom(BlazeAddiction source) {
         this.addiction = source.addiction;
     }
+
     public void saveNBTData(CompoundTag tag) {
-        tag.putInt("addiction",addiction);
+        tag.putInt("addiction", addiction);
     }
 
     public void loadNBTData(CompoundTag tag) {

@@ -1,9 +1,7 @@
 package net.makozort.advancedages.networking.packet;
 
-import net.makozort.advancedages.content.vfx.BombEffectEngine;
-import net.makozort.advancedages.content.vfx.SphereRenderer;
+import net.makozort.advancedages.content.vfx.BombEngine;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
@@ -23,7 +21,7 @@ public class BombPacket {
 
     private boolean iSphere;
 
-    public BombPacket(BlockPos pos, float scalar, boolean iSpawnSmoke, boolean iFlash,boolean iSphere) {
+    public BombPacket(BlockPos pos, float scalar, boolean iSpawnSmoke, boolean iFlash, boolean iSphere) {
         this.pos = pos;
         this.scalar = scalar;
         this.iSpawnSmoke = iSpawnSmoke;
@@ -50,8 +48,8 @@ public class BombPacket {
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
-            BombEffectEngine.spawn(Minecraft.getInstance().player.level(),this.pos,this.scalar,this.iSpawnSmoke,this.iFlash,this.iFlash);
+            BombEngine.spawn(Minecraft.getInstance().player.level(), this.pos, this.scalar, this.iSpawnSmoke, this.iFlash, this.iFlash);
         });
-    return true;
+        return true;
     }
 }

@@ -13,18 +13,16 @@ public class BlazeEffect extends MobEffect {
     }
 
 
-
-
-
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         if (!pLivingEntity.hasEffect(MobEffects.DAMAGE_BOOST)) {
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 100, 3));
+            pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 100, 3));
         }
         if (!pLivingEntity.hasEffect(MobEffects.DIG_SPEED)) {
             pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 100, 3));
         }
     }
+
     @Override
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
         return true;

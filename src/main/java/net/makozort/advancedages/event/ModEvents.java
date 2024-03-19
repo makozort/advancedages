@@ -2,10 +2,10 @@ package net.makozort.advancedages.event;
 
 import net.makozort.advancedages.AdvancedAges;
 import net.makozort.advancedages.content.blocks.entity.ThumperBlockEntity;
-import net.makozort.advancedages.content.commands.ClearPollutionCommand;
-import net.makozort.advancedages.content.commands.DepositsCommand;
 import net.makozort.advancedages.content.capabilities.blaze.BlazeAddiction;
 import net.makozort.advancedages.content.capabilities.blaze.BlazeAddictionProvider;
+import net.makozort.advancedages.content.commands.ClearPollutionCommand;
+import net.makozort.advancedages.content.commands.DepositsCommand;
 import net.makozort.advancedages.foundation.gas.GasData;
 import net.makozort.advancedages.foundation.gas.MixedVirtualGas;
 import net.makozort.advancedages.reg.AllEffects;

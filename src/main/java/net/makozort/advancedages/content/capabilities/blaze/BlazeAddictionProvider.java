@@ -12,14 +12,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class BlazeAddictionProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
-    public static Capability<BlazeAddiction> BLAZE_ADDICTION = CapabilityManager.get(new CapabilityToken<BlazeAddiction>() { });
+    public static Capability<BlazeAddiction> BLAZE_ADDICTION = CapabilityManager.get(new CapabilityToken<BlazeAddiction>() {
+    });
 
     private BlazeAddiction addiction = null;
     public final LazyOptional<BlazeAddiction> optional = LazyOptional.of(this::createPlayerAddiction);
 
     private BlazeAddiction createPlayerAddiction() {
         if (this.addiction == null) {
-         this.addiction = new BlazeAddiction();
+            this.addiction = new BlazeAddiction();
         }
         return this.addiction;
     }

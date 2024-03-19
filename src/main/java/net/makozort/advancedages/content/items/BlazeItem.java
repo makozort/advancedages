@@ -25,7 +25,7 @@ public class BlazeItem extends Item {
                 addiction.addAddiction(36000);
                 int add = addiction.getAddiction();
                 int time = 18000;
-                if ( add >= 400000) {
+                if (add >= 400000) {
                     time = 6000;
                 } else if (add >= 180000) {
                     time = 12000;

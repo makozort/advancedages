@@ -1,10 +1,7 @@
 package net.makozort.advancedages.content.effect;
 
-import net.makozort.advancedages.AdvancedAges;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 
 public class BlazeHighEffect extends MobEffect {
@@ -13,13 +10,11 @@ public class BlazeHighEffect extends MobEffect {
     }
 
 
-
-
-
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
-            // lodestone stuff ig
+        // lodestone stuff ig
     }
+
     @Override
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
         return true;

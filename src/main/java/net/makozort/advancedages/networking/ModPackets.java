@@ -15,6 +15,7 @@ public class ModPackets {
 
 
     private static int packetId = 0;
+
     private static int id() {
         return packetId;
     }
@@ -38,7 +39,7 @@ public class ModPackets {
                 .add();
     }
 
-    public static <MSG> void  sentToSever(MSG msg) {
+    public static <MSG> void sentToSever(MSG msg) {
         INSTANCE.sendToServer(msg);
     }
 

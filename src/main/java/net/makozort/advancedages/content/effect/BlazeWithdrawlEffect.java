@@ -21,6 +21,7 @@ public class BlazeWithdrawlEffect extends MobEffect {
             pLivingEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 2));
         }
     }
+
     @Override
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
         return true;
