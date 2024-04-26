@@ -28,6 +28,17 @@ public class AllSoundEvents {
     public static final RegistryObject<SoundEvent> HELL_BOMB =
             registerSoundEvent("hellbomb");
 
+    public static final RegistryObject<SoundEvent> FLAME_AIR =
+            registerSoundEvent("flame_air");
+
+    public static final RegistryObject<SoundEvent> FLAME_EX =
+            registerSoundEvent("flame_ex");
+
+    public static final RegistryObject<SoundEvent> FLAME_LOOP =
+            registerSoundEvent("flame_loop");
+
+
+
     public static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent((new ResourceLocation(AdvancedAges.MOD_ID, name))));
 

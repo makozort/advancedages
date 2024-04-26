@@ -47,11 +47,7 @@ public class combustionEngineBlockEntity extends GeneratingKineticBlockEntity im
     }
 
     public boolean checkFuel() {
-        if (this.fuelRemaining >= 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.fuelRemaining >= 1;
     }
 
     @Override

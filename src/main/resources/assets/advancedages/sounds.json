@@ -33,5 +33,20 @@
     "sounds": [
       "advancedages:hellbomb"
     ]
+  },
+  "flame_loop": {
+    "sounds": [
+      "advancedages:flame_loop"
+    ]
+  },
+  "flame_air": {
+    "sounds": [
+      "advancedages:flame_air"
+    ]
+  },
+  "flame_ex": {
+    "sounds": [
+      "advancedages:flame_ex"
+    ]
   }
 }

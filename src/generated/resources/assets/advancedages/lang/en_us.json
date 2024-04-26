@@ -34,7 +34,10 @@
   "item.advancedages.pollution_mask": "Pollution Mask",
   "item.advancedages.pollution_mask.tooltip.summary": "provides a certain amount of protection from _pollution_ to the user",
   "item.advancedages.pollution_sponge": "Pollution Sponge",
+  "item.advancedages.bolt_gun": "Bolt Gun",
+  "item.advancedages.flame_thrower": "Flame Thrower",
   "item.advancedages.pollution_sponge.tooltip.summary": "resets the _pollution_ level in a 30 block radius",
+
 
   "creativetab.base_tab": "Create: Advanced Age",
   "item.advancedages.meat_sandwich": "\"Meat\" Sandwich",

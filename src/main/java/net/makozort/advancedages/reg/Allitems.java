@@ -64,6 +64,20 @@ public class Allitems {
                     p -> new BlazeItem(new Item.Properties().stacksTo(64)))
             .register();
 
+    public static final ItemEntry<BoltGunItem> BOLT_GUN = REGISTRATE.item("bolt_gun",
+                    p -> new BoltGunItem(new Item.Properties().stacksTo(1)))
+            .register();
+
+    public static final ItemEntry<Item> BOLT = REGISTRATE.item("bolt",
+                    p -> new Item(new Item.Properties().stacksTo(64)))
+            .register();
+
+
+
+    public static final ItemEntry<FlameThrowerItem> FLAME_THROWER = REGISTRATE.item("flame_thrower",
+                    p -> new FlameThrowerItem(new Item.Properties().stacksTo(1).durability(100)))
+            .register();
+
     static {
         REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_TAB);
     }

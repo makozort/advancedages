@@ -1,4 +1,4 @@
-package net.makozort.advancedages.foundation.registrate;
+package net.makozort.advancedages.reg;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.VirtualFluidBuilder;

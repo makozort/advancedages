@@ -30,6 +30,8 @@ public class AllCreativeModeTabs {
                         pOutput.accept(Allitems.POLLUTION_DETECTOR_ITEM.get());
                         pOutput.accept(Allitems.POLLUTION_MASK.get());
                         pOutput.accept(Allitems.POLLUTION_SPONGE.get());
+                        pOutput.accept(Allitems.BOLT_GUN.get());
+                        pOutput.accept(Allitems.BOLT.get());
 
                         pOutput.accept(AllBlocks.STEEL_FLUID_TANK.asItem());
 

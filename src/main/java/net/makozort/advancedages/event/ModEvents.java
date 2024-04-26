@@ -34,6 +34,7 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -82,7 +83,7 @@ public class ModEvents extends BlockEntity {
                         }
                     }
                     if (total >= (2)) {
-                        event.getEntity().addEffect(new MobEffectInstance(AllEffects.POLLUTION.get(), 100, (1 - reducer)));
+                        event.getEntity().addEffect(new MobEffectInstance(AllEffects.POLLUTION.get(), 100, (1 - reducer))); //TODO: change this over to the effect sie
                     }
                     if (total >= (6 - reducer)) {
                         event.getEntity().addEffect(new MobEffectInstance(AllEffects.POLLUTION.get(), 100, (2 - reducer)));
@@ -124,7 +125,6 @@ public class ModEvents extends BlockEntity {
                 if (entity instanceof Villager) {
                     AdvancedAges.LOGGER.info(event.getSource().toString());
                     if (event.getSource().toString().equals("DamageSource (create.mechanical_saw)")) { //TODO: make this not completely fucked (or get rid of it)
-                        AdvancedAges.LOGGER.info(String.valueOf(event.getSource()));
                         world.addFreshEntity(new ItemEntity(world, entity.getBlockX(), entity.getBlockY() + 2, entity.getBlockZ(),
                                 new ItemStack(Allitems.MYSTERY_MEAT.get(), 2)));
                     }
@@ -198,6 +198,35 @@ public class ModEvents extends BlockEntity {
 
                     }
                 });
+            }
+        }
+
+
+        @SubscribeEvent
+        public static void changeItem(LivingEquipmentChangeEvent event) { // possible duplication risks here
+            if (event.getEntity() instanceof Player player) {
+                if (event.getTo().is(Allitems.BOLT_GUN.asItem()) && !player.getOffhandItem().isEmpty()) {
+                    player.drop(event.getTo().copyAndClear(),true);
+                    Component comp =  Component.literal("the rifle must be held in the main hand with nothing held in the offhand").withStyle(ChatFormatting.RED);
+                    player.displayClientMessage(comp, true);
+                }
+                if (event.getSlot().getIndex() == 1 && player.getMainHandItem().is(Allitems.BOLT_GUN.asItem())) {
+                    player.drop(player.getMainHandItem().copyAndClear(),true);
+                    Component comp =  Component.literal("the rifle must be held in the main hand with nothing held in the offhand").withStyle(ChatFormatting.RED);
+                    player.displayClientMessage(comp, true);
+                }
+            }
+            if (event.getEntity() instanceof Player player) {
+                if (event.getTo().is(Allitems.FLAME_THROWER.asItem()) && !player.getOffhandItem().isEmpty()) {
+                    player.drop(event.getTo().copyAndClear(),true);
+                    Component comp =  Component.literal("the flame thrower must be held in the main hand with nothing held in the offhand").withStyle(ChatFormatting.RED);
+                    player.displayClientMessage(comp, true);
+                }
+                if (event.getSlot().getIndex() == 1 && player.getMainHandItem().is(Allitems.FLAME_THROWER.asItem())) {
+                    player.drop(player.getMainHandItem().copyAndClear(),true);
+                    Component comp =  Component.literal("the flame thrower must be held in the main hand with nothing held in the offhand").withStyle(ChatFormatting.RED);
+                    player.displayClientMessage(comp, true);
+                }
             }
         }
     }
